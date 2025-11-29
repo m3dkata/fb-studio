@@ -47,9 +47,7 @@ export default defineConfig({
           }
         ]
       },
-      strategies: 'injectManifest',
-      srcDir: 'src',
-      filename: 'sw.js', 
+      strategies: 'generateSW',
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
         navigateFallback: '/offline.html',
@@ -83,7 +81,7 @@ export default defineConfig({
             }
           },
           {
-            urlPattern: /\/api\/.*/i,
+            urlPattern: /^https:\/\/pocket\.kidn3y\.com\/api\/.*/i,
             handler: 'NetworkFirst',
             options: {
               cacheName: 'api-cache',

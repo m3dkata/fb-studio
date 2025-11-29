@@ -85,7 +85,7 @@ export const servicesService = {
     // Get service image URL
     getImageUrl(service, filename) {
         if (!filename) return null;
-        return pb.files.getUrl(service, filename);
+        return pb.files.getURL(service, filename);
     },
 
     // Subscribe to services changes
