@@ -26,6 +26,7 @@
 - **Profile Management** - Upload avatar, update personal information
 - **Push Notifications** - Get notified about booking confirmations and updates
 - **Dark Mode** - Seamless light/dark theme switching
+- **Real-time Chat** - Direct messaging with admins for support and inquiries
 - **Offline Support** - Access key features even without internet
 
 ### 👨‍💼 For Administrators
@@ -34,6 +35,7 @@
 - **Status Management** - Update booking statuses (pending, confirmed, completed, cancelled)
 - **Slot Blocking** - Mark unavailable time slots for holidays or breaks
 - **Customer Notifications** - Automatic notifications to customers on status changes
+- **Live Chat Support** - Real-time messaging interface to assist customers
 - **Analytics** - View booking statistics and insights
 
 ### 🎨 Design & UX
@@ -182,6 +184,12 @@ The system intelligently blocks overlapping time slots based on service duration
 - **Images & Assets**: Long-term caching
 - **Fonts**: 1-year cache for Google Fonts
 - **Offline Fallback**: Graceful offline experience
+
+### Live Chat Support
+- **Direct Messaging**: Instant communication between users and admins
+- **Presence System**: Real-time online/offline status indicators
+- **Admin Tools**: Dedicated chat interface for managing multiple conversations
+- **Smart Notifications**: Unread message badges and alerts
 
 ---
 
@@ -423,6 +431,7 @@ npm run dev
 - 👥 Multi-role authentication (Customer/Admin)
 - 📅 Smart booking system with duration handling
 - 🌙 Dark/Light theme support
+- 💬 Real-time Chat System with presence detection
 - 📊 Admin dashboard with analytics
 
 ---
