@@ -8,7 +8,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'robots.txt', 'icons/*.png', 'browserconfig.xml', 'offline.html'],
+      includeAssets: ['favicon.ico', 'robots.txt', 'icons/*.png', 'browserconfig.xml', 'offline.html', 'OneSignalSDKWorker.js'],
       manifest: {
         name: 'FB Studio - Beauty Salon Booking',
         short_name: 'FB Studio',
