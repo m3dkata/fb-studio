@@ -4,6 +4,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Trash2, Plus, Calendar, Edit } from 'lucide-react';
 import unavailableSlotsService from '../../services/unavailableSlots';
 import { useServices } from '../../hooks/useServices';
+import { useCrudModal } from '../../hooks/useCrudModal';
 import Card, { CardContent } from '../../components/ui/Card';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
@@ -14,8 +15,6 @@ import { formatDateForInput } from '../../utils/dateHelpers';
 
 const ManageSlotsPage = () => {
     const queryClient = useQueryClient();
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [editingSlot, setEditingSlot] = useState(null);
     const { data: services } = useServices();
 
     const { data: slots, isLoading } = useQuery({
@@ -54,35 +53,28 @@ const ManageSlotsPage = () => {
         }
     });
 
+    // Use CRUD modal hook
+    const { isOpen: isModalOpen, editingItem: editingSlot, openCreate, openEdit, close: closeModal } = useCrudModal(reset, setValue);
+
     const openCreateModal = () => {
-        setEditingSlot(null);
-        reset({
+        openCreate({
             date_start: formatDateForInput(new Date()),
             date_end: formatDateForInput(new Date()),
             service: [],
             reason: ''
         });
-        setIsModalOpen(true);
     };
 
     const openEditModal = (slot) => {
-        setEditingSlot(slot);
-
         // Handle both single and multiple services
         const serviceIds = Array.isArray(slot.service) ? slot.service : [slot.service];
 
-        // Format dates for date inputs (they expect YYYY-MM-DD format)
-        setValue('date_start', formatDateForInput(new Date(slot.date_start)));
-        setValue('date_end', formatDateForInput(new Date(slot.date_end)));
-        setValue('service', serviceIds);
-        setValue('reason', slot.reason || '');
-        setIsModalOpen(true);
-    };
-
-    const closeModal = () => {
-        setIsModalOpen(false);
-        setEditingSlot(null);
-        reset();
+        openEdit(slot, {
+            date_start: formatDateForInput(new Date(slot.date_start)),
+            date_end: formatDateForInput(new Date(slot.date_end)),
+            service: serviceIds,
+            reason: slot.reason || ''
+        });
     };
 
     const onSubmit = (data) => {

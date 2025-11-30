@@ -8,7 +8,7 @@ import Button from '../../components/ui/Button';
 import Badge from '../../components/ui/Badge';
 import LoadingSpinner from '../../components/ui/LoadingSpinner';
 import { STATUS_LABELS, STATUS_COLORS } from '../../utils/constants';
-import { formatTime } from '../../utils/dateHelpers';
+import { formatTime, isBookingUpcoming } from '../../utils/dateHelpers';
 
 const UserDashboard = () => {
     const { user } = useAuth();
@@ -18,10 +18,7 @@ const UserDashboard = () => {
         status: 'confirmed'
     });
 
-    const upcoming = upcomingBookings?.filter(booking => {
-        const bookingDate = new Date(`${booking.booking_date.split('T')[0]}T${booking.booking_time}`);
-        return bookingDate > new Date();
-    }).slice(0, 3) || [];
+    const upcoming = upcomingBookings?.filter(booking => isBookingUpcoming(booking)).slice(0, 3) || [];
 
     if (statsLoading || bookingsLoading) {
         return (

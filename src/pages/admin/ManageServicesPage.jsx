@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Plus, Edit, Trash2 } from 'lucide-react';
 import { useServices, useCreateService, useUpdateService, useDeleteService } from '../../hooks/useServices';
+import { useCrudModal } from '../../hooks/useCrudModal';
 import Card, { CardContent } from '../../components/ui/Card';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
@@ -16,15 +17,15 @@ const ManageServicesPage = () => {
     const updateService = useUpdateService();
     const deleteService = useDeleteService();
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [editingService, setEditingService] = useState(null);
     const [deleteConfirmId, setDeleteConfirmId] = useState(null);
 
     const { register, handleSubmit, reset, setValue, formState: { errors } } = useForm();
 
+    // Use CRUD modal hook
+    const { isOpen: isModalOpen, editingItem: editingService, openCreate, openEdit, close: closeModal } = useCrudModal(reset, setValue);
+
     const openCreateModal = () => {
-        setEditingService(null);
-        reset({
+        openCreate({
             title: '',
             description: '',
             category: '',
@@ -32,24 +33,17 @@ const ManageServicesPage = () => {
             duration: '',
             active: true
         });
-        setIsModalOpen(true);
     };
 
     const openEditModal = (service) => {
-        setEditingService(service);
-        setValue('title', service.title);
-        setValue('description', service.description);
-        setValue('category', service.category);
-        setValue('price', service.price);
-        setValue('duration', service.duration);
-        setValue('active', service.active);
-        setIsModalOpen(true);
-    };
-
-    const closeModal = () => {
-        setIsModalOpen(false);
-        setEditingService(null);
-        reset();
+        openEdit(service, {
+            title: service.title,
+            description: service.description,
+            category: service.category,
+            price: service.price,
+            duration: service.duration,
+            active: service.active
+        });
     };
 
     const onSubmit = async (data) => {

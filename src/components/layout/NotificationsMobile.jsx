@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useRef } from 'react';
 import { Bell, Check } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
+import { useNotificationActions } from '../../hooks/useNotificationActions';
 
 const NotificationsMobile = ({
     isAuthenticated,
@@ -13,11 +13,15 @@ const NotificationsMobile = ({
     onMarkAllAsRead,
     isOpen
 }) => {
-    const navigate = useNavigate();
     const notificationRef = useRef(null);
     const dropdownRef = useRef(null);
 
-
+    // Use shared notification actions hook
+    const {
+        handleNotificationClick,
+        handleMarkAsReadWrapper,
+        handleMarkAllAsReadClick
+    } = useNotificationActions(user, onMarkAsRead, onMarkAllAsRead, onToggle);
 
     // Subscribe to real-time notifications
     useEffect(() => {
@@ -37,39 +41,6 @@ const NotificationsMobile = ({
     if (!isAuthenticated) {
         return null;
     }
-
-    const handleMarkAsReadWrapper = (id, e) => {
-        e.stopPropagation();
-        if (onMarkAsRead) {
-            onMarkAsRead(id);
-        }
-    };
-
-    const handleNotificationClick = (notification, e) => {
-        e.stopPropagation();
-
-        // Mark as read if unread
-        if (!notification.read && onMarkAsRead) {
-            onMarkAsRead(notification.id);
-        }
-
-        // Navigate to booking if it exists
-        if (notification.related_booking) {
-            if (user?.user_type === 'admin') {
-                navigate(`/admin/bookings?bookingId=${notification.related_booking}`);
-            } else {
-                navigate(`/my-bookings?bookingId=${notification.related_booking}`);
-            }
-            onToggle(false); // Close dropdown AFTER navigation
-        }
-    };
-
-    const handleMarkAllAsReadClick = (e) => {
-        e.stopPropagation();
-        if (onMarkAllAsRead) {
-            onMarkAllAsRead();
-        }
-    };
 
     return (
         <div className="relative" ref={notificationRef}>

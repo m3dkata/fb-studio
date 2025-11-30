@@ -74,3 +74,33 @@ export const formatDateForInput = (date) => {
         return getTodayDate();
     }
 };
+
+/**
+ * Creates a Date object from booking date and time strings
+ * @param {string} date - Date string (e.g., "2024-01-15" or "2024-01-15T00:00:00")
+ * @param {string} time - Time string (e.g., "14:30")
+ * @returns {Date} Combined date/time as Date object
+ */
+export const createBookingDateTime = (date, time) => {
+    const dateStr = date.split('T')[0];
+    return new Date(`${dateStr}T${time}`);
+};
+
+/**
+ * Formats a booking object's date and time into a Date object
+ * @param {Object} booking - Booking object with booking_date and booking_time
+ * @returns {Date} Combined date/time as Date object
+ */
+export const formatBookingDate = (booking) => {
+    return createBookingDateTime(booking.booking_date, booking.booking_time);
+};
+
+/**
+ * Checks if a booking date/time is in the future
+ * @param {Object} booking - Booking object with booking_date and booking_time
+ * @returns {boolean} True if booking is in the future
+ */
+export const isBookingUpcoming = (booking) => {
+    const bookingDate = formatBookingDate(booking);
+    return bookingDate > new Date();
+};
