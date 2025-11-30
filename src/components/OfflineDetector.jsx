@@ -4,10 +4,27 @@ const OfflineDetector = () => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [showOfflineMessage, setShowOfflineMessage] = useState(false);
 
+  const checkConnection = async () => {
+    try {
+      const response = await fetch('/favicon-16x16.png', {
+        method: 'HEAD',
+        cache: 'no-store',
+        headers: { 'Cache-Control': 'no-cache' }
+      });
+      return response.ok;
+    } catch (error) {
+      return false;
+    }
+  };
+
   useEffect(() => {
-    const handleOnline = () => {
-      setIsOnline(true);
-      setShowOfflineMessage(false);
+    const handleOnline = async () => {
+      // Double check if we really have internet
+      const hasInternet = await checkConnection();
+      if (hasInternet) {
+        setIsOnline(true);
+        setShowOfflineMessage(false);
+      }
     };
 
     const handleOffline = () => {
@@ -18,18 +35,35 @@ const OfflineDetector = () => {
     window.addEventListener('online', handleOnline);
     window.addEventListener('offline', handleOffline);
 
-    if (!navigator.onLine) {
-      setShowOfflineMessage(true);
+    // Initial check
+    checkConnection().then(online => {
+      setIsOnline(online);
+      setShowOfflineMessage(!online);
+    });
+
+    // Periodic check if offline (every 5 seconds)
+    let interval;
+    if (!isOnline) {
+      interval = setInterval(async () => {
+        const online = await checkConnection();
+        if (online) {
+          setIsOnline(true);
+          setShowOfflineMessage(false);
+        }
+      }, 5000);
     }
 
     return () => {
       window.removeEventListener('online', handleOnline);
       window.removeEventListener('offline', handleOffline);
+      if (interval) clearInterval(interval);
     };
-  }, []);
+  }, [isOnline]);
 
-  const handleRetry = () => {
-    if (navigator.onLine) {
+  const handleRetry = async () => {
+    const online = await checkConnection();
+    if (online) {
+      setIsOnline(true);
       setShowOfflineMessage(false);
       window.location.reload();
     }
@@ -42,7 +76,7 @@ const OfflineDetector = () => {
 
   // Show full-screen offline message
   return (
-    <div 
+    <div
       style={{
         position: 'fixed',
         top: 0,
@@ -58,42 +92,42 @@ const OfflineDetector = () => {
         fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
       }}
     >
-      <svg 
-        width="64" 
-        height="64" 
+      <svg
+        width="64"
+        height="64"
         style={{ marginBottom: '24px', color: '#9ca3af' }}
-        xmlns="http://www.w3.org/2000/svg" 
-        fill="none" 
-        viewBox="0 0 24 24" 
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
         stroke="currentColor"
       >
-        <path 
-          strokeLinecap="round" 
-          strokeLinejoin="round" 
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
           strokeWidth="2"
-          d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" 
+          d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
         />
       </svg>
-      
-      <h1 style={{ 
-        margin: '0 0 16px', 
-        fontSize: '24px', 
+
+      <h1 style={{
+        margin: '0 0 16px',
+        fontSize: '24px',
         color: '#111827',
-        textAlign: 'center' 
+        textAlign: 'center'
       }}>
         You are offline
       </h1>
-      
-      <p style={{ 
-        margin: '0 0 24px', 
+
+      <p style={{
+        margin: '0 0 24px',
         color: '#6b7280',
         textAlign: 'center',
         maxWidth: '300px'
       }}>
         Please check your internet connection and try again.
       </p>
-      
-      <button 
+
+      <button
         onClick={handleRetry}
         style={{
           backgroundColor: '#0d9488',
@@ -110,12 +144,12 @@ const OfflineDetector = () => {
       >
         {navigator.onLine ? 'Reload App' : 'Retry Connection'}
       </button>
-      
-      <p style={{ 
-        margin: '24px 0 0', 
-        fontSize: '14px', 
+
+      <p style={{
+        margin: '24px 0 0',
+        fontSize: '14px',
         color: '#9ca3af',
-        textAlign: 'center' 
+        textAlign: 'center'
       }}>
       </p>
     </div>

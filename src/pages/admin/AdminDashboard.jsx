@@ -102,7 +102,38 @@ const AdminDashboard = () => {
                         </Link>
                     </CardHeader>
                     <CardContent>
-                        <div className="overflow-x-auto">
+                        {/* Mobile View (Cards) */}
+                        <div className="md:hidden space-y-4">
+                            {recentBookings.map((booking) => (
+                                <div key={booking.id} className="p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700">
+                                    <div className="flex justify-between items-start mb-3">
+                                        <div>
+                                            <p className="font-semibold text-gray-900 dark:text-white">
+                                                {booking.expand?.user?.name || 'Unknown'}
+                                            </p>
+                                            <p className="text-sm text-gray-500 dark:text-gray-400">
+                                                {booking.expand?.service?.title || 'Unknown'}
+                                            </p>
+                                        </div>
+                                        <Badge variant={STATUS_COLORS[booking.status]}>
+                                            {STATUS_LABELS[booking.status]}
+                                        </Badge>
+                                    </div>
+                                    <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                                        <Calendar className="h-4 w-4 mr-2" />
+                                        {new Date(booking.booking_date).toLocaleDateString()}
+                                    </div>
+                                </div>
+                            ))}
+                            {recentBookings.length === 0 && (
+                                <div className="text-center py-8">
+                                    <p className="text-gray-500 dark:text-gray-400">No bookings yet</p>
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Desktop View (Table) */}
+                        <div className="hidden md:block overflow-x-auto">
                             <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                                 <thead className="bg-gray-50 dark:bg-gray-800/50">
                                     <tr>
