@@ -5,14 +5,31 @@ const OfflineDetector = () => {
   const [showOfflineMessage, setShowOfflineMessage] = useState(false);
 
   const checkConnection = async () => {
+    // Don't show offline if browser says we're online
+    if (!navigator.onLine) {
+      return false;
+    }
+
     try {
-      const response = await fetch('/favicon-16x16.png', {
+      // Use a timestamp to bypass service worker cache
+      // Fetch a small resource from the server with cache-busting
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 3000); // 3 second timeout
+
+      const response = await fetch(`/favicon.ico?t=${Date.now()}`, {
         method: 'HEAD',
         cache: 'no-store',
-        headers: { 'Cache-Control': 'no-cache' }
+        headers: {
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Pragma': 'no-cache'
+        },
+        signal: controller.signal
       });
+
+      clearTimeout(timeoutId);
       return response.ok;
     } catch (error) {
+      // If fetch fails, we're likely offline
       return false;
     }
   };
@@ -35,11 +52,17 @@ const OfflineDetector = () => {
     window.addEventListener('online', handleOnline);
     window.addEventListener('offline', handleOffline);
 
-    // Initial check
-    checkConnection().then(online => {
-      setIsOnline(online);
-      setShowOfflineMessage(!online);
-    });
+    // Initial check - only if browser says we're offline
+    if (!navigator.onLine) {
+      checkConnection().then(online => {
+        setIsOnline(online);
+        setShowOfflineMessage(!online);
+      });
+    } else {
+      // Browser says we're online, trust it initially
+      setIsOnline(true);
+      setShowOfflineMessage(false);
+    }
 
     // Periodic check if offline (every 5 seconds)
     let interval;

@@ -10,7 +10,7 @@ import { formatDate, formatTime } from '../../utils/dateHelpers';
 import { addToCalendar, downloadICS } from '../../utils/calendar';
 import { Calendar, Clock, MapPin, Download, ExternalLink, CalendarDays } from 'lucide-react';
 import { format } from 'date-fns';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 import CalendarExportModal from '../../components/ui/CalendarExportModal';
 
@@ -19,11 +19,27 @@ const MyBookingsPage = () => {
     const [filterStatus, setFilterStatus] = useState('all');
     const [calendarModalOpen, setCalendarModalOpen] = useState(false);
     const [selectedBooking, setSelectedBooking] = useState(null);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const highlightBookingId = searchParams.get('bookingId');
 
     const { data: bookings, isLoading } = useBookings({
         userId: user.id,
         status: filterStatus !== 'all' ? filterStatus : undefined
     });
+
+    // Scroll to and highlight booking when bookingId is in URL
+    React.useEffect(() => {
+        if (highlightBookingId && bookings && bookings.length > 0) {
+            const element = document.getElementById(`booking-${highlightBookingId}`);
+            if (element) {
+                setTimeout(() => {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // Remove the bookingId from URL after scrolling
+                    setSearchParams({});
+                }, 300);
+            }
+        }
+    }, [highlightBookingId, bookings, setSearchParams]);
 
     const handleAddToCalendar = (booking) => {
         setSelectedBooking(booking);
@@ -91,72 +107,80 @@ const MyBookingsPage = () => {
                 </div>
             ) : (
                 <div className="space-y-6">
-                    {bookings.map((booking) => (
-                        <Card key={booking.id} className="overflow-visible hover:shadow-xl transition-shadow duration-300 border-0 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md">
-                            <CardContent className="p-6">
-                                <div className="flex flex-col md:flex-row justify-between gap-6">
-                                    <div className="flex items-start space-x-6">
-                                        {/* Date Box */}
-                                        <div className="flex-shrink-0 w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-2xl flex flex-col items-center justify-center text-white shadow-lg shadow-primary/30">
-                                            <span className="text-xs font-bold uppercase tracking-wider opacity-90">{format(new Date(booking.booking_date), 'MMM')}</span>
-                                            <span className="text-3xl font-bold">{format(new Date(booking.booking_date), 'dd')}</span>
+                    {bookings.map((booking) => {
+                        const isHighlighted = booking.id === highlightBookingId;
+                        return (
+                            <Card
+                                key={booking.id}
+                                id={`booking-${booking.id}`}
+                                className={`overflow-visible hover:shadow-xl transition-all duration-500 border-0 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md ${isHighlighted ? 'ring-4 ring-primary ring-offset-2 shadow-2xl' : ''
+                                    }`}
+                            >
+                                <CardContent className="p-6">
+                                    <div className="flex flex-col md:flex-row justify-between gap-6">
+                                        <div className="flex items-start space-x-6">
+                                            {/* Date Box */}
+                                            <div className="flex-shrink-0 w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-2xl flex flex-col items-center justify-center text-white shadow-lg shadow-primary/30">
+                                                <span className="text-xs font-bold uppercase tracking-wider opacity-90">{format(new Date(booking.booking_date), 'MMM')}</span>
+                                                <span className="text-3xl font-bold">{format(new Date(booking.booking_date), 'dd')}</span>
+                                            </div>
+
+                                            {/* Details */}
+                                            <div className="flex-grow">
+                                                <div className="flex flex-wrap items-center gap-3 mb-2">
+                                                    <h3 className="text-xl font-bold text-gray-900 dark:text-white font-heading">
+                                                        {booking.expand?.service?.title}
+                                                    </h3>
+                                                    <Badge variant={STATUS_COLORS[booking.status]} className="text-xs px-2 py-0.5">
+                                                        {STATUS_LABELS[booking.status]}
+                                                    </Badge>
+                                                </div>
+
+                                                <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                                    <div className="flex items-center">
+                                                        <Clock className="h-4 w-4 mr-2 text-primary" />
+                                                        <span className="font-medium">{formatTime(booking.booking_time)}</span>
+                                                        <span className="mx-2">•</span>
+                                                        <span>{booking.expand?.service?.duration} mins</span>
+                                                    </div>
+                                                    <div className="flex items-center">
+                                                        <MapPin className="h-4 w-4 mr-2 text-primary" />
+                                                        <span>FB Studio, Fashion District NY</span>
+                                                    </div>
+                                                </div>
+
+                                                {booking.notes && (
+                                                    <div className="mt-4 text-sm bg-gray-50/80 dark:bg-gray-900/50 p-3 rounded-lg border border-gray-100 dark:border-gray-700 text-gray-600 dark:text-gray-300 italic">
+                                                        "{booking.notes}"
+                                                    </div>
+                                                )}
+                                            </div>
                                         </div>
 
-                                        {/* Details */}
-                                        <div className="flex-grow">
-                                            <div className="flex flex-wrap items-center gap-3 mb-2">
-                                                <h3 className="text-xl font-bold text-gray-900 dark:text-white font-heading">
-                                                    {booking.expand?.service?.title}
-                                                </h3>
-                                                <Badge variant={STATUS_COLORS[booking.status]} className="text-xs px-2 py-0.5">
-                                                    {STATUS_LABELS[booking.status]}
-                                                </Badge>
-                                            </div>
-
-                                            <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-                                                <div className="flex items-center">
-                                                    <Clock className="h-4 w-4 mr-2 text-primary" />
-                                                    <span className="font-medium">{formatTime(booking.booking_time)}</span>
-                                                    <span className="mx-2">•</span>
-                                                    <span>{booking.expand?.service?.duration} mins</span>
-                                                </div>
-                                                <div className="flex items-center">
-                                                    <MapPin className="h-4 w-4 mr-2 text-primary" />
-                                                    <span>FB Studio, Fashion District NY</span>
-                                                </div>
-                                            </div>
-
-                                            {booking.notes && (
-                                                <div className="mt-4 text-sm bg-gray-50/80 dark:bg-gray-900/50 p-3 rounded-lg border border-gray-100 dark:border-gray-700 text-gray-600 dark:text-gray-300 italic">
-                                                    "{booking.notes}"
-                                                </div>
+                                        {/* Actions */}
+                                        <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-end items-start md:items-center border-t md:border-t-0 md:border-l border-gray-100 dark:border-gray-700 pt-4 md:pt-0 md:pl-6">
+                                            {booking.status === 'confirmed' && (
+                                                <Button
+                                                    variant="outline"
+                                                    size="sm"
+                                                    onClick={() => handleAddToCalendar(booking)}
+                                                    className="w-full sm:w-auto justify-start"
+                                                >
+                                                    <Calendar className="h-4 w-4 mr-2" />
+                                                    Add to Calendar
+                                                </Button>
+                                            )}
+                                            {booking.status === 'pending' && (
+                                                <span className="text-sm text-amber-600 bg-amber-50 px-3 py-1 rounded-full">
+                                                    Awaiting Confirmation
+                                                </span>
                                             )}
                                         </div>
                                     </div>
-
-                                    {/* Actions */}
-                                    <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-end items-start md:items-center border-t md:border-t-0 md:border-l border-gray-100 dark:border-gray-700 pt-4 md:pt-0 md:pl-6">
-                                        {booking.status === 'confirmed' && (
-                                            <Button
-                                                variant="outline"
-                                                size="sm"
-                                                onClick={() => handleAddToCalendar(booking)}
-                                                className="w-full sm:w-auto justify-start"
-                                            >
-                                                <Calendar className="h-4 w-4 mr-2" />
-                                                Add to Calendar
-                                            </Button>
-                                        )}
-                                        {booking.status === 'pending' && (
-                                            <span className="text-sm text-amber-600 bg-amber-50 px-3 py-1 rounded-full">
-                                                Awaiting Confirmation
-                                            </span>
-                                        )}
-                                    </div>
-                                </div>
-                            </CardContent>
-                        </Card>
-                    ))}
+                                </CardContent>
+                            </Card>
+                        );
+                    })}
                 </div>
             )}
         </div>

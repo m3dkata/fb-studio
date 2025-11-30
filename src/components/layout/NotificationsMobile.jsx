@@ -1,45 +1,30 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Bell, Check } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 
-const NotificationsMobile = ({ 
-    isAuthenticated, 
-    user, 
-    notifications, 
-    unreadCount, 
-    onToggle, 
-    onMarkAsRead, 
-    onMarkAllAsRead, 
-    onLoadNotifications,
-    isOpen 
+const NotificationsMobile = ({
+    isAuthenticated,
+    user,
+    notifications,
+    unreadCount,
+    onToggle,
+    onMarkAsRead,
+    onMarkAllAsRead,
+    isOpen
 }) => {
+    const navigate = useNavigate();
     const notificationRef = useRef(null);
+    const dropdownRef = useRef(null);
 
-    // Close notifications when clicking outside
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (notificationRef.current && !notificationRef.current.contains(event.target)) {
-                onToggle(false);
-            }
-        };
 
-        if (isOpen) {
-            document.addEventListener('mousedown', handleClickOutside);
-            return () => {
-                document.removeEventListener('mousedown', handleClickOutside);
-            };
-        }
-    }, [isOpen, onToggle]);
 
     // Subscribe to real-time notifications
     useEffect(() => {
-        if (isAuthenticated && user && onLoadNotifications) {
+        if (isAuthenticated && user) {
             import('../../services/notifications').then(({ default: notificationsService }) => {
-                const unsubscribe = notificationsService.subscribe(user.id, (e) => {
-                    if (e.action === 'create') {
-                        // Refresh notifications on new event
-                        onLoadNotifications();
-                    }
+                const unsubscribe = notificationsService.subscribe(user.id, () => {
+                    // React Query will auto-refresh via invalidateQueries in the mutation
                 });
 
                 return () => {
@@ -47,7 +32,7 @@ const NotificationsMobile = ({
                 };
             });
         }
-    }, [isAuthenticated, user, onLoadNotifications]);
+    }, [isAuthenticated, user]);
 
     if (!isAuthenticated) {
         return null;
@@ -60,17 +45,43 @@ const NotificationsMobile = ({
         }
     };
 
+    const handleNotificationClick = (notification, e) => {
+        e.stopPropagation();
+
+        // Mark as read if unread
+        if (!notification.read && onMarkAsRead) {
+            onMarkAsRead(notification.id);
+        }
+
+        // Navigate to booking if it exists
+        if (notification.related_booking) {
+            if (user?.user_type === 'admin') {
+                navigate(`/admin/bookings?bookingId=${notification.related_booking}`);
+            } else {
+                navigate(`/my-bookings?bookingId=${notification.related_booking}`);
+            }
+            onToggle(false); // Close dropdown AFTER navigation
+        }
+    };
+
+    const handleMarkAllAsReadClick = (e) => {
+        e.stopPropagation();
+        if (onMarkAllAsRead) {
+            onMarkAllAsRead();
+        }
+    };
+
     return (
         <div className="relative" ref={notificationRef}>
             {/* Notifications Dropdown - Mobile only */}
             {isOpen && (
-                <div className="fixed inset-x-0 z-50 w-full px-4 top-16">
+                <div ref={dropdownRef} className="fixed inset-x-0 z-50 w-full px-4 top-16">
                     <div className="overflow-hidden bg-white border border-gray-200 shadow-xl dark:bg-gray-900 rounded-xl dark:border-gray-700 animate-slide-down">
                         <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50">
                             <h3 className="font-semibold text-gray-900 dark:text-white">Notifications</h3>
                             {unreadCount > 0 && onMarkAllAsRead && (
                                 <button
-                                    onClick={onMarkAllAsRead}
+                                    onClick={handleMarkAllAsReadClick}
                                     className="text-xs font-medium text-primary hover:text-primary-dark"
                                 >
                                     Mark all read
@@ -82,7 +93,8 @@ const NotificationsMobile = ({
                                 notifications.map((notification) => (
                                     <div
                                         key={notification.id}
-                                        className={`px-4 py-3 border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors ${!notification.read ? 'bg-blue-50/50 dark:bg-blue-900/10' : ''}`}
+                                        onClick={(e) => handleNotificationClick(notification, e)}
+                                        className={`px-4 py-3 border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors cursor-pointer ${!notification.read ? 'bg-blue-50/50 dark:bg-blue-900/10' : ''}`}
                                     >
                                         <div className="flex items-start justify-between gap-3">
                                             <div className="flex-1">

@@ -261,8 +261,7 @@ export const bookingsService = {
                     title: 'New Booking',
                     message: `${userName} booked ${serviceName} on ${dateStr} at ${timeStr}`,
                     type: 'system',
-                    booking: booking.id,
-                    related_id: booking.id,
+                    related_booking: booking.id,
                     read: false,
                 });
             }
@@ -304,8 +303,7 @@ export const bookingsService = {
                     title: `Booking ${status.charAt(0).toUpperCase() + status.slice(1)}`,
                     message: messages[status],
                     type: types[status],
-                    booking: booking.id,
-                    related_id: booking.id,
+                    related_booking: booking.id,
                     read: false,
                 });
 

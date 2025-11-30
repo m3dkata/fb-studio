@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { useTheme } from '../../hooks/useTheme';
-import notificationsService from '../../services/notifications';
+import { useNotifications, useUnreadCount, useMarkAsRead, useMarkAllAsRead } from '../../hooks/useNotifications';
 import Logo from './Logo';
 import DesktopNavigation from './DesktopNavigation';
 import ThemeToggle from './ThemeToggle';
@@ -16,11 +16,13 @@ const Header = () => {
     const { isDark, toggleTheme } = useTheme();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-
-    // Notifications state
-    const [notifications, setNotifications] = useState([]);
-    const [unreadCount, setUnreadCount] = useState(0);
     const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+
+    // Notifications hooks
+    const { data: notifications = [] } = useNotifications(user?.id);
+    const { data: unreadCount = 0 } = useUnreadCount(user?.id);
+    const markAsRead = useMarkAsRead();
+    const markAllAsRead = useMarkAllAsRead();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -33,30 +35,13 @@ const Header = () => {
         };
     }, []);
 
-    // Fetch notifications
-    useEffect(() => {
-        if (isAuthenticated && user) {
-            loadNotifications();
-        }
-    }, [isAuthenticated, user]);
-
-    const loadNotifications = async () => {
-        if (!user) return;
-        const data = await notificationsService.getAll(user.id);
-        setNotifications(data);
-        const count = await notificationsService.getUnreadCount(user.id);
-        setUnreadCount(count);
+    const handleMarkAsRead = (id) => {
+        markAsRead.mutate(id);
     };
 
-    const handleMarkAsRead = async (id) => {
-        await notificationsService.markAsRead(id);
-        loadNotifications();
-    };
-
-    const handleMarkAllAsRead = async () => {
+    const handleMarkAllAsRead = () => {
         if (!user) return;
-        await notificationsService.markAllAsRead(user.id);
-        loadNotifications();
+        markAllAsRead.mutate(user.id);
     };
 
     const toggleNotifications = () => {
@@ -105,7 +90,6 @@ const Header = () => {
                             onToggle={toggleNotifications}
                             onMarkAsRead={handleMarkAsRead}
                             onMarkAllAsRead={handleMarkAllAsRead}
-                            onLoadNotifications={loadNotifications}
                             isOpen={isNotificationsOpen}
                         />
                     </div>
@@ -123,7 +107,6 @@ const Header = () => {
                                     onToggle={toggleNotifications}
                                     onMarkAsRead={handleMarkAsRead}
                                     onMarkAllAsRead={handleMarkAllAsRead}
-                                    onLoadNotifications={loadNotifications}
                                     isOpen={isNotificationsOpen}
                                 />
                                 <UserActions
