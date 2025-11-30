@@ -1,5 +1,6 @@
-import { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import authService from '../services/auth';
+import { USER_TYPES } from '../constants/userTypes';
 
 export const AuthContext = createContext(null);
 
@@ -61,7 +62,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     const isAdmin = () => {
-        return user && user.user_type === 'admin';
+        return user && user.user_type === USER_TYPES.ADMIN;
     };
 
     const value = {

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../../hooks/useAuth';
+import { USER_TYPES } from '../../constants/userTypes';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
 import Card, { CardContent, CardHeader, CardTitle, CardFooter } from '../../components/ui/Card';
@@ -21,14 +22,14 @@ const LoginPage = () => {
 
         try {
             const user = await login(data.email, data.password);
-            
+
             // Determine redirect path based on user role
             let redirectPath = from || '/dashboard';
-            
-            if (user.user_type === 'admin') {
+
+            if (user.user_type === USER_TYPES.ADMIN) {
                 redirectPath = '/admin';
             }
-            
+
             navigate(redirectPath, { replace: true });
         } catch (err) {
             setError('Invalid email or password. Please try again.');

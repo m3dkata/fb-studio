@@ -1,4 +1,5 @@
 import pb from './pocketbase';
+import { USER_TYPES } from '../constants/userTypes';
 
 export const authService = {
     // Login with email and password
@@ -49,7 +50,7 @@ export const authService = {
     // Check if user is admin
     isAdmin() {
         const user = this.getCurrentUser();
-        return user && user.user_type === 'admin';
+        return user && user.user_type === USER_TYPES.ADMIN;
     },
 
     // Refresh authentication

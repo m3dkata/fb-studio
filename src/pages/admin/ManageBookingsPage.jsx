@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Check, X, Calendar, User } from 'lucide-react';
+import { Calendar, Clock, User, DollarSign, FileText, Download } from 'lucide-react';
 import { useBookings, useUpdateBookingStatus } from '../../hooks/useBookings';
 import Card, { CardContent } from '../../components/ui/Card';
 import Button from '../../components/ui/Button';
 import Badge from '../../components/ui/Badge';
 import LoadingSpinner from '../../components/ui/LoadingSpinner';
-import { STATUS_COLORS, STATUS_LABELS, BOOKING_STATUS } from '../../utils/constants';
-import { formatTime } from '../../utils/dateHelpers';
 import CalendarExportModal from '../../components/ui/CalendarExportModal';
+import { STATUS_LABELS, STATUS_COLORS, BOOKING_STATUSES } from '../../utils/constants';
+import { formatTime, formatDate } from '../../utils/dateHelpers';
 
 const ManageBookingsPage = () => {
     const [filterStatus, setFilterStatus] = useState('all');
@@ -144,7 +144,7 @@ const ManageBookingsPage = () => {
                                                 </div>
                                             </div>
                                             <div>
-                                                <p className="font-medium">{new Date(booking.booking_date).toLocaleDateString()}</p>
+                                                <p className="font-medium">{formatDate(booking.booking_date)}</p>
                                                 <p className="text-xs text-gray-500">{formatTime(booking.booking_time)}</p>
                                             </div>
                                         </div>
@@ -225,7 +225,7 @@ const ManageBookingsPage = () => {
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             <div className="flex items-center text-sm text-gray-900 dark:text-white">
                                                 <Calendar className="h-4 w-4 mr-1.5 text-primary" />
-                                                <span>{new Date(booking.booking_date).toLocaleDateString()}</span>
+                                                <span>{formatDate(booking.booking_date)}</span>
                                             </div>
                                             <div className="text-sm text-gray-500 dark:text-gray-400 ml-5.5">{formatTime(booking.booking_time)}</div>
                                         </td>

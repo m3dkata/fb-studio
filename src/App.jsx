@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
+import { USER_TYPES } from './constants/userTypes';
 import Layout from './components/layout/Layout';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import InstallPrompt from './components/InstallPrompt';
@@ -62,7 +63,7 @@ function AppContent() {
     <Router>
       <InstallPrompt />
 
-      {user && (user.user_type === 'admin' ? <AdminChatWidget /> : <ChatWidget />)}
+      {user && (user.user_type === USER_TYPES.ADMIN ? <AdminChatWidget /> : <ChatWidget />)}
       <Routes>
         <Route path="/" element={<Layout />}>
           {/* Public Routes */}
