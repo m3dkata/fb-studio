@@ -44,11 +44,13 @@ const HomePage = () => {
                                     Book Appointment <ArrowRight className="w-5 h-5 ml-2" />
                                 </Button>
                             </Link>
-                            <Link to="/register">
-                                <Button variant="outline" size="lg" className="w-full bg-white sm:w-auto backdrop-blur-sm">
-                                    Create Account
-                                </Button>
-                            </Link>
+                            {!pb.authStore.isValid && (
+                                <Link to="/register">
+                                    <Button variant="outline" size="lg" className="w-full bg-white sm:w-auto backdrop-blur-sm">
+                                        Create Account
+                                    </Button>
+                                </Link>
+                            )}
                         </div>
 
                         <div className="flex items-center justify-center pt-8 space-x-8 text-gray-500 lg:justify-start">
@@ -182,11 +184,13 @@ const HomePage = () => {
                     <p className="max-w-2xl mx-auto mb-10 text-xl text-green-100">
                         Join our community of beautiful, confident clients. Book your first appointment today and get 10% off.
                     </p>
-                    <Link to="/register">
-                        <Button size="lg" className="text-green-600 bg-white border-none shadow-2xl hover:bg-gray-100">
-                            Get Started Now
-                        </Button>
-                    </Link>
+                    {!pb.authStore.isValid && (
+                        <Link to="/register">
+                            <Button size="lg" className="text-green-600 bg-white border-none shadow-2xl hover:bg-gray-100">
+                                Get Started Now
+                            </Button>
+                        </Link>
+                    )}
                 </div>
             </section>
         </div>
