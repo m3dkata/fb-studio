@@ -27,7 +27,7 @@
 - **Push Notifications** - Get notified about booking confirmations and updates
 - **Dark Mode** - Seamless light/dark theme switching
 - **Real-time Chat** - Direct messaging with admins for support and inquiries
-- **Offline Support** - Access key features even without internet
+- **PWA Support** - Installable on mobile and desktop for an app-like experience
 
 ### 👨‍💼 For Administrators
 - **Service Management** - Create, edit, and manage service offerings
@@ -45,6 +45,12 @@
 - **Smooth Animations** - Polished micro-interactions and transitions
 - **Accessibility** - WCAG compliant with proper ARIA labels
 
+### 🏗️ Code Quality
+- **Custom Hooks** - Encapsulated logic for Notifications, CRUD operations, and Auth
+- **Constants** - Centralized configuration for easy maintenance
+- **Date Utilities** - Robust date handling with `date-fns`
+- **DRY & KISS** - Adherence to best coding practices
+
 ---
 
 ## 🛠 Tech Stack
@@ -56,6 +62,7 @@
 - **Lucide React** - Beautiful icon library
 - **React Hook Form** - Performant form handling
 - **Date-fns** - Modern date utility library
+- **TanStack Query** - Powerful asynchronous state management
 
 ### Backend
 - **PocketBase** - Self-hosted backend with real-time database
@@ -92,8 +99,6 @@
    Create a `.env` file in the root directory:
    ```env
    VITE_POCKETBASE_URL=http://localhost:8090
-   VITE_ONESIGNAL_APP_ID=your-app-id
-   VITE_ONESIGNAL_API_KEY=your-api-key
    ```
 
 4. **Set up PocketBase**
@@ -104,6 +109,8 @@
    - `bookings` - Booking records
    - `notifications` - User notifications
    - `unavailable_slots` - Blocked time slots
+   - `chats` - Chat messages
+   - `user_presence` - Online status tracking
 
 5. **Start development server**
    ```bash
@@ -158,10 +165,9 @@ FB Studio is a full-featured Progressive Web App that can be installed on any de
 2. Or click "Install App" when prompted
 
 ### PWA Features
-- ✅ **Offline Access** - Works without internet
+- ✅ **Offline Access** - Cached resources allow basic navigation without internet
 - ✅ **App-like Experience** - Runs in standalone window
 - ✅ **Fast Loading** - Cached assets load instantly
-- ✅ **Push Notifications** - Stay updated on bookings
 - ✅ **Auto-updates** - Seamless app updates
 - ✅ **iOS Status Bar** - Colored status bar on iOS devices
 
@@ -181,12 +187,6 @@ The system intelligently blocks overlapping time slots based on service duration
 - **Badge Counter**: Unread notification count
 - **Mark as Read**: Individual or bulk actions
 
-### Smart Caching
-- **API Responses**: 5-minute cache for faster loading
-- **Images & Assets**: Long-term caching
-- **Fonts**: 1-year cache for Google Fonts
-- **Offline Fallback**: Graceful offline experience
-
 ### Live Chat Support
 - **Direct Messaging**: Instant communication between users and admins
 - **Presence System**: Real-time online/offline status indicators
@@ -198,13 +198,13 @@ The system intelligently blocks overlapping time slots based on service duration
 ## 🎨 Customization
 
 ### Brand Colors
-Edit `App.css` to customize the color scheme:
+Edit `index.css` to customize the color scheme:
 ```css
-:root {
-  --color-primary: #0d9488;        /* Teal */
-  --color-primary-dark: #0f766e;   /* Dark Teal */
-  --color-primary-light: #5eead4;  /* Light Teal */
-  --color-secondary: #059669;      /* Green */
+@layer base {
+  :root {
+    --color-primary: 13 148 136; /* Teal-600 */
+    /* ... other variables */
+  }
 }
 ```
 
@@ -213,17 +213,15 @@ Toggle between light and dark modes using the theme switcher in the header.
 
 ---
 
----
-
 ## 🗂 Project Structure
 
 ```
 fb-studio/
 ├── public/                 # Static assets
-│   ├── icons/             # PWA icons
-│   └── offline.html       # Offline fallback page
+│   └── icons/             # PWA icons
 ├── src/
 │   ├── components/        # Reusable UI components
+│   │   ├── admin/         # Admin-specific components
 │   │   ├── auth/          # Authentication components
 │   │   ├── layout/        # Layout components
 │   │   └── ui/            # Base UI components
@@ -235,30 +233,10 @@ fb-studio/
 │   ├── hooks/             # Custom React hooks
 │   ├── context/           # React context providers
 │   ├── utils/             # Utility functions
+│   ├── constants/         # App constants
 │   └── assets/            # Static media files
 └── vite.config.js         # Vite configuration
 ```
-
----
-
-## 🧪 Testing
-
-### Running Tests
-```bash
-# Unit tests
-npm run test
-
-# Test coverage
-npm run test:coverage
-
-# E2E tests (if configured)
-npm run test:e2e
-```
-
-### Test Structure
-- **Unit Tests**: Component and utility testing with Jest/Vitest
-- **Integration Tests**: API integration testing
-- **E2E Tests**: Full user flow testing with Playwright/Cypress
 
 ---
 
@@ -269,17 +247,6 @@ Create a `.env` file in the root directory:
 ```env
 # PocketBase Configuration
 VITE_POCKETBASE_URL=http://localhost:8090
-
-# OneSignal Configuration
-VITE_ONESIGNAL_APP_ID=your-app-id
-VITE_ONESIGNAL_API_KEY=your-api-key
-
-# Optional: Custom API endpoints
-VITE_API_TIMEOUT=30000
-VITE_CACHE_DURATION=300000
-
-# Optional: Analytics
-VITE_ANALYTICS_ID=
 ```
 
 ---
@@ -304,18 +271,6 @@ VITE_ANALYTICS_ID=
 npm run build
 ```
 
-### Deploy to Vercel
-```bash
-npm i -g vercel
-vercel --prod
-```
-
-### Deploy to Netlify
-```bash
-npm run build
-# Upload dist/ folder to Netlify
-```
-
 ### Docker Deployment
 ```dockerfile
 FROM node:18-alpine
@@ -336,109 +291,13 @@ CMD ["npm", "run", "preview", "--", "--host", "0.0.0.0"]
 
 | Collection | Purpose | Key Fields |
 |------------|---------|------------|
-| `users` | User accounts | email, password, name, avatar, role |
-| `services` | Service catalog | name, description, duration, price |
-| `bookings` | Appointment records | user_id, service_id, datetime, status |
-| `notifications` | User alerts | user_id, message, read, type |
-| `unavailable_slots` | Blocked times | start_time, end_time, reason |
-
-### Relationships
-- **Users** → **Bookings** (One-to-Many)
-- **Services** → **Bookings** (One-to-Many)
-- **Users** → **Notifications** (One-to-Many)
-
----
-
-## 📈 Performance
-
-### Core Web Vitals
-- **LCP**: < 2.5s (Largest Contentful Paint)
-- **FID**: < 100ms (First Input Delay)
-- **CLS**: < 0.1 (Cumulative Layout Shift)
-
-### Optimization Features
-- ⚡ **Code Splitting**: Automatic route-based splitting
-- 📦 **Asset Optimization**: Image compression and WebP support
-- 💾 **Intelligent Caching**: API responses cached for 5 minutes
-- 🚀 **Preloading**: Critical resources preloaded
-- 📱 **PWA**: Offline-first architecture
-
-### Bundle Analysis
-```bash
-npm run build
-npm run preview
-# Visit http://localhost:4173 to analyze bundle
-```
-
----
-
-## 🔐 Security
-
-### Implemented Measures
-- ✅ **Authentication**: Secure user sessions with PocketBase
-- ✅ **Input Validation**: All forms validated client & server-side
-- ✅ **CSRF Protection**: Built-in with PocketBase
-- ✅ **HTTPS**: Enforced in production
-- ✅ **Data Sanitization**: XSS prevention
-- ✅ **Secure Headers**: CSP, HSTS configured
-
-### Security Best Practices
-- Never log sensitive user data
-- All API calls use authenticated endpoints
-- User uploads are validated and sanitized
-- Regular dependency updates for security patches
-
----
-
-## 🛠 Troubleshooting
-
-### Common Issues
-
-**PWA not installing on mobile:**
-- Ensure HTTPS is enabled (required for PWA)
-- Check manifest.json is accessible
-- Verify service worker is registered
-
-**Booking conflicts:**
-- Clear browser cache and localStorage
-- Check PocketBase real-time connection
-- Verify time slot calculations in timezone
-
-**Build errors:**
-```bash
-# Clear node_modules and reinstall
-rm -rf node_modules package-lock.json
-npm install
-
-# Clear Vite cache
-rm -rf node_modules/.vite
-npm run dev
-```
-
-**Performance issues:**
-- Enable browser DevTools Performance tab
-- Check network requests in DevTools
-- Monitor bundle size with `npm run build`
-
-### Getting Help
-- Check the [Issues](https://github.com/m3dkata/fb-studio/issues) page
-- Review PocketBase documentation
-- Enable debug mode: `localStorage.setItem('debug', 'true')`
-
----
-
-## 📝 Changelog
-
-### v1.0.0 (2025-11-29)
-- ✨ Initial release
-- 🎨 Complete UI/UX implementation
-- 📱 PWA support with offline capabilities
-- 🔔 Real-time notifications
-- 👥 Multi-role authentication (Customer/Admin)
-- 📅 Smart booking system with duration handling
-- 🌙 Dark/Light theme support
-- 💬 Real-time Chat System with presence detection
-- 📊 Admin dashboard with analytics
+| `users` | User accounts | email, password, name, avatar, user_type |
+| `services` | Service catalog | title, description, duration, price, active |
+| `bookings` | Appointment records | user, service, booking_date, booking_time, status |
+| `notifications` | User alerts | user, message, read, type, related_booking |
+| `unavailable_slots` | Blocked times | date_start, date_end, service, reason |
+| `chats` | Messages | sender, receiver, message, read |
+| `user_presence` | Online status | user, status, last_seen |
 
 ---
 
