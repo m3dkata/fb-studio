@@ -5,7 +5,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import Layout from './components/layout/Layout';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import InstallPrompt from './components/InstallPrompt';
-import OfflineDetector from './components/OfflineDetector';
+
 import ChatWidget from './components/ui/ChatWidget';
 import AdminChatWidget from './components/ui/AdminChatWidget';
 import LoadingSpinner from './components/ui/LoadingSpinner';
@@ -61,7 +61,7 @@ function AppContent() {
   return (
     <Router>
       <InstallPrompt />
-      <OfflineDetector />
+
       {user && (user.user_type === 'admin' ? <AdminChatWidget /> : <ChatWidget />)}
       <Routes>
         <Route path="/" element={<Layout />}>
