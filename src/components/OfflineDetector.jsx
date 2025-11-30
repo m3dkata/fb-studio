@@ -1,37 +1,18 @@
 import React, { useState, useEffect } from 'react';
 
 const OfflineDetector = () => {
-  const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const [isOnline, setIsOnline] = useState(true); // Start optimistic - assume online
   const [showOfflineMessage, setShowOfflineMessage] = useState(false);
 
   const checkConnection = async () => {
-    // Don't show offline if browser says we're online
+    // Trust browser's navigator.onLine first
     if (!navigator.onLine) {
       return false;
     }
 
-    try {
-      // Use a timestamp to bypass service worker cache
-      // Fetch a small resource from the server with cache-busting
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 3000); // 3 second timeout
-
-      const response = await fetch(`/favicon.ico?t=${Date.now()}`, {
-        method: 'HEAD',
-        cache: 'no-store',
-        headers: {
-          'Cache-Control': 'no-cache, no-store, must-revalidate',
-          'Pragma': 'no-cache'
-        },
-        signal: controller.signal
-      });
-
-      clearTimeout(timeoutId);
-      return response.ok;
-    } catch (error) {
-      // If fetch fails, we're likely offline
-      return false;
-    }
+    // If browser says we're online, we're probably online
+    // Don't do aggressive connectivity checks that might fail due to CORS or other issues
+    return true;
   };
 
   useEffect(() => {
@@ -49,29 +30,28 @@ const OfflineDetector = () => {
       setShowOfflineMessage(true);
     };
 
+    // Listen to browser's online/offline events
     window.addEventListener('online', handleOnline);
     window.addEventListener('offline', handleOffline);
 
-    // Initial check - only if browser says we're offline
+    // Only show offline if browser explicitly says we're offline
+    // Don't do initial connectivity check to avoid false positives
     if (!navigator.onLine) {
-      checkConnection().then(online => {
-        setIsOnline(online);
-        setShowOfflineMessage(!online);
-      });
-    } else {
-      // Browser says we're online, trust it initially
-      setIsOnline(true);
-      setShowOfflineMessage(false);
+      setIsOnline(false);
+      setShowOfflineMessage(true);
     }
 
-    // Periodic check if offline (every 5 seconds)
+    // Periodic check only if we're already offline
     let interval;
-    if (!isOnline) {
+    if (!isOnline && !navigator.onLine) {
       interval = setInterval(async () => {
-        const online = await checkConnection();
-        if (online) {
-          setIsOnline(true);
-          setShowOfflineMessage(false);
+        // Check if browser now says we're online
+        if (navigator.onLine) {
+          const online = await checkConnection();
+          if (online) {
+            setIsOnline(true);
+            setShowOfflineMessage(false);
+          }
         }
       }, 5000);
     }
