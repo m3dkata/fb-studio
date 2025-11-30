@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Calendar, Clock, User, DollarSign, FileText, Download } from 'lucide-react';
+import { Check, X, Calendar, Clock, User, DollarSign, FileText, Download } from 'lucide-react';
 import { useBookings, useUpdateBookingStatus } from '../../hooks/useBookings';
 import Card, { CardContent } from '../../components/ui/Card';
 import Button from '../../components/ui/Button';
 import Badge from '../../components/ui/Badge';
 import LoadingSpinner from '../../components/ui/LoadingSpinner';
 import CalendarExportModal from '../../components/ui/CalendarExportModal';
-import { STATUS_LABELS, STATUS_COLORS, BOOKING_STATUSES } from '../../utils/constants';
+import { STATUS_LABELS, STATUS_COLORS, BOOKING_STATUS } from '../../utils/constants';
 import { formatTime, formatDate } from '../../utils/dateHelpers';
 
 const ManageBookingsPage = () => {
