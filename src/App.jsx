@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
@@ -8,6 +8,7 @@ import InstallPrompt from './components/InstallPrompt';
 import OfflineDetector from './components/OfflineDetector';
 import ChatWidget from './components/ui/ChatWidget';
 import AdminChatWidget from './components/ui/AdminChatWidget';
+import LoadingSpinner from './components/ui/LoadingSpinner';
 import { useAuth } from './hooks/useAuth';
 
 // Public Pages
@@ -40,7 +41,22 @@ function App() {
 }
 
 function AppContent() {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
+
+  useEffect(() => {
+    // Login/Logout user in OneSignal based on auth state
+    if (!loading && window.OneSignal) {
+      if (user) {
+        window.OneSignal.login(user.id);
+      } else {
+        window.OneSignal.logout();
+      }
+    }
+  }, [user, loading]);
+
+  if (loading) {
+    return <LoadingSpinner fullScreen />;
+  }
 
   return (
     <Router>

@@ -92,6 +92,8 @@
    Create a `.env` file in the root directory:
    ```env
    VITE_POCKETBASE_URL=http://localhost:8090
+   VITE_ONESIGNAL_APP_ID=your-app-id
+   VITE_ONESIGNAL_API_KEY=your-api-key
    ```
 
 4. **Set up PocketBase**
@@ -267,6 +269,10 @@ Create a `.env` file in the root directory:
 ```env
 # PocketBase Configuration
 VITE_POCKETBASE_URL=http://localhost:8090
+
+# OneSignal Configuration
+VITE_ONESIGNAL_APP_ID=your-app-id
+VITE_ONESIGNAL_API_KEY=your-api-key
 
 # Optional: Custom API endpoints
 VITE_API_TIMEOUT=30000

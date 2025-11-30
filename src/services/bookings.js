@@ -1,5 +1,6 @@
 import pb from './pocketbase';
 import { format, parseISO } from 'date-fns';
+import oneSignalService from './oneSignal';
 
 export const bookingsService = {
     // Get all bookings (admin) or user's bookings
@@ -246,22 +247,36 @@ export const bookingsService = {
             const bookingDetails = await this.getById(booking.id);
             const userName = bookingDetails.expand?.user?.name || 'A user';
             const serviceName = bookingDetails.expand?.service?.title || 'a service';
+            const dateStr = format(parseISO(booking.booking_date), 'MMM dd, yyyy');
+            const timeStr = booking.booking_time;
 
-            // Create notification for each admin
+            // 1. Internal App Notification (PocketBase)
+            const adminIds = [];
             for (const admin of admins) {
-                // Skip if admin is the one who created the booking (unlikely but possible)
                 if (admin.id === booking.user) continue;
+                adminIds.push(admin.id);
 
                 await pb.collection('notifications').create({
                     user: admin.id,
                     title: 'New Booking',
-                    message: `${userName} booked ${serviceName} on ${format(parseISO(booking.booking_date), 'MMM dd, yyyy')} at ${booking.booking_time}`,
+                    message: `${userName} booked ${serviceName} on ${dateStr} at ${timeStr}`,
                     type: 'system',
-                    booking: booking.id, // Relation field
-                    related_id: booking.id, // Text field for redundancy/generic use
+                    booking: booking.id,
+                    related_id: booking.id,
                     read: false,
                 });
             }
+
+            // 2. External Push Notification (OneSignal)
+            if (adminIds.length > 0) {
+                await oneSignalService.sendNotification({
+                    headings: 'New Booking Request 📅',
+                    contents: `${userName} wants to book ${serviceName}\n${dateStr} @ ${timeStr}`,
+                    include_external_user_ids: adminIds,
+                    data: { url: '/admin/bookings' }
+                });
+            }
+
         } catch (error) {
             console.error('Failed to notify admin:', error);
         }
@@ -283,14 +298,23 @@ export const bookingsService = {
             };
 
             if (messages[status]) {
+                // 1. Internal App Notification
                 await pb.collection('notifications').create({
                     user: userId,
                     title: `Booking ${status.charAt(0).toUpperCase() + status.slice(1)}`,
                     message: messages[status],
                     type: types[status],
-                    booking: booking.id, // Relation field
-                    related_id: booking.id, // Text field
+                    booking: booking.id,
+                    related_id: booking.id,
                     read: false,
+                });
+
+                // 2. External Push Notification (OneSignal)
+                await oneSignalService.sendNotification({
+                    headings: `Booking ${status.charAt(0).toUpperCase() + status.slice(1)}`,
+                    contents: messages[status],
+                    include_external_user_ids: [userId],
+                    data: { url: '/bookings' }
                 });
             }
         } catch (error) {
