@@ -1,6 +1,6 @@
 import pb from './pocketbase';
 import { format, parseISO } from 'date-fns';
-import oneSignalService from './oneSignal';
+
 
 export const bookingsService = {
     // Get all bookings (admin) or user's bookings
@@ -266,16 +266,6 @@ export const bookingsService = {
                 });
             }
 
-            // 2. External Push Notification (OneSignal)
-            if (adminIds.length > 0) {
-                await oneSignalService.sendNotification({
-                    headings: 'New Booking Request 📅',
-                    contents: `${userName} wants to book ${serviceName}\n${dateStr} @ ${timeStr}`,
-                    include_external_user_ids: adminIds,
-                    data: { url: '/admin/bookings' }
-                });
-            }
-
         } catch (error) {
             console.error('Failed to notify admin:', error);
         }
@@ -305,14 +295,6 @@ export const bookingsService = {
                     type: types[status],
                     related_booking: booking.id,
                     read: false,
-                });
-
-                // 2. External Push Notification (OneSignal)
-                await oneSignalService.sendNotification({
-                    headings: `Booking ${status.charAt(0).toUpperCase() + status.slice(1)}`,
-                    contents: messages[status],
-                    include_external_user_ids: [userId],
-                    data: { url: '/bookings' }
                 });
             }
         } catch (error) {
