@@ -20,6 +20,7 @@
 
 ### 👥 For Customers
 - **Browse Services** - View detailed service catalog with descriptions, durations, and pricing
+- **Virtual Makeup Try On** - Real-time AR makeup application using your camera with multiple looks and presets
 - **Smart Booking** - Duration-aware slot selection preventing double bookings
 - **Real-time Availability** - See available time slots updated in real-time
 - **Booking Management** - View, track, and manage all your appointments
@@ -63,6 +64,8 @@
 - **React Hook Form** - Performant form handling
 - **Date-fns** - Modern date utility library
 - **TanStack Query** - Powerful asynchronous state management
+- **MediaPipe** - ML-powered face tracking for AR makeup
+- **WebGL** - Hardware-accelerated graphics rendering
 
 ### Backend
 - **PocketBase** - Self-hosted backend with real-time database
@@ -130,9 +133,10 @@
 ### Customer Flow
 1. **Register/Login** - Create an account or sign in
 2. **Browse Services** - Explore available beauty services
-3. **Book Appointment** - Select service, date, and available time slot
-4. **Receive Confirmation** - Get notification when admin confirms
-5. **Manage Bookings** - View and track all appointments
+3. **Try Makeup** - Use virtual try-on to preview looks
+4. **Book Appointment** - Select service, date, and available time slot
+5. **Receive Confirmation** - Get notification when admin confirms
+6. **Manage Bookings** - View and track all appointments
 
 ### Admin Flow
 1. **Login as Admin** - Access admin dashboard
@@ -193,6 +197,31 @@ The system intelligently blocks overlapping time slots based on service duration
 - **Admin Tools**: Dedicated chat interface for managing multiple conversations
 - **Smart Notifications**: Unread message badges and alerts
 
+### Virtual Makeup Try On
+Experience makeup looks in real-time before booking your appointment!
+
+- **Real-time AR**: Live camera feed with face tracking using MediaPipe
+- **Multiple Looks**: Browse and try different makeup templates
+- **Preset Variations**: Switch between different color schemes and intensities
+- **High Performance**: Optimized rendering at 50-60 FPS
+- **Screenshot**: Capture and save your favorite looks
+- **Responsive**: Works on both desktop and mobile devices
+
+**Technical Features:**
+- MediaPipe FaceMesh for accurate facial landmark detection
+- WebGL-based makeup rendering with custom shaders
+- Canvas 2D fallback for compatibility
+- Smart frame skipping for performance optimization
+- Landmark smoothing for stable makeup application
+- Support for multiple makeup effects:
+  - Eye shadow with shimmer effects
+  - Eyeliner (upper and lower)
+  - Eyelashes
+  - Lipstick with gloss
+  - Eyebrow enhancement
+  - Blush
+  - Face contouring
+
 ---
 
 ## 🎨 Customization
@@ -218,7 +247,8 @@ Toggle between light and dark modes using the theme switcher in the header.
 ```
 fb-studio/
 ├── public/                 # Static assets
-│   └── icons/             # PWA icons
+│   ├── icons/             # PWA icons
+│   └── makeup-templates/  # Makeup try-on templates and assets
 ├── src/
 │   ├── components/        # Reusable UI components
 │   │   ├── admin/         # Admin-specific components
@@ -228,11 +258,21 @@ fb-studio/
 │   ├── pages/             # Application pages
 │   │   ├── admin/         # Admin dashboard pages
 │   │   ├── public/        # Public pages
-│   │   └── user/          # User dashboard pages
+│   │   ├── user/          # User dashboard pages
+│   │   └── MakeupStudio.jsx # Virtual makeup try-on page
 │   ├── services/          # API service layers
+│   │   ├── mediaPipeService.js # Face tracking service
+│   │   └── makeupRenderer.js   # Makeup rendering engine
 │   ├── hooks/             # Custom React hooks
+│   │   ├── useCamera.js   # Camera management
+│   │   ├── useTemplates.js # Template loading
+│   │   └── useMakeupPreview.js # Makeup preview logic
 │   ├── context/           # React context providers
 │   ├── utils/             # Utility functions
+│   │   ├── faceWarping.js # Face landmark utilities
+│   │   ├── makeupShaders.js # WebGL shaders
+│   │   ├── templateLoader.js # Template management
+│   │   └── xmlConverter.js # Template XML parser
 │   ├── constants/         # App constants
 │   └── assets/            # Static media files
 └── vite.config.js         # Vite configuration
