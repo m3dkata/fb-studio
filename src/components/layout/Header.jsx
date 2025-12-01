@@ -54,6 +54,7 @@ const Header = () => {
     const navLinks = [
         { name: 'Home', path: '/' },
         { name: 'Services', path: '/services' },
+        { name: 'Try On', path: '/tryon' },
     ];
 
     if (isAuthenticated) {

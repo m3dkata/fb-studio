@@ -18,6 +18,7 @@ import LoginPage from './pages/public/LoginPage';
 import RegisterPage from './pages/public/RegisterPage';
 import ServicesPage from './pages/public/ServicesPage';
 import ServiceDetailPage from './pages/public/ServiceDetailPage';
+import MakeupStudio from './pages/MakeupStudio';
 
 // User Pages
 import UserDashboard from './pages/user/UserDashboard';
@@ -72,6 +73,7 @@ function AppContent() {
           <Route path="register" element={<RegisterPage />} />
           <Route path="services" element={<ServicesPage />} />
           <Route path="services/:id" element={<ServiceDetailPage />} />
+          <Route path="tryon" element={<MakeupStudio />} />
 
           {/* Protected User Routes */}
           <Route path="dashboard" element={

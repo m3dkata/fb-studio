@@ -1,0 +1,16 @@
+[
+    {
+        "id": "250307_Spring_02",
+        "name": "Spring Collection 02",
+        "description": "Beautiful spring-inspired makeup look",
+        "category": "Spring",
+        "isPremium": true
+    },
+    {
+        "id": "210409_angel_collection_01",
+        "name": "Angel Collection 01",
+        "description": "Beautiful angel-inspired makeup look",
+        "category": "Angel",
+        "isPremium": true
+    }
+]
