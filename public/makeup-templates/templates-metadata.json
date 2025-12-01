@@ -1,0 +1,142 @@
+[
+  {
+    "templateId": "wed_thumb_3",
+    "name": "Sweetie",
+    "thumbnail": "/makeup-templates/wed_thumb_3/thumb/wed_thumb_3.jpg",
+    "isPremium": false,
+    "lookType": "Natural",
+    "lookCategories": [
+      "Romance"
+    ],
+    "presetCount": 1
+  },
+  {
+    "templateId": "wed_thumb_2",
+    "name": "Sugar Kiss",
+    "thumbnail": "/makeup-templates/wed_thumb_2/thumb/wed_thumb_2.jpg",
+    "isPremium": false,
+    "lookType": "Natural",
+    "lookCategories": [
+      "Romance"
+    ],
+    "presetCount": 1
+  },
+  {
+    "templateId": "wed_thumb_1",
+    "name": "True Love",
+    "thumbnail": "/makeup-templates/wed_thumb_1/thumb/wed_thumb_1.jpg",
+    "isPremium": false,
+    "lookType": "Natural",
+    "lookCategories": [
+      "Romance"
+    ],
+    "presetCount": 1
+  },
+  {
+    "templateId": "look_20150313_thumb_02",
+    "name": "Stepmother",
+    "thumbnail": "/makeup-templates/look_20150313_thumb_02/thumb/look_20150313_thumb_02.jpg",
+    "isPremium": false,
+    "lookType": null,
+    "lookCategories": [],
+    "presetCount": 1
+  },
+  {
+    "templateId": "look_20150210_thumb_03",
+    "name": "Gisele",
+    "thumbnail": "/makeup-templates/look_20150210_thumb_03/thumb/look_20150210_thumb_03.jpg",
+    "isPremium": false,
+    "lookType": null,
+    "lookCategories": [],
+    "presetCount": 1
+  },
+  {
+    "templateId": "look_20150210_thumb_01",
+    "name": "Cara",
+    "thumbnail": "/makeup-templates/look_20150210_thumb_01/thumb/look_20150210_thumb_01.jpg",
+    "isPremium": false,
+    "lookType": null,
+    "lookCategories": [],
+    "presetCount": 1
+  },
+  {
+    "templateId": "clinique_thumb_05",
+    "name": "The Flirt",
+    "thumbnail": "/makeup-templates/clinique_thumb_05/thumb/clinique_thumb_05.jpg",
+    "isPremium": false,
+    "lookType": "Natural",
+    "lookCategories": [
+      "Daily"
+    ],
+    "presetCount": 1
+  },
+  {
+    "templateId": "250408_Piercing_02",
+    "name": "Ravenette",
+    "thumbnail": "/makeup-templates/250408_Piercing_02/thumb/250408_Piercing_02_inplace_thumb.jpg",
+    "isPremium": false,
+    "lookType": "Natural",
+    "lookCategories": [],
+    "presetCount": 1
+  },
+  {
+    "templateId": "250408_Piercing_01",
+    "name": "Astra",
+    "thumbnail": "/makeup-templates/250408_Piercing_01/thumb/250408_Piercing_01_inplace_thumb.jpg",
+    "isPremium": false,
+    "lookType": "Natural",
+    "lookCategories": [],
+    "presetCount": 1
+  },
+  {
+    "templateId": "250307_Spring_free_01",
+    "name": "Peach Sorbet",
+    "thumbnail": "/makeup-templates/250307_Spring_free_01/thumb/250307_Spring_free_01_inplace_thumb.jpg",
+    "isPremium": false,
+    "lookType": "Natural",
+    "lookCategories": [],
+    "presetCount": 1
+  },
+  {
+    "templateId": "250307_Spring_04",
+    "name": "Blossom Bae",
+    "thumbnail": "/makeup-templates/250307_Spring_04/thumb/250307_Spring_04_inplace_thumb.jpg",
+    "isPremium": false,
+    "lookType": "Natural",
+    "lookCategories": [],
+    "presetCount": 1
+  },
+  {
+    "templateId": "250307_Spring_02",
+    "name": "Peony",
+    "thumbnail": "/makeup-templates/250307_Spring_02/thumb/250307_Spring_02_inplace_thumb.jpg",
+    "isPremium": false,
+    "lookType": "Natural",
+    "lookCategories": [
+      "Spring"
+    ],
+    "presetCount": 1
+  },
+  {
+    "templateId": "250307_Spring_01",
+    "name": "Springtastic",
+    "thumbnail": "/makeup-templates/250307_Spring_01/thumb/250307_Spring_01_inplace_thumb.jpg",
+    "isPremium": false,
+    "lookType": "Natural",
+    "lookCategories": [
+      "Spring"
+    ],
+    "presetCount": 1
+  },
+  {
+    "templateId": "20151223_Serayah_McNeill",
+    "name": "Serayah",
+    "thumbnail": "/makeup-templates/20151223_Serayah_McNeill/thumb/20151223_Serayah_McNeill.jpg",
+    "isPremium": false,
+    "lookType": "Natural",
+    "lookCategories": [
+      "Celebrity"
+    ],
+    "presetCount": 1
+  }
+]

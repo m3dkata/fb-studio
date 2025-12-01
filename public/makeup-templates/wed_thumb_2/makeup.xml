@@ -1,0 +1,243 @@
+<?xml version="1.0" ?>
+<makeup content_version="1.0" version="7.0">
+	<eye_shadow>
+		<patterns>
+			<pattern guid="patten_eyeshadow_03_09" thumbnail="eyeshadow/thumb/patten_eyeshadow_03_09.png">
+				<pattern_mask>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_09_01.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_09_02.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_09_03.png"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+		<palettes>
+			<palette guid="palettes_150624_02">
+				<colors>
+					<color>00ffdcb9</color>
+					<color>00c48888</color>
+					<color>00613030</color>
+				</colors>
+				<color_is_shimmers>
+					<color_is_shimmer>0</color_is_shimmer>
+					<color_is_shimmer>1</color_is_shimmer>
+					<color_is_shimmer>0</color_is_shimmer>
+				</color_is_shimmers>
+				<patterns>
+				    
+					<pattern_guid color_intensities="75, 91, 50">patten_eyeshadow_03_09</pattern_guid>
+				</patterns>
+			</palette>
+		</palettes>
+		<colors>
+			<color>00ffdcb9</color>
+			<color>00c48888</color>
+			<color>00613030</color>
+		</colors>
+	</eye_shadow>
+	<eye_line>
+		<patterns>
+			<pattern guid="patten_eyeline_01_02" thumbnail="eyeline/thumb/patten_eyeline_01_02.png">
+				<pattern_mask>
+					<mask eyebottom="458,362" eyeleft="284,287" eyeright="633,287" eyetop="458,213" position="upper" src="eyeline/01_02_01.png"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+		<colors>
+			<color>000000</color>
+		</colors>
+	</eye_line>
+	<eye_lash>
+		<patterns>
+			<pattern guid="patten_eyelash_02_03" thumbnail="eyelash/thumb/patten_eyelash_02_03.png">
+				<pattern_mask>
+					<mask eyebottom="458,362" eyeleft="284,287" eyeright="633,287" eyetop="458,213" position="upper" src="eyelash/02_03_01.png"/>
+					<mask eyebottom="458,362" eyeleft="284,287" eyeright="633,287" eyetop="458,213" position="lower" src="eyelash/02_03_02.png"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+		<colors>
+			<color>000000</color>
+		</colors>
+	</eye_lash>
+	<eye_brow>
+		<patterns>
+			<pattern guid="Eyebrow_06" thumbnail="eyebrow/thumb/patten_eyebrow_06.png">
+				<pattern_mask>
+					<mask basicbrowhead="0,0" basicbrowtail="0,0" basicbrowtop="0,0" basiceyehead="0,0" basiceyetail="0,0" basiceyetop="0,0" browhead="23,89" browtail="194,77" browtop="141,62" shapesrc="eyebrow/Eyebrow_06.png" src="eyebrow/Eyebrow_06.mask.png"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+		<colors>
+			<color>008a4e34</color>
+		</colors>
+	</eye_brow>
+	<lipstick>
+		<colors>
+			<level_color>522a00eb7590</level_color>
+		</colors>
+	</lipstick>
+	<blush>
+		<patterns>
+			<pattern guid="patten_blush_04" thumbnail="blush/thumb/patten_blush_04.png">
+				<pattern_mask>
+					<mask position="left" src="blush/04_l.png"/>
+					<mask position="right" src="blush/04_r.png"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+		<colors>
+			<color>00e28b9c</color>
+		</colors>
+	</blush>
+	<skin_toner>
+		<colors>
+			<color>00fbcfcc</color>
+		</colors>
+	</skin_toner>
+	<presets>
+		<preset guid="wed_thumb_2" look_type="Natural" supported_mode="All" thumbnail="thumb/wed_thumb_2.jpg">
+			<look_categories>
+				<look_category>
+          
+					<def>Romance</def>
+					<chs>浪漫</chs>
+					<cht>浪漫</cht>
+					<deu>Liebe</deu>
+					<enu>Romance</enu>
+					<esp>Romance</esp>
+					<fra>Amour</fra>
+					<idn>Romansa</idn>
+					<ita>Amore</ita>
+					<jpn>ロマンス</jpn>
+					<kor>사랑</kor>
+					<mys>Asmara</mys>
+					<nld>Romantiek</nld>
+					<prt>Amor</prt>
+					<rus>Любовь</rus>
+					<tha>ความรัก</tha>
+					<tur>Aşk</tur>
+				</look_category>
+        
+			</look_categories>
+			<name>
+				<def>Sugar Kiss</def>
+				<chs>花恋粉唇</chs>
+				<cht>花戀粉唇</cht>
+				<deu>Von der Sonne geküsst</deu>
+				<enu>Sugar Kiss</enu>
+				<esp>Tostado</esp>
+				<fra>Dorée</fra>
+				<idn>Kecoklatan</idn>
+				<ita>Solare</ita>
+				<jpn>サンキスト</jpn>
+				<kor>선 키스드</kor>
+				<mys>Menawan</mys>
+				<nld>Blozend</nld>
+				<prt>Sublime</prt>
+				<rus>Загар</rus>
+				<tha>ฉาบตะวัน</tha>
+				<tur>Bronz</tur>
+			</name>
+			<description>
+				<def>Ethereal and glowing, with pink lips and eye makeup as soft as flower petals.</def>
+				<chs>落下在双唇的粉嫩花瓣，为妳撒下娇羞性感的魔法。</chs>
+				<cht>落下在雙唇的粉嫩花瓣，為妳撒下嬌羞性感的魔法。</cht>
+				<deu>Himmlisch strahlend, mit pinken Lippen einen blütenzarten Augen-Makeup.</deu>
+				<enu>Ethereal and glowing, with pink lips and eye makeup as soft as flower petals.</enu>
+				<esp>Etérea y resplandeciente, con labios rosas y sombra como pétalos.</esp>
+				<fra>Éthérée et éclatante avec lèvres roses et yeux doux comme un pétale.</fra>
+				<idn>Lembut bercahaya, bibir warna pink , rias mata sehalus kelopak bunga.</idn>
+				<ita>Eterea con labbra rosa e occhi come petali di fiore.</ita>
+				<jpn>淡いピンク色のシャドーと口紅。</jpn>
+				<kor>꽃잎만큼 부드러운 핑크 입술과 아이 메이크업으로 천상의 빛을 연출합니다.</kor>
+				<mys>Bibir merah jambu, halus dan bersinar, mata selembut kelopak bunga.</mys>
+				<nld>Hemels stralende look met roze lippen en zacht opgemaakte ogen.</nld>
+				<prt>Brilho etéreo de lábios rosados e olhos suaves como pétalas de flores.</prt>
+				<rus>Сияющий образ, розовые губы и нежные, как лепестки цветов, тени.</rus>
+				<tha>นุ่มนวลและผ่องใส ด้วยริมฝีปากสีชมพู และการแต่งดวงตาบางเบาราวกลีบดอกไม้</tha>
+				<tur>Pembe dudaklarla hafif ve parlak ve göz makyajıyla çiçek gibi yumuşak.</tur>
+			</description>
+			<effect>
+				<colors>
+					<color>00ffdcb9</color>
+					<color>00c48888</color>
+					<color>00613030</color>
+				</colors>
+				<palette_guid>palettes_150624_02</palette_guid>
+				<pattern_guid>patten_eyeshadow_03_09</pattern_guid>
+				<color_intensities>
+					<color_intensity>75</color_intensity>
+					<color_intensity>91</color_intensity>
+					<color_intensity>50</color_intensity>
+				</color_intensities>
+				<color_is_shimmers>
+					<color_is_shimmer>0</color_is_shimmer>
+					<color_is_shimmer>1</color_is_shimmer>
+					<color_is_shimmer>0</color_is_shimmer>
+				</color_is_shimmers>
+				<effect_type>eye_shadow</effect_type>
+			</effect>
+			<effect>
+				<effect_type>eye_line</effect_type>
+				<colors>
+					<color>000000</color>
+				</colors>
+				<color_intensities>
+					<color_intensity>89</color_intensity>
+				</color_intensities>
+				<pattern_guid>patten_eyeline_01_02</pattern_guid>
+			</effect>
+			<effect>
+				<effect_type>eye_lash</effect_type>
+				<colors>
+					<color>000000</color>
+				</colors>
+				<color_intensities>
+					<color_intensity>90</color_intensity>
+				</color_intensities>
+				<pattern_guid>patten_eyelash_02_03</pattern_guid>
+			</effect>
+			<effect>
+				<effect_type>eye_brow</effect_type>
+				<colors>
+					<color>008a4e34</color>
+				</colors>
+				<color_intensities>
+					<color_intensity>89</color_intensity>
+				</color_intensities>
+				<pattern_guid>Eyebrow_06</pattern_guid>
+				<hidden_intensity>100</hidden_intensity>
+			</effect>
+			<effect>
+				<effect_type>lipstick</effect_type>
+				<colors>
+					<level_color>522a00eb7590</level_color>
+				</colors>
+				<color_intensities>
+					<color_intensity>74</color_intensity>
+				</color_intensities>
+				<pattern_guid>patten_lipstick_02</pattern_guid>
+			</effect>
+			<effect>
+				<effect_type>blush</effect_type>
+				<colors>
+					<color>00e28b9c</color>
+				</colors>
+				<color_intensities>
+					<color_intensity>25</color_intensity>
+				</color_intensities>
+				<pattern_guid>patten_blush_04</pattern_guid>
+			</effect>
+			<effect>
+				<effect_type>skin_toner</effect_type>
+				<colors>
+					<color>00fbcfcc</color>
+				</colors>
+				<color_intensities>
+					<color_intensity>10</color_intensity>
+				</color_intensities>
+			</effect>
+		</preset>
+	    
+	</presets>
+</makeup>

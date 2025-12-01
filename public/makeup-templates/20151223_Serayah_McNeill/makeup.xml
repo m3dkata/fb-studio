@@ -1,0 +1,307 @@
+<?xml version="1.0" ?>
+<makeup content_version="1.0" version="7.0">
+	<eye_shadow>
+		<patterns>
+			<pattern guid="pattern_eyeshadow_20151223_Serayah_McNeill" thumbnail="eyeshadow/thumb/pattern_eyeshadow_20151223_Serayah_McNeill.png">
+				<pattern_mask>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/eyeshadow_20151223_Serayah_McNeill_a.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/eyeshadow_20151223_Serayah_McNeill_b.png"/>
+				</pattern_mask>
+			</pattern>
+			<pattern guid="patten_eyeshadow_02_01" thumbnail="eyeshadow/thumb/patten_eyeshadow_02_01.png">
+				<pattern_mask>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/02_01_01.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/02_01_02.png"/>
+				</pattern_mask>
+			</pattern>
+			<pattern guid="patten_eyeshadow_02_02" thumbnail="eyeshadow/thumb/patten_eyeshadow_02_02.png">
+				<pattern_mask>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/02_02_01.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/02_02_02.png"/>
+				</pattern_mask>
+			</pattern>
+			<pattern guid="patten_eyeshadow_02_03" thumbnail="eyeshadow/thumb/patten_eyeshadow_02_03.png">
+				<pattern_mask>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/02_03_01.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/02_03_02.png"/>
+				</pattern_mask>
+			</pattern>
+			<pattern guid="patten_eyeshadow_02_04" thumbnail="eyeshadow/thumb/patten_eyeshadow_02_04.png">
+				<pattern_mask>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/02_04_01.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/02_04_02.png"/>
+				</pattern_mask>
+			</pattern>
+			<pattern guid="patten_eyeshadow_02_05" thumbnail="eyeshadow/thumb/patten_eyeshadow_02_05.png">
+				<pattern_mask>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/02_05_01.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/02_05_02.png"/>
+				</pattern_mask>
+			</pattern>
+			<pattern guid="patten_eyeshadow_02_06" thumbnail="eyeshadow/thumb/patten_eyeshadow_02_06.png">
+				<pattern_mask>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/02_06_01.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/02_06_02.png"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+		<palettes>
+			<palette guid="eyeshadow_palettes_20151223_Serayah_McNeill">
+				<colors>
+					<color>00272727</color>
+					<color>008e8e8e</color>
+				</colors>
+				<color_is_shimmers>
+					<color_is_shimmer>0</color_is_shimmer>
+					<color_is_shimmer>1</color_is_shimmer>
+				</color_is_shimmers>
+				<patterns>
+					<pattern_guid color_intensities="40, 40">pattern_eyeshadow_20151223_Serayah_McNeill</pattern_guid>
+					<pattern_guid color_intensities="20, 50">patten_eyeshadow_02_01</pattern_guid>
+                    
+					<pattern_guid color_intensities="23, 55">patten_eyeshadow_02_02</pattern_guid>
+                    
+					<pattern_guid color_intensities="35, 65">patten_eyeshadow_02_03</pattern_guid>
+                    
+					<pattern_guid color_intensities="35, 43">patten_eyeshadow_02_04</pattern_guid>
+                    
+					<pattern_guid color_intensities="40, 45">patten_eyeshadow_02_05</pattern_guid>
+                    
+					<pattern_guid color_intensities="50, 65">patten_eyeshadow_02_06</pattern_guid>
+                
+				</patterns>
+			</palette>
+		</palettes>
+		<colors>
+			<color>00272727</color>
+			<color>008e8e8e</color>
+		</colors>
+	</eye_shadow>
+	<eye_line>
+		<patterns>
+			<pattern guid="patten_eyeline_02_03" thumbnail="eyeline/thumb/patten_eyeline_02_03.png">
+				<pattern_mask>
+					<mask eyebottom="458,362" eyeleft="284,287" eyeright="633,287" eyetop="458,213" position="upper" src="eyeline/02_03_01.png"/>
+					<mask eyebottom="458,362" eyeleft="284,287" eyeright="633,287" eyetop="458,213" position="lower" src="eyeline/02_03_02.png"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+		<palettes>
+			<palette guid="eyeline_palette_01_01" thumbnail="">
+                
+				<colors>
+                    
+					<color>00000000</color>
+                
+				</colors>
+            
+			</palette>
+            
+		</palettes>
+	</eye_line>
+	<eye_lash>
+		<patterns>
+			<pattern guid="patten_eyelash_Serayah_McNeill" thumbnail="eyelash/thumb/patten_eyelash_Serayah_McNeill.png">
+				<pattern_mask>
+				    
+					<mask eyebottom="458,362" eyeleft="284,287" eyeright="633,287" eyetop="458,213" position="upper" src="eyelash/eyelash_Serayah_McNeill_01.png"/>
+					<mask eyebottom="458,362" eyeleft="284,287" eyeright="633,287" eyetop="458,213" position="lower" src="eyelash/eyelash_Serayah_McNeill_2.png"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+		<palettes>
+			<palette guid="eyelash_palette_01_01" thumbnail="">
+                
+				<colors>
+                    
+					<color>00000000</color>
+                
+				</colors>
+            
+			</palette>
+            
+		</palettes>
+	</eye_lash>
+	<eye_brow>
+		<patterns>
+			<pattern guid="patten_eyebrow_20151223_Serayah_McNeill" thumbnail="eyebrow/thumb/patten_eyebrow_20151223_Serayah_McNeill.png">
+				<pattern_mask>
+					<mask basicbrowhead="0,0" basicbrowtail="0,0" basicbrowtop="0,0" basiceyehead="0,0" basiceyetail="0,0" basiceyetop="0,0" browhead="40,85" browtail="200,74" browtop="155,60" shapesrc="eyebrow/patten_eyebrow_20151223_Serayah_McNeill.png" src="eyebrow/patten_eyebrow_20151223_Serayah_McNeill.mask.png"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+		<palettes>
+			<palette guid="eyebrow_palette_01_02" thumbnail="">
+                
+				<colors>
+                    
+					<color>00353535</color>
+                
+				</colors>
+            
+			</palette>
+            
+		</palettes>
+	</eye_brow>
+	<lipstick>
+		<palettes>
+			<palette guid="lipstick_palette_20151223_Serayah_McNeill">
+                
+				<colors>
+                    
+					<level_color>643500ffb298</level_color>
+                
+				</colors>
+            
+			</palette>
+		</palettes>
+	</lipstick>
+	<blush>
+		<patterns>
+			<pattern guid="pattern_blush_Valentine_01" thumbnail="blush/thumb/pattern_blush_Valentine_01.png">
+				<pattern_mask>
+					<mask position="left" src="blush/blush_Valentine_01_l.png"/>
+					<mask position="right" src="blush/blush_Valentine_01_r.png"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+		<palettes>
+			<palette guid="blush_palette_01_03" thumbnail="">
+                
+				<colors>
+                    
+					<color>00ff65a1</color>
+                
+				</colors>
+            
+			</palette>
+            
+		</palettes>
+	</blush>
+	<presets>
+		<preset guid="20151223_Serayah_McNeill" look_type="Natural" supported_mode="All" thumbnail="thumb/20151223_Serayah_McNeill.jpg">
+		    
+			<look_categories>
+				<look_category>
+					<def>Celebrity</def>
+			    
+				</look_category>
+			</look_categories>
+			<name>
+				<def>Serayah</def>
+				<chs>Serayah</chs>
+				<cht>Serayah</cht>
+				<deu>Serayah</deu>
+				<enu>Serayah</enu>
+				<esp>Serayah</esp>
+				<fra>Serayah</fra>
+				<idn>Serayah</idn>
+				<ita>Serayah</ita>
+				<jpn>セラヤ</jpn>
+				<kor>세라야</kor>
+				<mys>Serayah</mys>
+				<nld>Serayah</nld>
+				<prt>Serayah</prt>
+				<rus>Серайя</rus>
+				<tha>เซรายาห์</tha>
+				<tur>Serayah</tur>
+			</name>
+			<description>
+				<def>Get Empire star Serayah’s fierce natural makeup look! @ 2016 Modeliste Media LLC</def>
+				<chs>打造最热美剧《嘻哈世家》Empire中饰演帝国娱乐歌手Serayah的个性妆容！@ 2016 Modeliste Media LLC</chs>
+				<cht>打造最夯美劇《嘻哈世家》Empire中飾演帝國娛樂歌手Serayah的個性妝容！@ 2016 Modeliste Media LLC</cht>
+				<deu>Holen Sie sich den Look von Empire-Star Serayah!@ 2016 Modeliste Media LLC</deu>
+				<enu>Get Empire star Serayah’s fierce natural makeup look! @ 2016 Modeliste Media LLC</enu>
+				<esp>Look natural de Serayah, la protagonista de Empire. @ 2016 Modeliste Media LLC</esp>
+				<fra>Maquillage ardent de Serayah de Empire. @ 2016 Modeliste Media LLC</fra>
+				<idn>Riasan natural bintang Empire Serayah!@ 2016 Modeliste Media LLC</idn>
+				<ita>Il look audace di Serayah, star di Empire! @ 2016 Modeliste Media LLC</ita>
+				<jpn>ハリウッドセレブ セラヤのナチュラル メイクを試してみよう。@ 2016 Modeliste Media LLC</jpn>
+				<kor>엠파이어 스타 세라야의 강렬한 메이크업룩! @ 2016 Modeliste Media LLC</kor>
+				<mys>Dptkan rupa mekap asli garang bintang Empire, Serayah! @ 2016 Modeliste Media LLC</mys>
+				<nld>Krijg de natuurlijke make-uplook van Empire-ster Serayah!@ 2016 Modeliste Media LLC</nld>
+				<prt>Visual de maquiagem da estrela Serayah de Empire!@ 2016 Modeliste Media LLC</prt>
+				<rus>Естественный макияж Серайи из сериала &quot;Империя&quot;!@ 2016 Modeliste Media LLC</rus>
+				<tha>แต่งหน้าแบบธรรมชาติให้ดูสวยดุแบบเซรายาห์จากเรื่องEmpire @ 2016 Modeliste Media LLC</tha>
+				<tur>Empire yıldızı Serayah’ın makyajını alın! @ 2016 Modeliste Media LLC</tur>
+			</description>
+			<effect>
+				<colors>
+					<color>00272727</color>
+					<color>008e8e8e</color>
+				</colors>
+				<shimmer_intensities>
+					<shimmer_intensity>0</shimmer_intensity>
+					<shimmer_intensity>80</shimmer_intensity>
+				</shimmer_intensities>
+				<palette_guid>eyeshadow_palettes_20151223_Serayah_McNeill</palette_guid>
+				<pattern_guid>pattern_eyeshadow_20151223_Serayah_McNeill</pattern_guid>
+				<color_intensities>
+					<color_intensity>40</color_intensity>
+					<color_intensity>40</color_intensity>
+				</color_intensities>
+				<color_is_shimmers>
+					<color_is_shimmer>0</color_is_shimmer>
+					<color_is_shimmer>1</color_is_shimmer>
+				</color_is_shimmers>
+				<effect_type>eye_shadow</effect_type>
+			</effect>
+			<effect>
+				<effect_type>eye_line</effect_type>
+				<pattern_guid>patten_eyeline_02_03</pattern_guid>
+				<colors>
+					<color>00000000</color>
+				</colors>
+				<color_intensities>
+					<color_intensity>25</color_intensity>
+				</color_intensities>
+				<palette_guid>eyeline_palette_01_01</palette_guid>
+			</effect>
+			<effect>
+				<effect_type>eye_lash</effect_type>
+				<pattern_guid>patten_eyelash_Serayah_McNeill</pattern_guid>
+				<colors>
+					<color>00000000</color>
+				</colors>
+				<color_intensities>
+					<color_intensity>95</color_intensity>
+				</color_intensities>
+				<palette_guid>eyelash_palette_01_01</palette_guid>
+			</effect>
+			<effect>
+				<colors>
+					<color>00353535</color>
+				</colors>
+				<palette_guid>eyebrow_palette_01_02</palette_guid>
+				<pattern_guid>patten_eyebrow_20151223_Serayah_McNeill</pattern_guid>
+				<color_intensities>
+					<color_intensity>50</color_intensity>
+				</color_intensities>
+				<effect_type>eye_brow</effect_type>
+				<hidden_intensity>100</hidden_intensity>
+			</effect>
+			<effect>
+				<effect_type>lipstick</effect_type>
+				<pattern_guid>patten_lipstick_01</pattern_guid>
+				<colors>
+					<level_color>643500ffb298</level_color>
+				</colors>
+				<color_intensities>
+					<color_intensity>15</color_intensity>
+				</color_intensities>
+				<palette_guid>lipstick_palette_20151223_Serayah_McNeill</palette_guid>
+			</effect>
+			<effect>
+				<effect_type>blush</effect_type>
+				<colors>
+					<color>00ff65a1</color>
+				</colors>
+				<color_intensities>
+					<color_intensity>53</color_intensity>
+				</color_intensities>
+				<pattern_guid>pattern_blush_Valentine_01</pattern_guid>
+				<palette_guid>blush_palette_01_03</palette_guid>
+			</effect>
+		</preset>
+	</presets>
+</makeup>

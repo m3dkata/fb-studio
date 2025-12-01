@@ -15,6 +15,11 @@ export function useCamera() {
      */
     const initCamera = useCallback(async () => {
         try {
+            // Stop any existing stream first
+            if (streamRef.current) {
+                streamRef.current.getTracks().forEach(track => track.stop());
+            }
+
             const stream = await navigator.mediaDevices.getUserMedia({
                 video: {
                     width: { ideal: 1280 },
@@ -54,11 +59,26 @@ export function useCamera() {
         };
     }, []);
 
+    /**
+     * Stop camera stream manually
+     */
+    const stopCamera = useCallback(() => {
+        if (streamRef.current) {
+            streamRef.current.getTracks().forEach(track => track.stop());
+            streamRef.current = null;
+        }
+        if (videoRef.current) {
+            videoRef.current.srcObject = null;
+        }
+        setIsCameraReady(false);
+    }, []);
+
     return {
         videoRef,
         isCameraReady,
         error,
         initCamera,
+        stopCamera,
     };
 }
 

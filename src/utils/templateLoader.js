@@ -1,30 +1,51 @@
 import { loadTemplate } from './xmlConverter';
 export async function loadAllTemplates() {
     try {
-        const response = await fetch('/makeup-templates/templates.json');
+        // Load lightweight metadata first
+        const response = await fetch('/makeup-templates/templates-metadata.json');
         if (!response.ok) {
-            console.warn('No templates.json found, returning empty array');
-            return [];
+            console.warn('No templates-metadata.json found, falling back to legacy load');
+            // Fallback to old method if metadata missing
+            return await loadLegacyTemplates();
         }
 
+        const metadata = await response.json();
+
+        // Map metadata to template structure expected by UI
+        return metadata.map(item => ({
+            templateId: item.templateId,
+            presets: [{
+                guid: item.templateId,
+                name: item.name,
+                thumbnail: item.thumbnail,
+                isPremium: item.isPremium,
+                lookType: item.lookType,
+                lookCategories: item.lookCategories
+            }]
+        }));
+    } catch (error) {
+        console.error('Failed to load templates:', error);
+        return [];
+    }
+}
+
+async function loadLegacyTemplates() {
+    try {
+        const response = await fetch('/makeup-templates/templates.json');
+        if (!response.ok) return [];
         const manifest = await response.json();
 
-        // Load each template
         const templates = await Promise.all(
             manifest.map(async (item) => {
                 try {
-                    const template = await loadTemplate(item.id);
-                    return template;
+                    return await loadTemplate(item.id);
                 } catch (error) {
                     return null;
                 }
             })
         );
-
-        const validTemplates = templates.filter(t => t !== null);
-        return validTemplates;
+        return templates.filter(t => t !== null);
     } catch (error) {
-        console.error('Failed to load templates:', error);
         return [];
     }
 }

@@ -1,0 +1,319 @@
+<?xml version="1.0" ?>
+<makeup content_version="1.0" version="26.0">
+	<eye_shadow>
+		<patterns>
+			<pattern guid="patten_eyeshadow_03_02" thumbnail="eyeshadow/thumb/patten_eyeshadow_03_02.jpg">
+				<pattern_mask>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_02_01.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_02_02.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_02_03.png"/>
+				</pattern_mask>
+			</pattern>
+			<pattern guid="patten_eyeshadow_03_03" thumbnail="eyeshadow/thumb/patten_eyeshadow_03_03.jpg">
+				<pattern_mask>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_03_01.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_03_02.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_03_03.png"/>
+				</pattern_mask>
+			</pattern>
+			<pattern guid="patten_eyeshadow_03_04" thumbnail="eyeshadow/thumb/patten_eyeshadow_03_04.jpg">
+				<pattern_mask>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_04_01.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_04_02.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_04_03.png"/>
+				</pattern_mask>
+			</pattern>
+			<pattern guid="patten_eyeshadow_03_05" thumbnail="eyeshadow/thumb/patten_eyeshadow_03_05.jpg">
+				<pattern_mask>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_05_01.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_05_02.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_05_03.png"/>
+				</pattern_mask>
+			</pattern>
+			<pattern guid="patten_eyeshadow_03_06" thumbnail="eyeshadow/thumb/patten_eyeshadow_03_06.jpg">
+				<pattern_mask>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_06_01.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_06_02.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_06_03.png"/>
+				</pattern_mask>
+			</pattern>
+			<pattern guid="patten_eyeshadow_03_07" thumbnail="eyeshadow/thumb/patten_eyeshadow_03_07.jpg">
+				<pattern_mask>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_07_01.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_07_02.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_07_03.png"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+		<colors>
+			<color>00fff4c1</color>
+			<color>00c48888</color>
+			<color>00543d51</color>
+		</colors>
+		<palettes>
+			<palette guid="palettes_03_01">
+				<colors>
+					<color>00fff4c1</color>
+					<color>00c48888</color>
+					<color>00543d51</color>
+				</colors>
+				<patterns>
+					<pattern_guid color_intensities="22, 40, 50">patten_eyeshadow_03_02</pattern_guid>
+					<pattern_guid color_intensities="28, 35, 60">patten_eyeshadow_03_03</pattern_guid>
+					<pattern_guid color_intensities="12, 41, 51">patten_eyeshadow_03_04</pattern_guid>
+					<pattern_guid color_intensities="12, 41, 57">patten_eyeshadow_03_05</pattern_guid>
+					<pattern_guid color_intensities="23, 22, 23">patten_eyeshadow_03_06</pattern_guid>
+					<pattern_guid color_intensities="12, 42, 38">patten_eyeshadow_03_07</pattern_guid>
+				</patterns>
+			</palette>
+		</palettes>
+	</eye_shadow>
+	<eye_line>
+		<palettes>
+			<palette guid="eyeline_palette_01_01" thumbnail="">
+                
+				<colors>
+                    
+					<color>00000000</color>
+                
+				</colors>
+            
+			</palette>
+            
+		</palettes>
+		<patterns>
+			<pattern guid="patten_eyeline_02_03" thumbnail="eyeline/thumb/patten_eyeline_02_03.jpg">
+				<pattern_mask>
+					<mask eyebottom="458,362" eyeleft="284,287" eyeright="633,287" eyetop="458,213" position="upper" src="eyeline/02_03_01.png"/>
+					<mask eyebottom="458,362" eyeleft="284,287" eyeright="633,287" eyetop="458,213" position="lower" src="eyeline/02_03_02.png"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+	</eye_line>
+	<eye_lash>
+		<palettes>
+			<palette guid="eyelash_palette_01_01" thumbnail="">
+                
+				<colors>
+                    
+					<color>00000000</color>
+                
+				</colors>
+            
+			</palette>
+            
+		</palettes>
+		<patterns>
+			<pattern guid="patten_eyelash_01_05" thumbnail="eyelash/thumb/patten_eyelash_01_05.jpg">
+				<pattern_mask>
+					<mask eyebottom="458,362" eyeleft="284,287" eyeright="633,287" eyetop="458,213" position="upper" src="eyelash/01_05_01.png"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+	</eye_lash>
+	<eye_brow>
+		<palettes>
+			<palette guid="eyebrow_palette_01_02" thumbnail="">
+                
+				<colors>
+                    
+					<color>00353535</color>
+                
+				</colors>
+            
+			</palette>
+            
+		</palettes>
+		<patterns>
+			<pattern guid="Eyebrow_01" thumbnail="eyebrow/thumb/patten_eyebrow_01.jpg">
+				<eyebrow_mode type="ORIGINAL"/>
+                
+				<pattern_mask>
+                    
+					<mask browhead="23,90" browtop="126,67" browtail="184,84" basicbrowhead="0,0" basicbrowtop="0,0" basicbrowtail="0,0" basiceyehead="0,0" basiceyetop="0,0" basiceyetail="0,0" src="eyebrow/Eyebrow_01.mask.png" shapesrc="eyebrow/Eyebrow_01.png"/>
+                
+				</pattern_mask>
+            
+			</pattern>
+            
+            
+		</patterns>
+	</eye_brow>
+	<lipstick>
+		<palettes>
+			<palette guid="lipstick_palette_01_23_150903" thumbnail="">
+                
+				<colors>
+                    
+					<level_color>643500F07CA2</level_color>
+                
+				</colors>
+				<patterns>
+                    
+					<pattern_guid color_intensities="70" gloss="30" shimmer_color="ff91ff" shimmer_intensity="40" shimmer_density="40" shimmer_granularity="80">pattern_lipstick_holographic</pattern_guid>
+                
+				</patterns>
+            
+			</palette>
+            
+		</palettes>
+		<patterns>
+			<pattern guid="patten_lipstick_02" thumbnail="lipstick/thumb/patten_lipstick_02.png">
+				<lipstick_profile type="BRIGHT"/>
+			</pattern>
+		</patterns>
+	</lipstick>
+	<blush>
+		<palettes>
+			<palette guid="blush_palette_01_03" thumbnail="">
+				<colors>
+					<color>00ff65a1</color>
+				</colors>
+			</palette>
+		</palettes>
+		<patterns>
+			<pattern guid="patten_blush_03" thumbnail="blush/thumb/patten_blush_03.jpg">
+				<pattern_mask>
+					<mask position="left" src="blush/03_l.png"/>
+					<mask position="right" src="blush/03_r.png"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+	</blush>
+	<presets>
+		<preset guid="clinique_thumb_05" thumbnail="thumb/clinique_thumb_05.jpg" look_type="Natural" supported_mode="All">
+			<look_categories>
+				<look_category>
+					<def>Daily</def>
+					<chs>日常</chs>
+					<cht>日常</cht>
+					<deu>Täglich</deu>
+					<enu>Daily</enu>
+					<esp>Diario</esp>
+					<fra>Quotidien</fra>
+					<ita>Giornaliero</ita>
+					<jpn>デイリーメイク</jpn>
+					<kor>데일리메이크업</kor>
+					<rus>Ежедневный</rus>
+					<nld>Dagelijks</nld>
+				</look_category>
+			</look_categories>
+			<name>
+				<def>The Flirt</def>
+				<chs>娇俏可人</chs>
+				<cht>嬌俏可人</cht>
+				<deu>Flirt</deu>
+				<enu>The Flirt</enu>
+				<esp>Coqueteo</esp>
+				<fra>Le flirt</fra>
+				<idn>The Flirt</idn>
+				<ita>Flirt</ita>
+				<jpn>フラート</jpn>
+				<kor>더 플러트</kor>
+				<mys>Manja</mys>
+				<nld>The Flirt</nld>
+				<prt>Paquera</prt>
+				<rus>Флирт</rus>
+				<tha>โปรยเสน่ห์</tha>
+				<tur>Flört</tur>
+			</name>
+            
+			<description>
+				<def>Liquid liner plus playful lashes for the ultimate notice-me eyes.</def>
+				<chs>流畅的眼线加上俏皮的睫毛，立刻吸引他人的目光。</chs>
+				<cht>流暢的眼線加上俏皮的睫毛可立刻吸引他人的目光。</cht>
+				<deu>Flüssiger Liner, lässige Wimpern machen die Augen zum Blickfang.</deu>
+				<enu>Liquid liner plus playful lashes for the ultimate notice-me eyes.</enu>
+				<esp>Delineador líquido y pestañas con mucho juego para cautivar.</esp>
+				<fra>Liner liquide et cils taquins pour des yeux affriolants.</fra>
+				<idn>Garis kelopak dan bulu mata menantang menghasilkan mata mempesona.</idn>
+				<ita>Liner liquido e ciglia vivati per occhi che catturano.</ita>
+				<jpn>リキッド ライナーと魅力的なまつ毛。</jpn>
+				<kor>또렷한 눈매 연출을 위한 리퀴드 라이너와 속눈썹</kor>
+				<mys>Celak cecair serta bulu mata ayu untuk mata yang menawan.</mys>
+				<nld>Vloeibare liner plus speelse wimpers voor de ultieme &quot;kijk mij eens&quot;-look.</nld>
+				<prt>Delineador líquido e cílios divertidos para chamar a atenção.</prt>
+				<rus>Жидкая подводка и длинные ресницы для создания манящего взгляда.</rus>
+				<tha>อายไลเนอร์แบบน้ำและขนตางอนเด้ง เพื่อรูปลักษณ์ที่ดึงดูดทุกสายตา</tha>
+				<tur>Mükemell beni fark edin gözler için sıvı liner ile şakacı kirpikler.</tur>
+            
+			</description>
+			<effect>
+				<colors>
+					<color>00fff4c1</color>
+					<color>00c48888</color>
+					<color>00543d51</color>
+				</colors>
+				<palette_guid>palettes_03_01</palette_guid>
+				<pattern_guid>patten_eyeshadow_03_04</pattern_guid>
+				<color_intensities>
+					<color_intensity>12</color_intensity>
+					<color_intensity>41</color_intensity>
+					<color_intensity>51</color_intensity>
+				</color_intensities>
+				<color_is_shimmers>
+					<color_is_shimmer>0</color_is_shimmer>
+					<color_is_shimmer>0</color_is_shimmer>
+					<color_is_shimmer>0</color_is_shimmer>
+				</color_is_shimmers>
+				<effect_type>eye_shadow</effect_type>
+			</effect>
+			<effect>
+				<effect_type>eye_line</effect_type>
+				<colors>
+					<color>00000000</color>
+				</colors>
+				<color_intensities>
+					<color_intensity>25</color_intensity>
+				</color_intensities>
+				<pattern_guid>patten_eyeline_02_03</pattern_guid>
+				<palette_guid>eyeline_palette_01_01</palette_guid>
+			</effect>
+			<effect>
+				<effect_type>eye_lash</effect_type>
+				<colors>
+					<color>00000000</color>
+				</colors>
+				<color_intensities>
+					<color_intensity>50</color_intensity>
+				</color_intensities>
+				<pattern_guid>patten_eyelash_01_05</pattern_guid>
+				<palette_guid>eyelash_palette_01_01</palette_guid>
+			</effect>
+			<effect>
+				<effect_type>eye_brow</effect_type>
+				<colors>
+					<color>00353535</color>
+				</colors>
+				<color_intensities>
+					<color_intensity>46</color_intensity>
+				</color_intensities>
+				<pattern_guid>Eyebrow_01</pattern_guid>
+				<palette_guid>eyebrow_palette_01_02</palette_guid>
+				<hidden_intensity>81</hidden_intensity>
+			</effect>
+			<effect>
+				<effect_type>lipstick</effect_type>
+				<colors>
+					<level_color>643500f07ca2</level_color>
+				</colors>
+				<color_intensities>
+					<color_intensity>50</color_intensity>
+				</color_intensities>
+				<pattern_guid>patten_lipstick_02</pattern_guid>
+				<palette_guid>lipstick_palette_01_23_150903</palette_guid>
+			</effect>
+			<effect>
+				<effect_type>blush</effect_type>
+				<colors>
+					<color>00ff65a1</color>
+				</colors>
+				<color_intensities>
+					<color_intensity>16</color_intensity>
+				</color_intensities>
+				<pattern_guid>patten_blush_03</pattern_guid>
+				<palette_guid>blush_palette_01_03</palette_guid>
+			</effect>
+		</preset>
+	</presets>
+</makeup>

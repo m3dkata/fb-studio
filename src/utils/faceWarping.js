@@ -23,6 +23,18 @@ export const LandmarkIndices = {
         324, 318, 402, 317, 14, 87, 178, 88, 95,
     ],
 
+    // Upper lip surface (Outer Top + Inner Top Reversed)
+    LIPS_UPPER: [
+        61, 185, 40, 39, 37, 0, 267, 269, 270, 409, 291, // Outer Top
+        308, 415, 310, 311, 312, 13, 82, 81, 80, 191, 78, // Inner Top Reversed
+    ],
+
+    // Lower lip surface (Outer Bottom + Inner Bottom Reversed)
+    LIPS_LOWER: [
+        61, 146, 91, 181, 84, 17, 314, 405, 321, 375, 291, // Outer Bottom
+        308, 324, 318, 402, 317, 14, 87, 178, 88, 95, 78, // Inner Bottom Reversed
+    ],
+
     // Left eyebrow
     LEFT_EYEBROW: [70, 63, 105, 66, 107, 55, 65, 52, 53, 46],
 
@@ -190,6 +202,14 @@ export function getEyeRegion(landmarks, isLeft = true) {
  */
 export function getLipRegion(landmarks, isOuter = true) {
     const region = isOuter ? 'LIPS_OUTER' : 'LIPS_INNER';
+    return getRegionLandmarks(landmarks, region);
+}
+
+/**
+ * Get lip surface region (upper or lower)
+ */
+export function getLipSurface(landmarks, isUpper = true) {
+    const region = isUpper ? 'LIPS_UPPER' : 'LIPS_LOWER';
     return getRegionLandmarks(landmarks, region);
 }
 

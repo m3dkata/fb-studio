@@ -17,9 +17,9 @@ class MediaPipeService {
 
         this.faceMesh.setOptions({
             maxNumFaces: 1,
-            refineLandmarks: true,
-            minDetectionConfidence: 0.3, // Lowered for performance
-            minTrackingConfidence: 0.3, // Lowered for performance
+            refineLandmarks: false, // Disabled for better performance
+            minDetectionConfidence: 0.5, // Increased stability
+            minTrackingConfidence: 0.5, // Increased stability
         });
 
         this.faceMesh.onResults((results) => {

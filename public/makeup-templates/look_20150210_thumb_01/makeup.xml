@@ -1,0 +1,282 @@
+<?xml version="1.0" ?>
+<makeup content_version="1.0" version="5.0">
+	<eye_shadow>
+		<patterns>
+			<pattern guid="patten_eyeshadow_03_06" thumbnail="eyeshadow/thumb/patten_eyeshadow_03_06.png">
+				<pattern_mask>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_06_01.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_06_02.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_06_03.png"/>
+				</pattern_mask>
+			</pattern>
+			<pattern guid="patten_eyeshadow_03_09" thumbnail="eyeshadow/thumb/patten_eyeshadow_03_09.png">
+				<pattern_mask>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_09_01.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_09_02.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_09_03.png"/>
+				</pattern_mask>
+			</pattern>
+			<pattern guid="patten_eyeshadow_03_11" thumbnail="eyeshadow/thumb/patten_eyeshadow_03_11.png">
+				<pattern_mask>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_11_01.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_11_02.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_11_03.png"/>
+				</pattern_mask>
+			</pattern>
+			<pattern guid="patten_eyeshadow_03_05" thumbnail="eyeshadow/thumb/patten_eyeshadow_03_05.png">
+				<pattern_mask>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_05_01.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_05_02.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/03_05_03.png"/>
+				</pattern_mask>
+			</pattern>
+			<pattern guid="patten_eyeshadow_20150210_03_01" thumbnail="eyeshadow/thumb/patten_eyeshadow_20150210_03_01.png">
+				<pattern_mask>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/20150210_03_01_01.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/20150210_03_01_02.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/20150210_03_01_03.png"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+		<palettes>
+			<palette guid="palettes_20150210_03_01">
+				<colors>
+					<color>00ffffff</color>
+					<color>004f4f4f</color>
+					<color>00272727</color>
+				</colors>
+				<color_is_shimmers>
+					<color_is_shimmer>1</color_is_shimmer>
+					<color_is_shimmer>1</color_is_shimmer>
+					<color_is_shimmer>0</color_is_shimmer>
+				</color_is_shimmers>
+				<patterns>
+					<pattern_guid color_intensities="23, 35, 23">patten_eyeshadow_03_06</pattern_guid>
+					<pattern_guid color_intensities="12, 28, 21">patten_eyeshadow_03_09</pattern_guid>
+					<pattern_guid color_intensities="46, 35, 42">patten_eyeshadow_03_11</pattern_guid>
+					<pattern_guid color_intensities="33, 11, 55">patten_eyeshadow_03_05</pattern_guid>
+					<pattern_guid color_intensities="26, 65, 54">patten_eyeshadow_20150210_03_01</pattern_guid>
+				</patterns>
+			</palette>
+		</palettes>
+		<colors>
+			<color>00ffffff</color>
+			<color>004f4f4f</color>
+			<color>00272727</color>
+		</colors>
+	</eye_shadow>
+	<eye_line>
+		<patterns>
+			<pattern guid="patten_eyeline_01_01" thumbnail="eyeline/thumb/patten_eyeline_01_01.png">
+				<pattern_mask>
+					<mask eyebottom="458,362" eyeleft="284,287" eyeright="633,287" eyetop="458,213" position="upper" src="eyeline/01_01_01.png"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+		<colors>
+			<color>00000000</color>
+		</colors>
+	</eye_line>
+	<eye_lash>
+		<patterns>
+			<pattern guid="patten_eyelash_20150210_02_01" thumbnail="eyelash/thumb/patten_eyelash_20150210_02_01.png">
+				<pattern_mask>
+					<mask eyebottom="458,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" position="upper" src="eyelash/20150210_02_01_01.png"/>
+					<mask eyebottom="458,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" position="lower" src="eyelash/20150210_02_01_02.png"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+		<colors>
+			<color>00000000</color>
+		</colors>
+	</eye_lash>
+	<eye_brow>
+		<patterns>
+			<pattern guid="patten_eyebrow_20150210_01" thumbnail="eyebrow/thumb/patten_eyebrow_20150210_01.png">
+				<pattern_mask>
+					<mask browhead="52,90" browtail="252,51" browtop="186,44" shapesrc="eyebrow/20150210_01.png" src="eyebrow/20150210_01.mask.png"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+		<colors>
+			<color>00170f0c</color>
+		</colors>
+	</eye_brow>
+	<eye_contact>
+		<patterns>
+			<pattern guid="patten_eyecontact_01" thumbnail="eyecontact/thumb/patten_eyecontact_01.png">
+				<pattern_mask>
+					<mask imagesrc="eyecontact/01_a.png" src="eyecontact/01_b.png"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+		<colors>
+			<color>0080ffff</color>
+		</colors>
+	</eye_contact>
+	<lipstick>
+		<colors>
+			<level_color>644800c41111</level_color>
+		</colors>
+	</lipstick>
+	<blush>
+		<patterns>
+			<pattern guid="patten_blush_04" thumbnail="blush/thumb/patten_blush_04.png">
+				<pattern_mask>
+					<mask position="left" src="blush/04_l.png"/>
+					<mask position="right" src="blush/04_r.png"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+		<colors>
+			<color>00ff0000</color>
+		</colors>
+	</blush>
+	<skin_toner>
+		<colors>
+			<color>00fbcfcc</color>
+		</colors>
+	</skin_toner>
+	<wig>
+		<patterns>
+			<pattern guid="patten_wig_99" thumbnail="wig/thumb/patten_wig_99.jpg">
+                <pattern_mask>
+                    <mask src="wig/wig_99.png"/>
+                </pattern_mask>
+            </pattern>
+		</patterns>
+		 <colors>
+            <color>00000000</color>
+		</colors>
+	</wig>
+	<presets>
+		<preset guid="look_20150210_thumb_01" thumbnail="thumb/look_20150210_thumb_01.jpg">
+			<name>
+				<def>Cara</def>
+				<chs>卡拉</chs>
+				<cht>卡拉</cht>
+				<deu>Cara</deu>
+				<enu>Cara</enu>
+				<esp>Cara</esp>
+				<fra>Cara</fra>
+				<ita>Cara</ita>
+				<jpn>カーラ</jpn>
+				<kor>카라</kor>
+				<nld>Cara</nld>
+				<rus>Кара</rus>
+			</name>
+			<effect>
+				<colors>
+					<color>00ffffff</color>
+					<color>004f4f4f</color>
+					<color>00272727</color>
+				</colors>
+				<palette_guid>palettes_20150210_03_01</palette_guid>
+				<pattern_guid>patten_eyeshadow_20150210_03_01</pattern_guid>
+				<color_intensities>
+					<color_intensity>26</color_intensity>
+					<color_intensity>65</color_intensity>
+					<color_intensity>54</color_intensity>
+				</color_intensities>
+				<color_is_shimmers>
+					<color_is_shimmer>1</color_is_shimmer>
+					<color_is_shimmer>1</color_is_shimmer>
+					<color_is_shimmer>0</color_is_shimmer>
+				</color_is_shimmers>
+				<effect_type>eye_shadow</effect_type>
+			</effect>
+			<effect>
+				<effect_type>eye_line</effect_type>
+				<colors>
+					<color>00000000</color>
+				</colors>
+				<color_intensities>
+					<color_intensity>50</color_intensity>
+				</color_intensities>
+				<pattern_guid>patten_eyeline_01_01</pattern_guid>
+			</effect>
+			<effect>
+				<effect_type>eye_lash</effect_type>
+				<colors>
+					<color>00000000</color>
+				</colors>
+				<color_intensities>
+					<color_intensity>75</color_intensity>
+				</color_intensities>
+				<pattern_guid>patten_eyelash_20150210_02_01</pattern_guid>
+			</effect>
+			<effect>
+				<effect_type>eye_brow</effect_type>
+				<colors>
+					<color>00170f0c</color>
+				</colors>
+				<color_intensities>
+					<color_intensity>75</color_intensity>
+				</color_intensities>
+				<pattern_guid>patten_eyebrow_20150210_01</pattern_guid>
+				<hidden_intensity>100</hidden_intensity>
+			</effect>
+			<effect>
+				<effect_type>eye_contact</effect_type>
+				<colors>
+					<color>0080ffff</color>
+				</colors>
+				<color_intensities>
+					<color_intensity>20</color_intensity>
+				</color_intensities>
+				<pattern_guid>patten_eyecontact_01</pattern_guid>
+				<radius>0</radius>
+			</effect>
+			<effect>
+				<effect_type>lipstick</effect_type>
+				<colors>
+					<level_color>644800c41111</level_color>
+				</colors>
+				<color_intensities>
+					<color_intensity>60</color_intensity>
+				</color_intensities>
+				<pattern_guid>patten_lipstick_02</pattern_guid>
+			</effect>
+			<effect>
+				<effect_type>blush</effect_type>
+				<colors>
+					<color>00ff0000</color>
+				</colors>
+				<color_intensities>
+					<color_intensity>30</color_intensity>
+				</color_intensities>
+				<pattern_guid>patten_blush_04</pattern_guid>
+			</effect>
+			<effect>
+				<effect_type>nose_enhancement</effect_type>
+				<intensity>50</intensity>
+			</effect>
+			<effect>
+				<effect_type>skin_smooth</effect_type>
+				<intensity>25</intensity>
+			</effect>
+			<effect>
+				<effect_type>skin_toner</effect_type>
+				<colors>
+					<color>00fbcfcc</color>
+				</colors>
+				<color_intensities>
+					<color_intensity>20</color_intensity>
+				</color_intensities>
+			</effect>
+			<effect>
+				<effect_type>wig</effect_type>
+				<colors>
+					<color>00000000</color>
+				</colors>
+				<engine_colors>
+					<engine_color>0,0,14,5,,,,</engine_color>
+				</engine_colors>
+				<color_intensities>
+					<color_intensity>20</color_intensity>
+				</color_intensities>
+				<pattern_guid>patten_wig_99</pattern_guid>
+			</effect>
+		</preset>
+	</presets>
+</makeup>

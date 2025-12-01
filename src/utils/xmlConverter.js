@@ -274,11 +274,21 @@ function parsePatternRefs(patternRefs) {
     if (typeof ref === 'string') {
       return { guid: ref, colorIntensities: [] };
     }
+
+    let colorIntensities = [];
+    if (ref.color_intensities) {
+      if (typeof ref.color_intensities === 'string') {
+        colorIntensities = ref.color_intensities.split(',').map(i => parseInt(i.trim()));
+      } else if (Array.isArray(ref.color_intensities)) {
+        colorIntensities = ref.color_intensities.map(i => typeof i === 'number' ? i : parseInt(i));
+      } else if (typeof ref.color_intensities === 'number') {
+        colorIntensities = [ref.color_intensities];
+      }
+    }
+
     return {
       guid: ref['#text'] || ref,
-      colorIntensities: ref.color_intensities
-        ? ref.color_intensities.split(',').map(i => parseInt(i.trim()))
-        : [],
+      colorIntensities,
     };
   });
 }
@@ -300,12 +310,21 @@ function parseCoordinate(coord) {
 function hexToRGBA(hex) {
   if (!hex) return { r: 0, g: 0, b: 0, a: 1 };
 
-  const hexStr = hex.toString().padStart(8, '0');
+  let hexStr;
+  if (typeof hex === 'number') {
+    // Handle signed 32-bit integers (common in Java/Android)
+    // Convert to unsigned 32-bit hex string
+    hexStr = (hex >>> 0).toString(16).toUpperCase().padStart(8, '0');
+  } else {
+    hexStr = hex.toString().padStart(8, '0');
+  }
 
+  // Parse as AABBGGRR (common in makeup XMLs) to fix "purple" issue
+  // Swapping Red and Blue channels
   const a = parseInt(hexStr.substring(0, 2), 16) / 255;
-  const r = parseInt(hexStr.substring(2, 4), 16);
+  const b = parseInt(hexStr.substring(2, 4), 16); // Was R
   const g = parseInt(hexStr.substring(4, 6), 16);
-  const b = parseInt(hexStr.substring(6, 8), 16);
+  const r = parseInt(hexStr.substring(6, 8), 16); // Was B
 
   return { r, g, b, a };
 }

@@ -12,7 +12,7 @@ export function useMakeupPreview(templateId = null) {
     const [fps, setFps] = useState(0);
 
     // Use camera hook
-    const { videoRef, isCameraReady, error: cameraError, initCamera } = useCamera();
+    const { videoRef, isCameraReady, error: cameraError, initCamera, stopCamera } = useCamera();
 
     const canvasRef = useRef(null);
     const mediaPipeRef = useRef(null);
@@ -27,6 +27,7 @@ export function useMakeupPreview(templateId = null) {
             setError(cameraError);
         }
     }, [cameraError]);
+
     const initMediaPipe = useCallback(async () => {
         try {
             setIsLoading(true);
@@ -62,6 +63,7 @@ export function useMakeupPreview(templateId = null) {
             throw err;
         }
     }, []);
+
     const loadMakeupTemplate = useCallback(async (templateId) => {
         try {
             setIsLoading(true);
@@ -80,6 +82,7 @@ export function useMakeupPreview(templateId = null) {
             setIsLoading(false);
         }
     }, []);
+
     const renderLoop = useCallback((timestamp) => {
         if (!videoRef.current || !canvasRef.current || !mediaPipeRef.current || !rendererRef.current) {
             animationFrameRef.current = requestAnimationFrame(renderLoop);
@@ -103,9 +106,9 @@ export function useMakeupPreview(templateId = null) {
             setFps(optimizerRef.current.getFPS());
         }
 
-        // Process frame with MediaPipe (Throttled to ~30 FPS for performance)
-        // We use a simple frame skip: process every other frame if running at 60fps
-        const shouldDetect = !window.lastDetectionTime || (timestamp - window.lastDetectionTime) >= 32;
+        // Process frame with MediaPipe (Throttled to ~15 FPS for performance)
+        // We use a simple frame skip: process every 4th frame if running at 60fps
+        const shouldDetect = !window.lastDetectionTime || (timestamp - window.lastDetectionTime) >= 66;
 
         if (shouldDetect) {
             window.lastDetectionTime = timestamp;
@@ -132,22 +135,38 @@ export function useMakeupPreview(templateId = null) {
 
         animationFrameRef.current = requestAnimationFrame(renderLoop);
     }, [template, selectedPreset]);
+
     const startRendering = useCallback(() => {
         if (!animationFrameRef.current) {
             animationFrameRef.current = requestAnimationFrame(renderLoop);
         }
     }, [renderLoop]);
+
     const stopRendering = useCallback(() => {
         if (animationFrameRef.current) {
             cancelAnimationFrame(animationFrameRef.current);
             animationFrameRef.current = null;
         }
     }, []);
+
     const changeTemplate = useCallback(async (newTemplateId) => {
         stopRendering();
+
+        // Clear previous template resources
+        if (rendererRef.current) {
+            rendererRef.current.clearCache();
+            rendererRef.current.clear(); // Clear canvas
+        }
+        setTemplate(null);
+        setSelectedPreset(null);
+
+        // Force garbage collection hint (optional, but good for heavy apps)
+        if (window.gc) window.gc();
+
         await loadMakeupTemplate(newTemplateId);
         startRendering();
     }, [loadMakeupTemplate, startRendering, stopRendering]);
+
     const changePreset = useCallback((presetGuid) => {
         if (!template || !template.presets) return;
 
@@ -156,11 +175,13 @@ export function useMakeupPreview(templateId = null) {
             setSelectedPreset(preset);
         }
     }, [template]);
+
     const takeScreenshot = useCallback(() => {
         if (!canvasRef.current) return null;
 
         return canvasRef.current.toDataURL('image/png');
     }, []);
+
     const resizeCanvas = useCallback(() => {
         if (!videoRef.current || !canvasRef.current || !rendererRef.current) return;
 
@@ -174,6 +195,7 @@ export function useMakeupPreview(templateId = null) {
 
         rendererRef.current.resize(canvas.width, canvas.height);
     }, []);
+
     useEffect(() => {
         let mounted = true;
 
@@ -200,6 +222,7 @@ export function useMakeupPreview(templateId = null) {
             window.removeEventListener('resize', resizeCanvas);
         };
     }, [initCamera, initMediaPipe, loadMakeupTemplate, templateId, resizeCanvas]);
+
     useEffect(() => {
         if (isInitialized && isCameraReady) {
             resizeCanvas();
@@ -210,29 +233,48 @@ export function useMakeupPreview(templateId = null) {
             stopRendering();
         };
     }, [isInitialized, isCameraReady, resizeCanvas, startRendering, stopRendering]);
+
     useEffect(() => {
         if (isInitialized && templateId) {
             loadMakeupTemplate(templateId);
         }
     }, [templateId, isInitialized, loadMakeupTemplate]);
+
     useEffect(() => {
         return () => {
-            // Stop rendering
+            // Stop rendering loop
             if (animationFrameRef.current) {
                 cancelAnimationFrame(animationFrameRef.current);
+                animationFrameRef.current = null;
             }
+
+            // Stop camera stream
+            stopCamera();
 
             // Cleanup renderer
             if (rendererRef.current) {
-                rendererRef.current.dispose();
+                try {
+                    rendererRef.current.dispose();
+                } catch (e) {
+                    console.warn('Error disposing renderer:', e);
+                }
+                rendererRef.current = null;
             }
 
             // Cleanup MediaPipe
             if (mediaPipeRef.current) {
-                mediaPipeRef.current.dispose();
+                try {
+                    mediaPipeRef.current.dispose();
+                } catch (e) {
+                    console.warn('Error disposing MediaPipe:', e);
+                }
+                mediaPipeRef.current = null;
             }
+
+            optimizerRef.current = null;
+            currentLandmarksRef.current = null;
         };
-    }, []);
+    }, [stopCamera]);
 
     return {
         videoRef,

@@ -1,0 +1,484 @@
+<?xml version="1.0" ?>
+<makeup content_version="1.0" version="61.0">
+	<eye_shadow>
+		<patterns>
+			<pattern guid="pattern_eyeshadow_250307_Spring_free_01" thumbnail="eyeshadow/thumb/pattern_eyeshadow_250307_Spring_free_01.jpg">
+				<pattern_mask>
+					<mask eyebottom="459,380" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/eyeshadow_250307_Spring_free_01_a.png"/>
+					<mask eyebottom="459,380" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/eyeshadow_250307_Spring_free_01_b.png"/>
+					<mask eyebottom="459,380" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/eyeshadow_250307_Spring_free_01_c.png"/>
+					<mask eyebottom="459,380" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/eyeshadow_250307_Spring_free_01_d.png"/>
+					<mask eyebottom="459,380" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/eyeshadow_250307_Spring_free_01_e.png"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+		<colors>
+			<color>00ffa17f</color>
+			<color>00c7734c</color>
+			<color>00893b27</color>
+			<color>00ffa2a2</color>
+			<color>00fcd2b1</color>
+		</colors>
+		<palettes>
+			<palette guid="palette_eyeshadow_250307_Spring_free_01">
+				<colors>
+					<color>00ffa17f</color>
+					<color>00c7734c</color>
+					<color>00893b27</color>
+					<color>00ffa2a2</color>
+					<color>00fcd2b1</color>
+				</colors>
+				<shimmer_intensities>
+					<shimmer_intensity>50</shimmer_intensity>
+					<shimmer_intensity>0</shimmer_intensity>
+					<shimmer_intensity>0</shimmer_intensity>
+					<shimmer_intensity>70</shimmer_intensity>
+					<shimmer_intensity>80</shimmer_intensity>
+				</shimmer_intensities>
+				<color_is_shimmers>
+					<color_is_shimmer>1</color_is_shimmer>
+					<color_is_shimmer>0</color_is_shimmer>
+					<color_is_shimmer>0</color_is_shimmer>
+					<color_is_shimmer>1</color_is_shimmer>
+					<color_is_shimmer>1</color_is_shimmer>
+				</color_is_shimmers>
+				<patterns>
+					<pattern_guid color_intensities="25,20,30,35,35">pattern_eyeshadow_250307_Spring_free_01</pattern_guid>
+                
+				</patterns>
+			</palette>
+		</palettes>
+	</eye_shadow>
+	<eye_brow>
+		<palettes>
+			<palette guid="palette_eyebrow_250307_Spring_free_01">
+				<colors>
+					<color>005D3932</color>
+				</colors>
+		    
+			</palette>
+        
+		</palettes>
+		<patterns>
+			<pattern guid="pattern_eyebrow_250307_Spring_free_01" texture_supported_mode="3D" thumbnail="eyebrow/thumb/pattern_eyebrow_250307_Spring_free_01.jpg">
+             
+				<eyebrow_mode_3d type="ART_DESIGN"/>
+				<pattern_mask>
+					  
+                        
+					<mask browcurvature="-30" browdefinition="20" browhead3d="17,98" browheadlocation="0" browpositionx="30" browpositiony="30" browtail3d="235,97" browtaillocation="0" browthickness="0" browtop3d="155,69" feathersrc3d="eyebrow/eyebrow_250307_Spring_free_01_f.png" lowerhead3d="53,107" lowermiddle3d="154,88" lowertail3d="192,90" oversizedratio="100" shapesrc3d="eyebrow/eyebrow_250307_Spring_free_01.png" upperhead3d="63,63" uppermiddle3d="154,48" uppertail3d="199,61"/>
+					    
+ 	                
+				</pattern_mask>
+				 
+             
+			</pattern>
+						 
+		</patterns>
+	</eye_brow>
+	<eye_lash>
+		<palettes>
+			<palette guid="eyelash_palette_01_01" thumbnail="">
+                
+				<colors>
+                    
+					<color>00000000</color>
+                
+				</colors>
+            
+			</palette>
+            
+		</palettes>
+		<patterns>
+			<pattern guid="pattern_eyelash_250307_Spring_free_01" thumbnail="eyelash/thumb/pattern_eyelash_250307_Spring_free_01.jpg">
+				<pattern_mask>
+					<mask eyebottom="458,362" eyeleft="284,287" eyeright="633,287" eyetop="458,213" position="upper" src="eyelash/eyelash_250307_Spring_free_01_a.png"/>
+					<mask eyebottom="458,362" eyeleft="284,287" eyeright="633,287" eyetop="458,213" position="lower" src="eyelash/eyelash_250307_Spring_free_01_b.png"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+	</eye_lash>
+	<lipstick>
+		<palettes>
+			<palette guid="lipstick_palette_250307_Spring_free_01">
+				<colors>
+					<level_color>643500ef3b4b</level_color>
+					<level_color>643500f07a7a</level_color>
+				</colors>
+				<styles>
+					 
+                    
+					<style_guid feather_strength="50" inner_ratio="50">style_lipstick_01</style_guid>
+                
+				</styles>
+			</palette>
+		</palettes>
+		<patterns>
+			<pattern guid="patten_lipstick_01" thumbnail="lipstick/thumb/patten_lipstick_01.png">
+				<lipstick_profile type="THICK"/>
+			</pattern>
+		</patterns>
+	</lipstick>
+	<eye_contact>
+		<patterns>
+			<pattern guid="pattern_eyecontact_250307_Spring_free_01" thumbnail="eyecontact/thumb/pattern_eyecontact_250307_Spring_free_01.png">
+                
+				<pattern_mask>
+                    
+					<mask imagesrc="eyecontact/eyecontact_250307_Spring_free_01.png" src="eyecontact/eyecontact_250307_Spring_free_01.mask.png"/>
+                
+				</pattern_mask>
+            
+			</pattern>
+        
+		</patterns>
+		<palettes>
+			<palette guid="palette_eyecontact_250307_Spring_free_01">
+              
+				<colors>
+					<color>00755830</color>
+               
+				</colors>
+            
+			</palette>
+        
+		</palettes>
+	</eye_contact>
+	<hair_dye>
+		<palettes>
+			<palette guid="hairdye_palette_250307_Spring_free_01">
+				<colors>
+					<color>003a2e27</color>
+					<color>00352121</color>
+				</colors>
+				<supported_patterns>
+					<pattern pattern_guid="hairdye_pattern_01">
+						<color_references>
+							<color_reference color_intensity="50" palette_color_index="0" shine_intensity="70"/>
+							<color_reference color_intensity="50" palette_color_index="1" shine_intensity="70"/>
+						</color_references>
+					</pattern>
+				</supported_patterns>
+			</palette>
+		</palettes>
+	</hair_dye>
+	<blush>
+		<palettes>
+			<palette guid="blush_palette_250307_Spring_free_01">
+				<colors>
+					<color>00ff7688</color>
+				</colors>
+			</palette>
+		</palettes>
+		<patterns>
+			<pattern guid="pattern_blush_250307_Spring_free_01" thumbnail="blush/thumb/pattern_blush_250307_Spring_free_01.jpg">
+				<pattern_mask>
+					<mask position="left" src="blush/blush_250307_Spring_free_01_l.png"/>
+					<mask position="right" src="blush/blush_250307_Spring_free_01_r.png"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+	</blush>
+	<eye_line>
+		<palettes>
+			<palette guid="palette_eyeline_250307_Spring_free_01">
+				<colors>
+					<color>00693d2d</color>
+				</colors>
+			</palette>
+		</palettes>
+		<patterns>
+			<pattern guid="pattern_eyeline_250307_Spring_free_01" thumbnail="eyeline/thumb/pattern_eyeline_250307_Spring_free_01.jpg">
+				<pattern_mask>
+					<mask eyebottom="458,362" eyeleft="284,287" eyeright="633,287" eyetop="458,213" position="upper" src="eyeline/eyeline_250307_Spring_free_01_a.png"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+	</eye_line>
+	<face_contour_pattern>
+		<patterns>
+			<pattern guid="face_contour_pattern_250307_Spring_free_01" texture_supported_mode="ALL" thumbnail="face_contour_pattern/thumb/face_contour_pattern_250307_Spring_free_01.jpg">
+				<pattern_mask>
+					<mask modelanchorlefttop="216,257" position="highlight" src="face_contour_pattern/highlight_2250307_Spring_free_01.jpg"/>
+					<mask modelanchorlefttop="190,156" position="contour" src="face_contour_pattern/contour_250307_Spring_free_01.jpg"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+		<palettes>
+			<palette guid="face_contour_palette_250307_Spring_free_01">
+				<colors>
+					<color>00f5d6b7</color>
+					<color>00c06d50</color>
+				</colors>
+				<patterns>
+					<pattern_guid color_intensities="20,50">face_contour_pattern_250307_Spring_free_01</pattern_guid>
+                
+				</patterns>
+			</palette>
+		</palettes>
+	</face_contour_pattern>
+	<skin_toner>
+		<colors>
+			<color>00ffcdb8</color>
+		</colors>
+	</skin_toner>
+	<presets>
+		<preset guid="250307_Spring_free_01" look_type="Natural" supported_mode="All" thumbnail="thumb/250307_Spring_free_01_inplace_thumb.jpg">
+			<description>
+                
+				<def> </def>
+            
+			</description>
+			<effect>
+				 
+				<effect_type>eye_shadow</effect_type>
+				<patterns>
+					<pattern pattern_guid="pattern_eyeshadow_250307_Spring_free_01" pattern_mask_index="0">
+						<palettes>
+							<palette palette_color_index="0" palette_guid="palette_eyeshadow_250307_Spring_free_01"/>
+						</palettes>
+					</pattern>
+					<pattern pattern_guid="pattern_eyeshadow_250307_Spring_free_01" pattern_mask_index="1">
+						<palettes>
+							<palette palette_color_index="1" palette_guid="palette_eyeshadow_250307_Spring_free_01"/>
+						</palettes>
+					</pattern>
+					<pattern pattern_guid="pattern_eyeshadow_250307_Spring_free_01" pattern_mask_index="2">
+						<palettes>
+							<palette palette_color_index="2" palette_guid="palette_eyeshadow_250307_Spring_free_01"/>
+						</palettes>
+					</pattern>
+					<pattern pattern_guid="pattern_eyeshadow_250307_Spring_free_01" pattern_mask_index="3">
+						<palettes>
+							<palette palette_color_index="3" palette_guid="palette_eyeshadow_250307_Spring_free_01"/>
+						</palettes>
+					</pattern>
+					<pattern pattern_guid="pattern_eyeshadow_250307_Spring_free_01" pattern_mask_index="4">
+						<palettes>
+							<palette palette_color_index="4" palette_guid="palette_eyeshadow_250307_Spring_free_01"/>
+						</palettes>
+					</pattern>
+				</patterns>
+				<colors>
+					<color>00ffa17f</color>
+					<color>00c7734c</color>
+					<color>00893b27</color>
+					<color>00ffa2a2</color>
+					<color>00fcd2b1</color>
+				</colors>
+				<color_intensities>
+					<color_intensity>25</color_intensity>
+					<color_intensity>20</color_intensity>
+					<color_intensity>30</color_intensity>
+					<color_intensity>35</color_intensity>
+					<color_intensity>35</color_intensity>
+				</color_intensities>
+				<shimmer_intensities>
+					<shimmer_intensity>50</shimmer_intensity>
+					<shimmer_intensity>0</shimmer_intensity>
+					<shimmer_intensity>0</shimmer_intensity>
+					<shimmer_intensity>70</shimmer_intensity>
+					<shimmer_intensity>80</shimmer_intensity>
+				</shimmer_intensities>
+				<color_is_shimmers>
+					<color_is_shimmer>1</color_is_shimmer>
+					<color_is_shimmer>0</color_is_shimmer>
+					<color_is_shimmer>0</color_is_shimmer>
+					<color_is_shimmer>1</color_is_shimmer>
+					<color_is_shimmer>1</color_is_shimmer>
+				</color_is_shimmers>
+			</effect>
+			<effect>
+				 
+				<colors>
+					<color>005D3932</color>
+				</colors>
+				<browpositiony>30</browpositiony>
+				<palette_guid>palette_eyebrow_250307_Spring_free_01</palette_guid>
+				<pattern_guid>pattern_eyebrow_250307_Spring_free_01</pattern_guid>
+				<color_intensities>
+					<color_intensity>20</color_intensity>
+				</color_intensities>
+				<browthickness>0</browthickness>
+				<effect_type>eye_brow</effect_type>
+				<browpositionx>30</browpositionx>
+				<browcurvature>-30</browcurvature>
+				<browdefinition>20</browdefinition>
+				<hidden_intensity>10</hidden_intensity>
+			</effect>
+			<effect>
+				 
+				<effect_type>eye_lash</effect_type>
+				<color_intensities>
+					<color_intensity>100</color_intensity>
+				</color_intensities>
+				<pattern_guid>pattern_eyelash_250307_Spring_free_01</pattern_guid>
+				<colors>
+					<color>00000000</color>
+				</colors>
+				<palette_guid>eyelash_palette_01_01</palette_guid>
+			</effect>
+			<effect>
+				 
+				<colors>
+					<level_color>643500ef3b4b</level_color>
+					<level_color>643500f07a7a</level_color>
+				</colors>
+				<palette_guid>lipstick_palette_250307_Spring_free_01</palette_guid>
+				<pattern_guid>patten_lipstick_01</pattern_guid>
+				<color_intensities>
+					<color_intensity>50</color_intensity>
+				</color_intensities>
+				<feather_strength>50</feather_strength>
+				<effect_type>lipstick</effect_type>
+				<inner_ratio>50</inner_ratio>
+			</effect>
+			<effect>
+				 
+				<effect_type>eye_contact</effect_type>
+				<color_intensities>
+					<color_intensity>40</color_intensity>
+				</color_intensities>
+				<pattern_guid>pattern_eyecontact_250307_Spring_free_01</pattern_guid>
+				<colors>
+					<color>00755830</color>
+				</colors>
+				<palette_guid>palette_eyecontact_250307_Spring_free_01</palette_guid>
+				<radius>0</radius>
+			</effect>
+			<effect>
+				 
+				<colors>
+					<color>003a2e27</color>
+					<color>00352121</color>
+				</colors>
+				<ombre_range>0.5</ombre_range>
+				<color_intensities>
+					<color_intensity>50</color_intensity>
+					<color_intensity>50</color_intensity>
+				</color_intensities>
+				<effect_type>hair_dye</effect_type>
+				<patterns>
+					<pattern pattern_guid="hairdye_pattern_01" pattern_mask_index="0">
+						<palettes>
+							<palette palette_color_index="0" palette_guid="hairdye_palette_250307_Spring_free_01"/>
+							<palette palette_color_index="1" palette_guid="hairdye_palette_250307_Spring_free_01"/>
+						</palettes>
+					</pattern>
+				</patterns>
+				<shine_intensities>
+					<shine_intensity>70</shine_intensity>
+					<shine_intensity>70</shine_intensity>
+				</shine_intensities>
+				<ombre_line_offset>-0.209754467010498</ombre_line_offset>
+			</effect>
+			<effect>
+				 
+				<effect_type>effect_filter</effect_type>
+				<item_guid>4bf69ecc-4e33-42d9-837b-c2bdbc43ae3b</item_guid>
+				<pack_guid>c772069b-c9b6-4bff-acb3-89ef271eb5fe</pack_guid>
+				<intensity>20</intensity>
+			</effect>
+			<effect>
+				 
+				<effect_type>blush</effect_type>
+				<color_intensities>
+					<color_intensity>35</color_intensity>
+				</color_intensities>
+				<pattern_guid>pattern_blush_250307_Spring_free_01</pattern_guid>
+				<colors>
+					<color>00ff7688</color>
+				</colors>
+				<palette_guid>blush_palette_250307_Spring_free_01</palette_guid>
+			</effect>
+			<effect>
+				 
+				<effect_type>eye_line</effect_type>
+				<color_intensities>
+					<color_intensity>50</color_intensity>
+				</color_intensities>
+				<pattern_guid>pattern_eyeline_250307_Spring_free_01</pattern_guid>
+				<colors>
+					<color>00693d2d</color>
+				</colors>
+				<palette_guid>palette_eyeline_250307_Spring_free_01</palette_guid>
+			</effect>
+			<effect>
+				 
+				<effect_type>face_contour_pattern</effect_type>
+				<color_intensities>
+					<color_intensity>20</color_intensity>
+					<color_intensity>50</color_intensity>
+				</color_intensities>
+				<patterns>
+					<pattern pattern_guid="face_contour_pattern_250307_Spring_free_01" pattern_mask_index="0">
+						<palettes>
+							<palette palette_color_index="0" palette_guid="face_contour_palette_250307_Spring_free_01"/>
+						</palettes>
+					</pattern>
+					<pattern pattern_guid="face_contour_pattern_250307_Spring_free_01" pattern_mask_index="1">
+						<palettes>
+							<palette palette_color_index="1" palette_guid="face_contour_palette_250307_Spring_free_01"/>
+						</palettes>
+					</pattern>
+				</patterns>
+				<global_intensity>50</global_intensity>
+				<colors>
+					<color>00f5d6b7</color>
+					<color>00c06d50</color>
+				</colors>
+			</effect>
+			<effect>
+				 
+				<colors>
+					<color>00ffcdb8</color>
+				</colors>
+				<color_intensities>
+					<color_intensity>10</color_intensity>
+				</color_intensities>
+				<effect_type>skin_toner</effect_type>
+			</effect>
+			<effect>
+				<intensity>-20</intensity>
+				<effect_type>lip_width</effect_type>
+			</effect>
+			<effect>
+				<intensity>20</intensity>
+				<effect_type>face_jaw</effect_type>
+			</effect>
+			<effect>
+				<intensity>20</intensity>
+				<effect_type>eye_enlarge</effect_type>
+			</effect>
+			<effect>
+				<intensity>-20</intensity>
+				<effect_type>face_reshaper</effect_type>
+			</effect>
+			<effect>
+				<intensity>35</intensity>
+				<effect_type>eye_height</effect_type>
+			</effect>
+			<name>
+				<prt>Pêssego</prt>
+				<fra>Sorbet Pêche</fra>
+				<jpn>ピーチソルベ</jpn>
+				<tur>Şeftalili</tur>
+				<esp>Melocotón</esp>
+				<def>Peach Sorbet</def>
+				<deu>Pfirsich Sorbet</deu>
+				<ita>Fresco Pesca</ita>
+				<idn>Peach Sorbet</idn>
+				<ara>شربات الخوخ</ara>
+				<chs>桃子冰激凌</chs>
+				<cht>奶油杏桃</cht>
+				<enu>Peach Sorbet</enu>
+				<rus>Персики</rus>
+				<kor>피치샤베트</kor>
+				<mys>Peach Sorbet</mys>
+				<tha>พีชเชอร์เบท</tha>
+				<nld>Perziksorbet</nld>
+			</name>
+		</preset>
+		   
+	</presets>
+</makeup>

@@ -1,0 +1,561 @@
+<?xml version="1.0" ?>
+<makeup content_version="1.0" version="61.0">
+	<eye_brow>
+		<palettes>
+			<palette guid="palette_eyebrow_250408_Piercing_01">
+                
+				<colors>
+                    
+					<color>00735c57</color>
+                
+				</colors>
+            
+			</palette>
+        
+		</palettes>
+		<patterns>
+			<pattern guid="pattern_eyebrow_210722_original_eyebrow_3D" texture_supported_mode="3D" thumbnail="eyebrow/thumb/pattern_eyebrow_210722_original_eyebrow_3D.jpg">
+				<eyebrow_mode_3d type="ORIGINAL"/>
+				<pattern_mask>
+					<mask browcurvature="0" browdefinition="0" browhead3d="19,94" browpositionx="0" browpositiony="0" browtail3d="217,84" browthickness="0" browtop3d="149,61" lowerhead3d="63,99" lowermiddle3d="153,75" lowertail3d="189,87" oversizedratio="0" shapesrc3d="eyebrow/eyebrow_210722_original_eyebrow_3D.png" upperhead3d="55,67" uppermiddle3d="151,48" uppertail3d="193,63"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+	</eye_brow>
+	<eye_lash>
+		<palettes>
+			<palette guid="palette_eyelash_250307_Spring_03" thumbnail="">
+				 
+ 				
+				<colors>
+					 
+					<color>001d0e05</color>
+					 
+ 				
+				</colors>
+				 
+			</palette>
+		</palettes>
+		<patterns>
+			<pattern guid="patten_eyelash_250408_Piercing_01" thumbnail="eyelash/thumb/patten_eyelash_250408_Piercing_01.jpg">
+				<pattern_mask>
+					<mask eyebottom="458,362" eyeleft="284,287" eyeright="633,287" eyetop="458,213" position="upper" src="eyelash/eyelash_250408_Piercing_01_a.png"/>
+					<mask eyebottom="458,362" eyeleft="284,287" eyeright="633,287" eyetop="458,213" position="lower" src="eyelash/eyelash_250408_Piercing_01_b.png"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+	</eye_lash>
+	<eye_line>
+		<palettes>
+			<palette guid="palette_eyeline_250408_Piercing_01">
+				<colors>
+					<color>00080604</color>
+				</colors>
+			</palette>
+		</palettes>
+		<patterns>
+			<pattern guid="pattern_eyeline_250408_Piercing_01" thumbnail="eyeline/thumb/pattern_eyeline_250408_Piercing_01.jpg">
+				<pattern_mask>
+					<mask eyebottom="458,362" eyeleft="284,287" eyeright="633,287" eyetop="458,213" position="upper" src="eyeline/eyeline_250408_Piercing_01_a.png"/>
+					<mask eyebottom="458,362" eyeleft="284,287" eyeright="633,287" eyetop="458,213" position="lower" src="eyeline/eyeline_250408_Piercing_01_b.png"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+	</eye_line>
+	<eye_shadow>
+		<patterns>
+			<pattern guid="pattern_eyeshadow_250408_Piercing_01" thumbnail="eyeshadow/thumb/pattern_eyeshadow_250408_Piercing_01.jpg">
+				<pattern_mask>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/eyeshadow_250408_Piercing_01_a.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/eyeshadow_250408_Piercing_01_b.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/eyeshadow_250408_Piercing_01_c.png"/>
+					<mask eyebottom="459,363" eyeleft="285,288" eyeright="633,288" eyetop="459,213" src="eyeshadow/eyeshadow_250408_Piercing_01_d.png"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+		<colors>
+			<color>007e3022</color>
+			<color>00462e15</color>
+			<color>00522517</color>
+			<color>00e1a6a6</color>
+		</colors>
+		<palettes>
+			<palette guid="palette_eyeshadow_250408_Piercing_01">
+				<colors>
+					<color>007e3022</color>
+					<color>00462e15</color>
+					<color>00522517</color>
+					<color>00e1a6a6</color>
+				</colors>
+				<shimmer_intensities>
+					<shimmer_intensity>20</shimmer_intensity>
+					<shimmer_intensity>20</shimmer_intensity>
+					<shimmer_intensity>50</shimmer_intensity>
+					<shimmer_intensity>50</shimmer_intensity>
+				</shimmer_intensities>
+				<color_is_shimmers>
+					<color_is_shimmer>1</color_is_shimmer>
+					<color_is_shimmer>1</color_is_shimmer>
+					<color_is_shimmer>1</color_is_shimmer>
+					<color_is_shimmer>1</color_is_shimmer>
+				</color_is_shimmers>
+				<patterns>
+					<pattern_guid color_intensities="50,40,50,50">pattern_eyeshadow_250408_Piercing_01</pattern_guid>
+                
+				</patterns>
+			</palette>
+		</palettes>
+	</eye_shadow>
+	<face_contour_pattern>
+		<patterns>
+			<pattern guid="face_contour_pattern_07" texture_supported_mode="ALL" thumbnail="face_contour_pattern/face_contour_pattern_07/thumb.jpg">
+                
+				<pattern_mask>
+                    
+					<mask modelanchorlefttop="251,246" position="highlight" src="face_contour_pattern/face_contour_pattern_07/highlight.jpg"/>
+                    
+					<mask modelanchorlefttop="221,438" position="contour" src="face_contour_pattern/face_contour_pattern_07/contour.jpg"/>
+                
+				</pattern_mask>
+            
+			</pattern>
+            
+			<pattern guid="face_contour_pattern_08" texture_supported_mode="ALL" thumbnail="face_contour_pattern/face_contour_pattern_08/thumb.jpg">
+                
+				<pattern_mask>
+                    
+					<mask modelanchorlefttop="251,232" position="highlight" src="face_contour_pattern/face_contour_pattern_08/highlight.jpg"/>
+                    
+					<mask modelanchorlefttop="185,240" position="contour" src="face_contour_pattern/face_contour_pattern_08/contour.jpg"/>
+                
+				</pattern_mask>
+            
+			</pattern>
+            
+			<pattern guid="face_contour_pattern_09" texture_supported_mode="ALL" thumbnail="face_contour_pattern/face_contour_pattern_09/thumb.jpg">
+                
+				<pattern_mask>
+                    
+					<mask modelanchorlefttop="285,399" position="highlight" src="face_contour_pattern/face_contour_pattern_09/highlight.jpg"/>
+                    
+					<mask modelanchorlefttop="203,222" position="contour" src="face_contour_pattern/face_contour_pattern_09/contour.jpg"/>
+                
+				</pattern_mask>
+            
+			</pattern>
+            
+			<pattern guid="face_contour_pattern_10" texture_supported_mode="ALL" thumbnail="face_contour_pattern/face_contour_pattern_10/thumb.jpg">
+                
+				<pattern_mask>
+                    
+					<mask modelanchorlefttop="252,319" position="highlight" src="face_contour_pattern/face_contour_pattern_10/highlight.jpg"/>
+                    
+					<mask modelanchorlefttop="211,227" position="contour" src="face_contour_pattern/face_contour_pattern_10/contour.jpg"/>
+                
+				</pattern_mask>
+            
+			</pattern>
+            
+			<pattern guid="face_contour_pattern_11" texture_supported_mode="ALL" thumbnail="face_contour_pattern/face_contour_pattern_11/thumb.jpg">
+                
+				<pattern_mask>
+                    
+					<mask modelanchorlefttop="291,372" position="highlight" src="face_contour_pattern/face_contour_pattern_11/highlight.jpg"/>
+                    
+					<mask modelanchorlefttop="195,235" position="contour" src="face_contour_pattern/face_contour_pattern_11/contour.jpg"/>
+                
+				</pattern_mask>
+            
+			</pattern>
+            
+            
+		</patterns>
+		<palettes>
+			<palette guid="palettes_face_contour_palette_black_01">
+                
+				<colors>
+                    
+					<color>00ffebde</color>
+                    
+					<color>00a16340</color>
+                
+				</colors>
+                
+				<patterns>
+                    
+					<pattern_guid color_intensities="70,40">face_contour_pattern_07</pattern_guid>
+                    
+					<pattern_guid color_intensities="70,40">face_contour_pattern_08</pattern_guid>
+                    
+					<pattern_guid color_intensities="70,40">face_contour_pattern_09</pattern_guid>
+                    
+					<pattern_guid color_intensities="70,40">face_contour_pattern_10</pattern_guid>
+                    
+					<pattern_guid color_intensities="70,40">face_contour_pattern_11</pattern_guid>
+                
+				</patterns>
+            
+			</palette>
+            
+            
+		</palettes>
+	</face_contour_pattern>
+	<lipstick>
+		<palettes>
+			<palette guid="palette_lipstick_250408_Piercing_01">
+				<colors>
+					<level_color>513400aa4547</level_color>
+				</colors>
+			</palette>
+		</palettes>
+		<patterns>
+			<pattern guid="patten_lipstick_02" thumbnail="lipstick/thumb/patten_lipstick_02.png">
+				<lipstick_profile type="BRIGHT"/>
+			</pattern>
+		</patterns>
+	</lipstick>
+	<blush>
+		<palettes>
+			<palette guid="palette_blush_250408_Piercing_01">
+                
+				<colors>
+                    
+					<color>00c47d78</color>
+                
+				</colors>
+            
+			</palette>
+	    
+		</palettes>
+		<patterns>
+			<pattern guid="patten_blush_151130_elle_01" thumbnail="blush/thumb/patten_blush_151130_elle_01.jpg">
+				<pattern_mask>
+					<mask position="left" src="blush/151130_elle_01_l.png"/>
+					<mask position="right" src="blush/151130_elle_01_r.png"/>
+				</pattern_mask>
+			</pattern>
+		</patterns>
+	</blush>
+	<hair_dye>
+		<palettes>
+			<palette color_intensities="47" guid="hairdye_palette_250307_Spring_03" hair_dye_mode="salon" shine_intensities="0">
+                
+				<colors>
+                    
+					<color>00443e37</color>
+                
+				</colors>
+            
+			</palette>
+        
+		</palettes>
+	</hair_dye>
+	<face_art>
+		<patterns>
+			<pattern face_art_layer2="1" guid="pattern_faceart_250408_Piercing_01" texture_supported_mode="ALL" thumbnail="faceart/thumb/pattern_faceart_250408_Piercing_01.jpg">
+                
+				<pattern_mask>
+                    
+					<mask modelanchorlefttop="279,569" src="faceart/faceart_250408_Piercing_01.png"/>
+                
+				</pattern_mask>
+            
+			</pattern>
+        
+		</patterns>
+	</face_art>
+	<eye_contact>
+		<patterns>
+			<pattern guid="patten_eyecontact_02" thumbnail="eyecontact/thumb/patten_eyecontact_02.png">
+                
+				<pattern_mask>
+                    
+					<mask defaultcolorguid="eyecontact_palette_01_09" imagesrc="eyecontact/Eyecontact_02.png" src="eyecontact/Eyecontact_02_mask.png"/>
+                
+				</pattern_mask>
+            
+			</pattern>
+            
+		</patterns>
+		<palettes>
+			<palette guid="palette_eyecontact_250408_Piercing_01">
+				<colors>
+					<color>00b2621c</color>
+				</colors>
+			</palette>
+		</palettes>
+	</eye_contact>
+	<presets>
+		<preset guid="250408_Piercing_01" is_premium="true" look_type="Natural" supported_mode="All" thumbnail="thumb/250408_Piercing_01_inplace_thumb.jpg">
+      
+			<effect>
+				  
+				<browpositiony>0</browpositiony>
+				<colors>
+					<color>00735c57</color>
+				</colors>
+				<browcurvature>0</browcurvature>
+				<palette_guid>palette_eyebrow_250408_Piercing_01</palette_guid>
+				<pattern_guid>pattern_eyebrow_210722_original_eyebrow_3D</pattern_guid>
+				<color_intensities>
+					<color_intensity>88</color_intensity>
+				</color_intensities>
+				<browthickness>0</browthickness>
+				<effect_type>eye_brow</effect_type>
+				<browpositionx>0</browpositionx>
+				<hidden_intensity>0</hidden_intensity>
+				<browdefinition>0</browdefinition>
+			</effect>
+			<effect>
+				<effect_type>eye_lash</effect_type>
+				<color_intensities>
+					<color_intensity>90</color_intensity>
+				</color_intensities>
+				<pattern_guid>patten_eyelash_250408_Piercing_01</pattern_guid>
+				<colors>
+					<color>001d0e05</color>
+				</colors>
+				<palette_guid>palette_eyelash_250307_Spring_03</palette_guid>
+			</effect>
+			<effect>
+				  
+				<effect_type>eye_line</effect_type>
+				<color_intensities>
+					<color_intensity>15</color_intensity>
+				</color_intensities>
+				<colors>
+					<color>00080604</color>
+				</colors>
+				<pattern_guid>pattern_eyeline_250408_Piercing_01</pattern_guid>
+				<palette_guid>palette_eyeline_250408_Piercing_01</palette_guid>
+			</effect>
+			<effect>
+				 
+				<shimmer_intensities>
+					<shimmer_intensity>20</shimmer_intensity>
+					<shimmer_intensity>20</shimmer_intensity>
+					<shimmer_intensity>50</shimmer_intensity>
+					<shimmer_intensity>50</shimmer_intensity>
+				</shimmer_intensities>
+				<color_intensities>
+					<color_intensity>50</color_intensity>
+					<color_intensity>40</color_intensity>
+					<color_intensity>50</color_intensity>
+					<color_intensity>50</color_intensity>
+				</color_intensities>
+				<colors>
+					<color>007e3022</color>
+					<color>00462e15</color>
+					<color>00522517</color>
+					<color>00e1a6a6</color>
+				</colors>
+				<patterns>
+					<pattern pattern_guid="pattern_eyeshadow_250408_Piercing_01" pattern_mask_index="0">
+						<palettes>
+							<palette palette_color_index="0" palette_guid="palette_eyeshadow_250408_Piercing_01"/>
+						</palettes>
+					</pattern>
+					<pattern pattern_guid="pattern_eyeshadow_250408_Piercing_01" pattern_mask_index="1">
+						<palettes>
+							<palette palette_color_index="1" palette_guid="palette_eyeshadow_250408_Piercing_01"/>
+						</palettes>
+					</pattern>
+					<pattern pattern_guid="pattern_eyeshadow_250408_Piercing_01" pattern_mask_index="2">
+						<palettes>
+							<palette palette_color_index="2" palette_guid="palette_eyeshadow_250408_Piercing_01"/>
+						</palettes>
+					</pattern>
+					<pattern pattern_guid="pattern_eyeshadow_250408_Piercing_01" pattern_mask_index="3">
+						<palettes>
+							<palette palette_color_index="3" palette_guid="palette_eyeshadow_250408_Piercing_01"/>
+						</palettes>
+					</pattern>
+				</patterns>
+				<effect_type>eye_shadow</effect_type>
+				<color_is_shimmers>
+					<color_is_shimmer>1</color_is_shimmer>
+					<color_is_shimmer>1</color_is_shimmer>
+					<color_is_shimmer>1</color_is_shimmer>
+					<color_is_shimmer>1</color_is_shimmer>
+				</color_is_shimmers>
+			</effect>
+			<effect>
+				 
+				<global_intensity>50</global_intensity>
+				<color_intensities>
+					<color_intensity>26</color_intensity>
+					<color_intensity>12</color_intensity>
+				</color_intensities>
+				<patterns>
+					<pattern pattern_guid="face_contour_pattern_07" pattern_mask_index="0">
+						<palettes>
+							<palette palette_color_index="0" palette_guid="palettes_face_contour_palette_black_01"/>
+						</palettes>
+					</pattern>
+					<pattern pattern_guid="face_contour_pattern_07" pattern_mask_index="1">
+						<palettes>
+							<palette palette_color_index="1" palette_guid="palettes_face_contour_palette_black_01"/>
+						</palettes>
+					</pattern>
+				</patterns>
+				<effect_type>face_contour_pattern</effect_type>
+				<colors>
+					<color>00ffc29b</color>
+					<color>00a56643</color>
+				</colors>
+			</effect>
+			<effect>
+				 
+				<effect_type>lipstick</effect_type>
+				<color_intensities>
+					<color_intensity>45</color_intensity>
+				</color_intensities>
+				<colors>
+					<level_color>513400aa4547</level_color>
+				</colors>
+				<pattern_guid>patten_lipstick_02</pattern_guid>
+				<palette_guid>palette_lipstick_250408_Piercing_01</palette_guid>
+			</effect>
+			<effect>
+				   
+				<effect_type>blush</effect_type>
+				<color_intensities>
+					<color_intensity>40</color_intensity>
+				</color_intensities>
+				<colors>
+					<color>00c47d78</color>
+				</colors>
+				<pattern_guid>patten_blush_151130_elle_01</pattern_guid>
+				<palette_guid>palette_blush_250408_Piercing_01</palette_guid>
+			</effect>
+            
+			<effect>
+				   
+				<colors>
+					<color>00443e37</color>
+				</colors>
+				<ombre_range>0.4000000059604645</ombre_range>
+				<color_intensities>
+					<color_intensity>47</color_intensity>
+				</color_intensities>
+				<patterns>
+					<pattern pattern_guid="hairdye_pattern_one_color_full" pattern_mask_index="0">
+						<palettes>
+							<palette palette_color_index="0" palette_guid="hairdye_palette_250307_Spring_03"/>
+						</palettes>
+					</pattern>
+				</patterns>
+				<effect_type>hair_dye</effect_type>
+				<shine_intensities>
+					<shine_intensity>0</shine_intensity>
+				</shine_intensities>
+				<ombre_line_offset>0</ombre_line_offset>
+            
+			</effect>
+			<effect>
+				 
+				<effect_type>effect_filter</effect_type>
+				<item_guid>pf_effect_231020_movie_06</item_guid>
+				<pack_guid>pf_effect_231020_movie</pack_guid>
+				<intensity>34</intensity>
+			</effect>
+			<effect>
+				 
+				<effect_type>earrings</effect_type>
+				<pattern_guid>pattern_earrings_250408_Piercing_01</pattern_guid>
+				<colored_mask_index>0</colored_mask_index>
+				<position>both</position>
+			</effect>
+			<effect>
+				 
+				<pattern_guid>pattern_faceart_250408_Piercing_01</pattern_guid>
+				<effect_type>face_art</effect_type>
+			</effect>
+			<effect>
+				 
+				<effect_type>eye_contact</effect_type>
+				<palette_guid>palette_eyecontact_250408_Piercing_01</palette_guid>
+				<colors>
+					<color>00b2621c</color>
+				</colors>
+				<pattern_guid>patten_eyecontact_02</pattern_guid>
+				<color_intensities>
+					<color_intensity>40</color_intensity>
+				</color_intensities>
+				<radius>0</radius>
+			</effect>
+			<effect>
+				  
+				<intensity>-2</intensity>
+				<effect_type>face_reshaper</effect_type>
+			</effect>
+			<effect>
+				  
+				<intensity>2</intensity>
+				<effect_type>face_jaw</effect_type>
+			</effect>
+			<effect>
+				  
+				<effect_type>eye_enlarge</effect_type>
+				<intensity>20</intensity>
+			</effect>
+			<effect>
+				  
+				<intensity>-8</intensity>
+				<effect_type>nose_width</effect_type>
+			</effect>
+			<effect>
+				<intensity>-26</intensity>
+				<effect_type>nose_bridge</effect_type>
+			</effect>
+			<effect>
+				<intensity>-7</intensity>
+				<effect_type>chin_reshape</effect_type>
+			</effect>
+			<effect>
+				<effect_type>lip_height</effect_type>
+				<intensity>6</intensity>
+			</effect>
+			<effect>
+				<intensity>50</intensity>
+				<effect_type>lip_height_upper</effect_type>
+			</effect>
+			<effect>
+				<intensity>-33</intensity>
+				<effect_type>nose_wing</effect_type>
+			</effect>
+			<effect>
+				<effect_type>lip_peak</effect_type>
+				<intensity>32</intensity>
+			</effect>
+			<effect>
+				<intensity>33</intensity>
+				<effect_type>nose_tip</effect_type>
+			</effect>
+			<effect>
+				<intensity>-10</intensity>
+				<effect_type>chin_length</effect_type>
+			</effect>
+			<name>
+				<prt>Celstial</prt>
+				<fra>Cosmique</fra>
+				<jpn>アストラ</jpn>
+				<tur>Astra</tur>
+				<esp>Astra</esp>
+				<def>Astra</def>
+				<deu>Kosmo</deu>
+				<ita>Astra</ita>
+				<idn>Astra</idn>
+				<ara>أسترا</ara>
+				<chs>星光</chs>
+				<cht>星光</cht>
+				<enu>Astra</enu>
+				<rus>Астра</rus>
+				<kor>아스트라</kor>
+				<mys>Astra</mys>
+				<tha>แอสตร้า</tha>
+				<nld>Astra</nld>
+			</name>
+		</preset>
+	</presets>
+</makeup>
