@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { MakeupPreview } from '../components/MakeupPreview';
-import { TemplateSelector } from '../components/TemplateSelector';
-import { useTemplates } from '../hooks/useTemplates';
+import { MakeupPreview } from '../../components/MakeupPreview';
+import { TemplateSelector } from '../../components/TemplateSelector';
+import { useTemplates } from '../../hooks/useTemplates';
 export function MakeupStudio() {
     const [selectedTemplateId, setSelectedTemplateId] = useState(null);
     const [showTemplateSelector, setShowTemplateSelector] = useState(false);
