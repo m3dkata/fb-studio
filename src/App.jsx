@@ -20,7 +20,7 @@ const LoginPage = lazy(() => import('./pages/public/LoginPage'));
 const RegisterPage = lazy(() => import('./pages/public/RegisterPage'));
 const ServicesPage = lazy(() => import('./pages/public/ServicesPage'));
 const ServiceDetailPage = lazy(() => import('./pages/public/ServiceDetailPage'));
-const MakeupStudio = lazy(() => import('./pages/MakeupStudio'));
+const MakeupStudio = lazy(() => import('./pages/public/MakeupStudio'));
 
 // User Pages
 const UserDashboard = lazy(() => import('./pages/user/UserDashboard'));
