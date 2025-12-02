@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useMemo, useContext } from 'react';
 
 export const ThemeContext = createContext(null);
 
@@ -28,19 +28,22 @@ export const ThemeProvider = ({ children }) => {
         setTheme(prev => prev === 'light' ? 'dark' : 'light');
     };
 
-    const value = {
+    // Memoize context value to prevent unnecessary re-renders
+    const value = useMemo(() => ({
         theme,
         toggleTheme,
         isDark: theme === 'dark',
-    };
+    }), [theme]);
 
     return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 };
 
 export const useTheme = () => {
-    const context = React.useContext(ThemeContext);
+    const context = useContext(ThemeContext);
+
     if (!context) {
         throw new Error('useTheme must be used within a ThemeProvider');
     }
+
     return context;
 };

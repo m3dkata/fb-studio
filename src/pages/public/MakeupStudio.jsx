@@ -48,6 +48,7 @@ export function MakeupStudio() {
                         <p>Loading Studio...</p>
                     </div>
                 )}
+
             </div>
 
             {/* Toggle Button */}
@@ -57,6 +58,7 @@ export function MakeupStudio() {
             >
                 ✨ Looks
             </button>
+
         </div>
     );
 }

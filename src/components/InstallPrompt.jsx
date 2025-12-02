@@ -58,7 +58,9 @@ const InstallPrompt = () => {
         const { outcome } = await deferredPrompt.userChoice;
 
         if (outcome === 'accepted') {
-            console.log('User accepted the install prompt');
+            if (import.meta.env.DEV) {
+                console.log('User accepted the install prompt');
+            }
         }
 
         setDeferredPrompt(null);
@@ -76,7 +78,7 @@ const InstallPrompt = () => {
     }
 
     return (
-        <div className="fixed bottom-4 left-4 md:left-auto md:left-4 md:w-96 z-50 animate-slide-up">
+        <div className="fixed bottom-4 left-4 md:left-4 md:w-96 z-50 animate-slide-up">
             <div className="bg-white dark:bg-gray-900 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden">
                 <div className="p-4">
                     <div className="flex items-start justify-between mb-3">

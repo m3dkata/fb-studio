@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import { Loader2 } from 'lucide-react';
 
 const Button = ({
@@ -38,6 +38,17 @@ const Button = ({
             {children}
         </button>
     );
+};
+
+Button.propTypes = {
+    children: PropTypes.node.isRequired,
+    variant: PropTypes.oneOf(['primary', 'secondary', 'ghost', 'danger']),
+    size: PropTypes.oneOf(['sm', 'md', 'lg']),
+    isLoading: PropTypes.bool,
+    disabled: PropTypes.bool,
+    className: PropTypes.string,
+    type: PropTypes.oneOf(['button', 'submit', 'reset']),
+    onClick: PropTypes.func,
 };
 
 export default Button;

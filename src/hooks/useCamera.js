@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
+import { CAMERA_CONFIG } from '../constants/performance';
 
 /**
  * Custom hook for camera management
@@ -22,9 +23,9 @@ export function useCamera() {
 
             const stream = await navigator.mediaDevices.getUserMedia({
                 video: {
-                    width: { ideal: 1280 },
-                    height: { ideal: 720 },
-                    facingMode: 'user',
+                    width: { ideal: CAMERA_CONFIG.VIDEO_WIDTH },
+                    height: { ideal: CAMERA_CONFIG.VIDEO_HEIGHT },
+                    facingMode: CAMERA_CONFIG.FACING_MODE,
                 },
                 audio: false,
             });

@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { X } from 'lucide-react';
+import PropTypes from 'prop-types';
 
 const Modal = ({ isOpen, onClose, title, children, size = 'md' }) => {
     const overlayRef = useRef(null);
@@ -66,6 +67,14 @@ const Modal = ({ isOpen, onClose, title, children, size = 'md' }) => {
         </div>,
         document.body
     );
+};
+
+Modal.propTypes = {
+    isOpen: PropTypes.bool.isRequired,
+    onClose: PropTypes.func.isRequired,
+    title: PropTypes.string.isRequired,
+    children: PropTypes.node.isRequired,
+    size: PropTypes.oneOf(['sm', 'md', 'lg', 'xl', 'full']),
 };
 
 export default Modal;

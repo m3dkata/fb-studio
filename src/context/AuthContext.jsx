@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useMemo } from 'react';
 import authService from '../services/auth';
 import { USER_TYPES } from '../constants/userTypes';
 
@@ -65,7 +65,8 @@ export const AuthProvider = ({ children }) => {
         return user && user.user_type === USER_TYPES.ADMIN;
     };
 
-    const value = {
+    // Memoize context value to prevent unnecessary re-renders
+    const value = useMemo(() => ({
         user,
         loading,
         login,
@@ -74,7 +75,7 @@ export const AuthProvider = ({ children }) => {
         updateProfile,
         isAdmin,
         isAuthenticated: !!user,
-    };
+    }), [user, loading]);
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

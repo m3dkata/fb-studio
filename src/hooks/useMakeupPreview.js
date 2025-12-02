@@ -3,6 +3,7 @@ import { getMediaPipeService, MediaPipeOptimizer } from '../services/mediaPipeSe
 import { MakeupRenderer } from '../services/makeupRenderer';
 import { loadTemplate } from '../utils/xmlConverter';
 import { useCamera } from './useCamera';
+import { PERFORMANCE_CONFIG } from '../constants/performance';
 export function useMakeupPreview(templateId = null) {
     const [isInitialized, setIsInitialized] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -20,6 +21,7 @@ export function useMakeupPreview(templateId = null) {
     const optimizerRef = useRef(null);
     const animationFrameRef = useRef(null);
     const currentLandmarksRef = useRef(null);
+    const lastDetectionTimeRef = useRef(0); // Fix: Use ref instead of window global
 
     // Propagate camera error
     useEffect(() => {
@@ -52,7 +54,7 @@ export function useMakeupPreview(templateId = null) {
             }
 
             // Initialize optimizer
-            optimizerRef.current = new MediaPipeOptimizer(60); // Increased to 60 FPS
+            optimizerRef.current = new MediaPipeOptimizer(PERFORMANCE_CONFIG.MEDIAPIPE_TARGET_FPS);
 
             setIsInitialized(true);
             setIsLoading(false);
@@ -107,11 +109,10 @@ export function useMakeupPreview(templateId = null) {
         }
 
         // Process frame with MediaPipe (Throttled to ~15 FPS for performance)
-        // We use a simple frame skip: process every 4th frame if running at 60fps
-        const shouldDetect = !window.lastDetectionTime || (timestamp - window.lastDetectionTime) >= 66;
+        const shouldDetect = timestamp - lastDetectionTimeRef.current >= PERFORMANCE_CONFIG.DETECTION_THROTTLE_MS;
 
         if (shouldDetect) {
-            window.lastDetectionTime = timestamp;
+            lastDetectionTimeRef.current = timestamp;
             mediaPipeRef.current.detectFace(videoRef.current).catch(err => {
                 console.warn('Face detection error:', err);
             });
