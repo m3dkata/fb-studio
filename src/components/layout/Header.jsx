@@ -10,6 +10,7 @@ import NotificationsMobile from './NotificationsMobile';
 import UserActions from './UserActions';
 import MobileMenu from './MobileMenu';
 import MobileNavigation from './MobileNavigation';
+import TestLoginButton from '../auth/TestLoginButton';
 
 const Header = () => {
     const { user, logout, isAuthenticated, isAdmin } = useAuth();
@@ -76,7 +77,10 @@ const Header = () => {
         >
             <div className="container px-4 mx-auto sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between">
-                    <Logo onClick={closeMenu} />
+                   <div className="flex items-center space-x-3">
+                       <Logo onClick={closeMenu} />
+                       <TestLoginButton />
+                   </div>
 
                     {/* Desktop Nav */}
                     <DesktopNavigation navLinks={navLinks} />

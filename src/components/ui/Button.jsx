@@ -34,7 +34,7 @@ const Button = ({
             disabled={disabled || isLoading}
             {...props}
         >
-            {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+            {isLoading && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
             {children}
         </button>
     );
@@ -42,7 +42,7 @@ const Button = ({
 
 Button.propTypes = {
     children: PropTypes.node.isRequired,
-    variant: PropTypes.oneOf(['primary', 'secondary', 'ghost', 'danger']),
+    variant: PropTypes.oneOf(['primary', 'secondary', 'outline', 'ghost', 'danger']),
     size: PropTypes.oneOf(['sm', 'md', 'lg']),
     isLoading: PropTypes.bool,
     disabled: PropTypes.bool,
