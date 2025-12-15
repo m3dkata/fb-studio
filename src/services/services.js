@@ -51,6 +51,13 @@ export const servicesService = {
             const record = await pb.collection('services').create(formData);
             return record;
         } catch (error) {
+            console.error('Service creation error:', error);
+            if (error.data?.data) {
+                const validationErrors = Object.entries(error.data.data)
+                    .map(([field, err]) => `${field}: ${err.message}`)
+                    .join(', ');
+                throw new Error(`Validation failed: ${validationErrors}`);
+            }
             throw new Error(error.message || 'Failed to create service');
         }
     },
@@ -78,6 +85,9 @@ export const servicesService = {
         try {
             await pb.collection('services').delete(id);
         } catch (error) {
+            if (error.message && error.message.includes('required relation reference')) {
+                throw new Error('Cannot delete service. It has existing bookings. Please cancel all bookings for this service first.');
+            }
             throw new Error(error.message || 'Failed to delete service');
         }
     },

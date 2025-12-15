@@ -33,7 +33,12 @@ export const authService = {
     },
 
     // Logout
-    logout() {
+    async logout() {
+        try {
+            await pb.realtime.unsubscribe();
+        } catch (error) {
+            console.error('Error unsubscribing from realtime:', error);
+        }
         pb.authStore.clear();
     },
 

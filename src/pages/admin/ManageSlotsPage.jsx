@@ -16,6 +16,7 @@ import { formatDateForInput } from '../../utils/dateHelpers';
 const ManageSlotsPage = () => {
     const queryClient = useQueryClient();
     const { data: services } = useServices();
+    const [deleteConfirmId, setDeleteConfirmId] = useState(null);
 
     const { data: slots, isLoading } = useQuery({
         queryKey: ['unavailable-slots'],
@@ -25,8 +26,11 @@ const ManageSlotsPage = () => {
     const createSlot = useMutation({
         mutationFn: (data) => unavailableSlotsService.create(data),
         onSuccess: () => {
-            queryClient.invalidateQuery({ queryKey: ['unavailable-slots'] });
+            queryClient.invalidateQueries({ queryKey: ['unavailable-slots'] });
             closeModal();
+        },
+        onError: (error) => {
+            console.error('Failed to create slot:', error);
         }
     });
 
@@ -35,6 +39,9 @@ const ManageSlotsPage = () => {
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['unavailable-slots'] });
             closeModal();
+        },
+        onError: (error) => {
+            console.error('Failed to update slot:', error);
         }
     });
 
@@ -42,6 +49,10 @@ const ManageSlotsPage = () => {
         mutationFn: (id) => unavailableSlotsService.delete(id),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['unavailable-slots'] });
+            setDeleteConfirmId(null);
+        },
+        onError: (error) => {
+            console.error('Failed to delete slot:', error);
         }
     });
 
@@ -53,7 +64,6 @@ const ManageSlotsPage = () => {
         }
     });
 
-    // Use CRUD modal hook
     const { isOpen: isModalOpen, editingItem: editingSlot, openCreate, openEdit, close: closeModal } = useCrudModal(reset, setValue);
 
     const openCreateModal = () => {
@@ -66,7 +76,6 @@ const ManageSlotsPage = () => {
     };
 
     const openEditModal = (slot) => {
-        // Handle both single and multiple services
         const serviceIds = Array.isArray(slot.service) ? slot.service : [slot.service];
 
         openEdit(slot, {
@@ -98,7 +107,6 @@ const ManageSlotsPage = () => {
     const getServiceNames = (slot) => {
         if (!slot.expand?.service) return 'Unknown Service';
 
-        // Handle both single and multiple services
         if (Array.isArray(slot.expand.service)) {
             return slot.expand.service.map(s => s.title).join(', ');
         }
@@ -156,8 +164,7 @@ const ManageSlotsPage = () => {
                                 <Button
                                     variant="danger"
                                     size="sm"
-                                    onClick={() => deleteSlot.mutate(slot.id)}
-                                    isLoading={deleteSlot.isPending}
+                                    onClick={() => setDeleteConfirmId(slot.id)}
                                 >
                                     <Trash2 className="h-4 w-4 mr-1" /> Delete
                                 </Button>
@@ -290,6 +297,27 @@ const ManageSlotsPage = () => {
                         </Button>
                     </div>
                 </form>
+            </Modal>
+
+            <Modal
+                isOpen={!!deleteConfirmId}
+                onClose={() => setDeleteConfirmId(null)}
+                title="Confirm Deletion"
+                size="sm"
+            >
+                <p className="text-gray-600 dark:text-gray-400 mb-6">
+                    Are you sure you want to delete this unavailable slot? This action cannot be undone.
+                </p>
+                <div className="flex justify-end space-x-3">
+                    <Button variant="ghost" onClick={() => setDeleteConfirmId(null)}>Cancel</Button>
+                    <Button
+                        variant="danger"
+                        onClick={() => deleteSlot.mutate(deleteConfirmId)}
+                        isLoading={deleteSlot.isPending}
+                    >
+                        Delete
+                    </Button>
+                </div>
             </Modal>
         </div>
     );

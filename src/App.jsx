@@ -5,6 +5,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import { USER_TYPES } from './constants/userTypes';
 import Layout from './components/layout/Layout';
 import ProtectedRoute from './components/auth/ProtectedRoute';
+import PublicRoute from './components/auth/PublicRoute';
 import InstallPrompt from './components/InstallPrompt';
 import ErrorBoundary from './components/ErrorBoundary';
 
@@ -74,8 +75,16 @@ function AppContent() {
           <Route path="/" element={<Layout />}>
             {/* Public Routes */}
             <Route index element={<HomePage />} />
-            <Route path="login" element={<LoginPage />} />
-            <Route path="register" element={<RegisterPage />} />
+            <Route path="login" element={
+              <PublicRoute>
+                <LoginPage />
+              </PublicRoute>
+            } />
+            <Route path="register" element={
+              <PublicRoute>
+                <RegisterPage />
+              </PublicRoute>
+            } />
             <Route path="services" element={<ServicesPage />} />
             <Route path="services/:id" element={<ServiceDetailPage />} />
             <Route path="tryon" element={<MakeupStudio />} />

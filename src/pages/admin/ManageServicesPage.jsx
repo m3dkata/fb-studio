@@ -5,7 +5,6 @@ import { useServices, useCreateService, useUpdateService, useDeleteService } fro
 import { useCrudModal } from '../../hooks/useCrudModal';
 import Card, { CardContent } from '../../components/ui/Card';
 import Button from '../../components/ui/Button';
-import Input from '../../components/ui/Input';
 import Select from '../../components/ui/Select';
 import Modal from '../../components/ui/Modal';
 import LoadingSpinner from '../../components/ui/LoadingSpinner';
@@ -52,14 +51,13 @@ const ManageServicesPage = () => {
                 ...data,
                 price: parseFloat(data.price),
                 duration: parseInt(data.duration),
+                active: data.active === true || data.active === 'true',
             };
 
             // Handle image upload ONLY if a new image is selected
-            if (data.image && data.image[0]) {
+            if (data.image && data.image.length > 0 && data.image[0] instanceof File) {
                 serviceData.image = data.image[0];
-            } else if (editingService) {
-                // When editing, remove image field if no new image selected
-                // This prevents overwriting the existing image
+            } else {
                 delete serviceData.image;
             }
 
@@ -149,18 +147,25 @@ const ManageServicesPage = () => {
                 size="lg"
             >
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                    <Input
-                        label="Service Title"
-                        id="title"
-                        {...register('title', { required: 'Title is required' })}
-                        error={errors.title?.message}
-                    />
+                    <div>
+                        <label htmlFor="title" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                            Service Title
+                        </label>
+                        <input
+                            id="title"
+                            type="text"
+                            className="block w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm focus:border-primary focus:ring-4 focus:ring-primary/10 text-lg px-4 py-3.5 transition-all duration-200 placeholder-gray-400 dark:placeholder-gray-500 font-medium"
+                            placeholder="Enter service title..."
+                            {...register('title', { required: 'Title is required' })}
+                        />
+                        {errors.title && <p className="mt-2 text-sm text-red-600 dark:text-red-400">{errors.title.message}</p>}
+                    </div>
 
                     <div>
                         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Description</label>
                         <textarea
-                            className="block w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 dark:text-white shadow-sm focus:border-primary focus:ring-4 focus:ring-primary/10 sm:text-sm px-4 py-3 transition-all duration-200 placeholder-gray-400 dark:placeholder-gray-500"
-                            rows={4}
+                            className="block w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm focus:border-primary focus:ring-4 focus:ring-primary/10 text-base px-4 py-3 transition-all duration-200 placeholder-gray-400 dark:placeholder-gray-500"
+                            rows={5}
                             placeholder="Describe the service in detail..."
                             {...register('description', { required: 'Description is required' })}
                         />
@@ -177,23 +182,33 @@ const ManageServicesPage = () => {
                     />
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <Input
-                            label="Price ($)"
-                            id="price"
-                            type="number"
-                            step="0.01"
-                            placeholder="0.00"
-                            {...register('price', { required: 'Price is required', min: 0 })}
-                            error={errors.price?.message}
-                        />
-                        <Input
-                            label="Duration (mins)"
-                            id="duration"
-                            type="number"
-                            placeholder="60"
-                            {...register('duration', { required: 'Duration is required', min: 15 })}
-                            error={errors.duration?.message}
-                        />
+                        <div>
+                            <label htmlFor="price" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                Price ($)
+                            </label>
+                            <input
+                                id="price"
+                                type="number"
+                                step="0.01"
+                                className="block w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm focus:border-primary focus:ring-4 focus:ring-primary/10 text-base px-4 py-3 transition-all duration-200 placeholder-gray-400 dark:placeholder-gray-500"
+                                placeholder="0.00"
+                                {...register('price', { required: 'Price is required', min: 0 })}
+                            />
+                            {errors.price && <p className="mt-2 text-sm text-red-600 dark:text-red-400">{errors.price.message}</p>}
+                        </div>
+                        <div>
+                            <label htmlFor="duration" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                Duration (mins)
+                            </label>
+                            <input
+                                id="duration"
+                                type="number"
+                                className="block w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm focus:border-primary focus:ring-4 focus:ring-primary/10 text-base px-4 py-3 transition-all duration-200 placeholder-gray-400 dark:placeholder-gray-500"
+                                placeholder="60"
+                                {...register('duration', { required: 'Duration is required', min: 15 })}
+                            />
+                            {errors.duration && <p className="mt-2 text-sm text-red-600 dark:text-red-400">{errors.duration.message}</p>}
+                        </div>
                     </div>
 
                     <div>
