@@ -18,8 +18,9 @@ const ChatWindow = ({ admin, isOpen, onClose }) => {
 
     // Auto-scroll to bottom when new messages arrive
     useEffect(() => {
-        if (messagesEndRef.current && messages.length > 0) {
-            messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+        const scrollElement = messagesEndRef.current;
+        if (scrollElement && messages.length > 0) {
+            scrollElement.scrollIntoView({ behavior: 'smooth' });
         }
     }, [messages]);
 

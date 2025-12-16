@@ -51,7 +51,6 @@ function AppContent() {
   const { user, loading } = useAuth();
 
   useEffect(() => {
-    // Login/Logout user in OneSignal based on auth state
     if (!loading && window.OneSignal) {
       if (user) {
         window.OneSignal.login(user.id);
@@ -59,6 +58,12 @@ function AppContent() {
         window.OneSignal.logout();
       }
     }
+
+    return () => {
+      if (window.OneSignal && user) {
+        window.OneSignal.logout();
+      }
+    };
   }, [user, loading]);
 
   if (loading) {

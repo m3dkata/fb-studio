@@ -27,18 +27,14 @@ export const usePresence = () => {
             return;
         }
 
-        // Start heartbeat for current user
         presenceService.startHeartbeat();
 
-        // Load initial online admins
         loadOnlineAdmins();
 
-        // Subscribe to presence changes
         const unsubscribe = presenceService.subscribeToPresence(() => {
             loadOnlineAdmins();
         });
 
-        // Handle page visibility
         const handleVisibilityChange = () => {
             if (document.hidden) {
                 presenceService.updatePresence('away');
@@ -49,7 +45,6 @@ export const usePresence = () => {
 
         document.addEventListener('visibilitychange', handleVisibilityChange);
 
-        // Cleanup
         return () => {
             presenceService.stopHeartbeat();
             document.removeEventListener('visibilitychange', handleVisibilityChange);
@@ -57,7 +52,7 @@ export const usePresence = () => {
                 presenceService.unsubscribe();
             }
         };
-    }, [user, loadOnlineAdmins]);
+    }, [user]);
 
     return {
         onlineAdmins,

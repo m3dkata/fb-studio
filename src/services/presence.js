@@ -60,7 +60,7 @@ export const presenceService = {
             clearInterval(this.heartbeatInterval);
             this.heartbeatInterval = null;
         }
-        // Don't set offline - let it expire naturally
+        this.updatePresence('offline');
     },
 
     // Get online admins
@@ -77,6 +77,8 @@ export const presenceService = {
                     const user = record.expand?.user;
 
                     if (!user || user.user_type !== 'admin') return false;
+
+                    if (record.status === 'offline') return false;
 
                     const lastSeen = new Date(record.last_seen).getTime();
                     const isRecent = (now - lastSeen) < ONLINE_THRESHOLD;

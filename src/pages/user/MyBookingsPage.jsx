@@ -32,11 +32,12 @@ const MyBookingsPage = () => {
         if (highlightBookingId && bookings && bookings.length > 0) {
             const element = document.getElementById(`booking-${highlightBookingId}`);
             if (element) {
-                setTimeout(() => {
+                const timeoutId = setTimeout(() => {
                     element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    // Remove the bookingId from URL after scrolling
                     setSearchParams({});
                 }, 300);
+
+                return () => clearTimeout(timeoutId);
             }
         }
     }, [highlightBookingId, bookings, setSearchParams]);

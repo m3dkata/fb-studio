@@ -1,8 +1,8 @@
 import pb from './pocketbase';
 import { USER_TYPES } from '../constants/userTypes';
+import presenceService from './presence';
 
 export const authService = {
-    // Login with email and password
     async login(email, password) {
         try {
             const authData = await pb.collection('users').authWithPassword(email, password);
@@ -12,7 +12,6 @@ export const authService = {
         }
     },
 
-    // Register new user
     async register(data) {
         try {
             const user = await pb.collection('users').create({
@@ -21,10 +20,9 @@ export const authService = {
                 passwordConfirm: data.passwordConfirm,
                 name: data.name,
                 phone: data.phone,
-                user_type: 'user', // Default to regular user
+                user_type: 'user',
             });
 
-            // Auto-login after registration
             await this.login(data.email, data.password);
             return user;
         } catch (error) {
@@ -32,12 +30,12 @@ export const authService = {
         }
     },
 
-    // Logout
     async logout() {
         try {
+            presenceService.stopHeartbeat();
             await pb.realtime.unsubscribe();
         } catch (error) {
-            console.error('Error unsubscribing from realtime:', error);
+            console.error('Error during logout:', error);
         }
         pb.authStore.clear();
     },
