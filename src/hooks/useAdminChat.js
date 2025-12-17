@@ -8,7 +8,7 @@ export const useAdminChat = () => {
     const [totalUnread, setTotalUnread] = useState(0);
     const [loading, setLoading] = useState(true);
 
-    
+
     const loadConversations = useCallback(async () => {
         if (!user) {
             setLoading(false);
@@ -19,7 +19,7 @@ export const useAdminChat = () => {
             setLoading(true);
             const allMessages = await chatService.getAllUserConversations(user.id);
 
-            
+
             const userMap = new Map();
             let unreadCount = 0;
 
@@ -31,19 +31,19 @@ export const useAdminChat = () => {
                     userMap.set(otherUserId, {
                         userId: otherUserId,
                         userName: otherUser?.name || 'User',
-                        userObject: otherUser, 
+                        userObject: otherUser,
                         lastMessage: msg,
                         unreadCount: 0,
                     });
                 }
 
-                
+
                 const existing = userMap.get(otherUserId);
                 if (new Date(msg.created) > new Date(existing.lastMessage.created)) {
                     existing.lastMessage = msg;
                 }
 
-                
+
                 if (msg.receiver === user.id && !msg.read) {
                     existing.unreadCount++;
                     unreadCount++;
@@ -66,14 +66,22 @@ export const useAdminChat = () => {
 
         loadConversations();
 
-        
-        const unsubscribe = chatService.subscribeToMessages(user.id, () => {
-            loadConversations();
-        });
+        let unsubscribeFunc;
+        const setupSubscription = async () => {
+            try {
+                unsubscribeFunc = await chatService.subscribeToMessages(user.id, () => {
+                    loadConversations();
+                });
+            } catch (error) {
+                console.error('Failed to subscribe:', error);
+            }
+        };
+
+        setupSubscription();
 
         return () => {
-            if (unsubscribe) {
-                chatService.unsubscribe();
+            if (unsubscribeFunc) {
+                unsubscribeFunc();
             }
         };
     }, [user, loadConversations]);

@@ -7,7 +7,7 @@ export const usePresence = () => {
     const [onlineAdmins, setOnlineAdmins] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    
+    // Load online admins
     const loadOnlineAdmins = useCallback(async () => {
         try {
             setLoading(true);
@@ -31,13 +31,22 @@ export const usePresence = () => {
 
         loadOnlineAdmins();
 
-        const unsubscribe = presenceService.subscribeToPresence(() => {
-            loadOnlineAdmins();
-        });
+        let unsubscribeFunc;
+        const setupSubscription = async () => {
+            try {
+                unsubscribeFunc = await presenceService.subscribeToPresence(() => {
+                    loadOnlineAdmins();
+                });
+            } catch (error) {
+                console.error('Failed to subscribe to presence:', error);
+            }
+        };
+
+        setupSubscription();
 
         const handleVisibilityChange = () => {
             if (document.hidden) {
-                presenceService.updatePresence('offline');
+                presenceService.updatePresence('away');
             } else {
                 presenceService.updatePresence('online');
             }
@@ -45,18 +54,11 @@ export const usePresence = () => {
 
         document.addEventListener('visibilitychange', handleVisibilityChange);
 
-        const handleBeforeUnload = () => {
-            presenceService.stopHeartbeat();
-        };
-
-        window.addEventListener('beforeunload', handleBeforeUnload);
-
         return () => {
             presenceService.stopHeartbeat();
             document.removeEventListener('visibilitychange', handleVisibilityChange);
-            window.removeEventListener('beforeunload', handleBeforeUnload);
-            if (unsubscribe) {
-                presenceService.unsubscribe();
+            if (unsubscribeFunc) {
+                unsubscribeFunc();
             }
         };
     }, [user]);

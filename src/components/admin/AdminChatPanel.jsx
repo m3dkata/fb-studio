@@ -11,16 +11,16 @@ const AdminChatPanel = () => {
     const [selectedUser, setSelectedUser] = useState(null);
     const [isChatOpen, setIsChatOpen] = useState(false);
 
-    
+    // Load all conversations for admin
     useEffect(() => {
         if (!user) return;
 
         const loadConversations = async () => {
             try {
-                
+                // Get all messages where admin is sender or receiver
                 const messages = await chatService.getConversation(user.id, user.id, 500);
 
-                
+                // Group by unique users
                 const userMap = new Map();
                 messages.forEach(msg => {
                     const otherUserId = msg.sender === user.id ? msg.receiver : msg.sender;
@@ -32,7 +32,7 @@ const AdminChatPanel = () => {
                         });
                     }
 
-                    
+                    // Count unread messages
                     if (msg.receiver === user.id && !msg.read) {
                         userMap.get(otherUserId).unreadCount++;
                     }
@@ -46,14 +46,23 @@ const AdminChatPanel = () => {
 
         loadConversations();
 
-        
-        const unsubscribe = chatService.subscribeToMessages(() => {
-            loadConversations();
-        });
+
+        let unsubscribeFunc;
+        const setupSubscription = async () => {
+            try {
+                unsubscribeFunc = await chatService.subscribeToMessages(user.id, () => {
+                    loadConversations();
+                });
+            } catch (error) {
+                console.error('Failed to subscribe:', error);
+            }
+        };
+
+        setupSubscription();
 
         return () => {
-            if (unsubscribe) {
-                chatService.unsubscribeFromMessages();
+            if (unsubscribeFunc) {
+                unsubscribeFunc();
             }
         };
     }, [user]);
@@ -103,7 +112,7 @@ const AdminChatPanel = () => {
                 </div>
             )}
 
-            { }
+            {/* Chat Window */}
             {selectedUser && (
                 <ChatWindow
                     admin={selectedUser}

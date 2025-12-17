@@ -10,16 +10,25 @@ export const useBookings = (filter = {}) => {
         queryFn: () => bookingsService.getAll(filter),
     });
 
-    
+    // Subscribe to real-time updates
     useEffect(() => {
-        const unsubscribe = bookingsService.subscribe(() => {
-            queryClient.invalidateQueries({ queryKey: ['bookings'] });
-        });
+        let unsubscribeFunc;
+        const setupSubscription = async () => {
+            try {
+                unsubscribeFunc = await bookingsService.subscribe(() => {
+                    queryClient.invalidateQueries({ queryKey: ['bookings'] });
+                });
+            } catch (error) {
+                console.error('Failed to subscribe:', error);
+            }
+        };
+
+        setupSubscription();
 
         return () => {
-            unsubscribe.then(unsub => {
-                if (unsub) bookingsService.unsubscribe();
-            });
+            if (unsubscribeFunc) {
+                unsubscribeFunc();
+            }
         };
     }, [queryClient]);
 

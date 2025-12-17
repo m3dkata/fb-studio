@@ -11,19 +11,28 @@ export const useNotifications = (userId) => {
         enabled: !!userId,
     });
 
-    
+    // Subscribe to real-time updates
     useEffect(() => {
         if (!userId) return;
 
-        const unsubscribe = notificationsService.subscribe(userId, () => {
-            queryClient.invalidateQueries({ queryKey: ['notifications', userId] });
-            queryClient.invalidateQueries({ queryKey: ['unread-count', userId] });
-        });
+        let unsubscribeFunc;
+        const setupSubscription = async () => {
+            try {
+                unsubscribeFunc = await notificationsService.subscribe(userId, () => {
+                    queryClient.invalidateQueries({ queryKey: ['notifications', userId] });
+                    queryClient.invalidateQueries({ queryKey: ['unread-count', userId] });
+                });
+            } catch (error) {
+                console.error('Failed to subscribe:', error);
+            }
+        };
+
+        setupSubscription();
 
         return () => {
-            unsubscribe.then(unsub => {
-                if (unsub) notificationsService.unsubscribe();
-            });
+            if (unsubscribeFunc) {
+                unsubscribeFunc();
+            }
         };
     }, [userId, queryClient]);
 
