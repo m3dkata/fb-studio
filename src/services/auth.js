@@ -40,23 +40,23 @@ export const authService = {
         pb.authStore.clear();
     },
 
-    // Get current user
+    
     getCurrentUser() {
         return pb.authStore.model;
     },
 
-    // Check if user is authenticated
+    
     isAuthenticated() {
         return pb.authStore.isValid;
     },
 
-    // Check if user is admin
+    
     isAdmin() {
         const user = this.getCurrentUser();
         return user && user.user_type === USER_TYPES.ADMIN;
     },
 
-    // Refresh authentication
+    
     async refresh() {
         try {
             await pb.collection('users').authRefresh();
@@ -67,7 +67,7 @@ export const authService = {
         }
     },
 
-    // Update user profile
+    
     async updateProfile(userId, data) {
         try {
             const user = await pb.collection('users').update(userId, data);
@@ -77,7 +77,7 @@ export const authService = {
         }
     },
 
-    // Subscribe to auth state changes
+    
     onAuthChange(callback) {
         return pb.authStore.onChange((token, model) => {
             callback(model);

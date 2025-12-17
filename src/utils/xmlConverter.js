@@ -1,11 +1,6 @@
 import { XMLParser } from 'fast-xml-parser';
 
-/**
- * Converts XML makeup template to JavaScript object
- * @param {string} xmlString - Raw XML content
- * @param {string} templateId - Template folder name (preset GUID)
- * @returns {Object} Parsed makeup template
- */
+ 
 export function parseXMLTemplate(xmlString, templateId) {
   const parser = new XMLParser({
     ignoreAttributes: false,
@@ -133,7 +128,7 @@ function parseMasks(masks, templateId) {
     eyeTop: parseCoordinate(mask.eyetop),
     eyeBottom: parseCoordinate(mask.eyebottom),
     modelAnchorLeftTop: parseCoordinate(mask.modelanchorlefttop),
-    // 3D eyebrow specific
+    
     browCurvature: mask.browcurvature,
     browDefinition: mask.browdefinition,
     browThickness: mask.browthickness,
@@ -199,20 +194,20 @@ function parseEffects(effects) {
     patterns: parseEffectPatterns(effect.patterns?.pattern),
     globalIntensity: effect.global_intensity,
     intensity: effect.intensity,
-    // Eyebrow specific
+    
     browCurvature: effect.browcurvature,
     browDefinition: effect.browdefinition,
     browThickness: effect.browthickness,
     browPositionX: effect.browpositionx,
     browPositionY: effect.browpositiony,
     hiddenIntensity: effect.hidden_intensity,
-    // Hair dye specific
+    
     ombreRange: effect.ombre_range,
     ombreLineOffset: effect.ombre_line_offset,
-    // Earrings specific
+    
     coloredMaskIndex: effect.colored_mask_index,
     position: effect.position,
-    // Filter specific
+    
     itemGuid: effect.item_guid,
     packGuid: effect.pack_guid,
   }));
@@ -303,35 +298,30 @@ function parseCoordinate(coord) {
   };
 }
 
-/**
- * Converts hex color string to RGBA object
- * Format: 00RRGGBB or AARRGGBB (hex)
- */
+ 
 function hexToRGBA(hex) {
   if (!hex) return { r: 0, g: 0, b: 0, a: 1 };
 
   let hexStr;
   if (typeof hex === 'number') {
-    // Handle signed 32-bit integers (common in Java/Android)
-    // Convert to unsigned 32-bit hex string
+    
+    
     hexStr = (hex >>> 0).toString(16).toUpperCase().padStart(8, '0');
   } else {
     hexStr = hex.toString().padStart(8, '0');
   }
 
-  // Parse as AABBGGRR (common in makeup XMLs) to fix "purple" issue
-  // Swapping Red and Blue channels
+  
+  
   const a = parseInt(hexStr.substring(0, 2), 16) / 255;
-  const b = parseInt(hexStr.substring(2, 4), 16); // Was R
+  const b = parseInt(hexStr.substring(2, 4), 16); 
   const g = parseInt(hexStr.substring(4, 6), 16);
-  const r = parseInt(hexStr.substring(6, 8), 16); // Was B
+  const r = parseInt(hexStr.substring(6, 8), 16); 
 
   return { r, g, b, a };
 }
 
-/**
- * Load and parse XML template from URL
- */
+ 
 export async function loadTemplate(templateId) {
   try {
     const response = await fetch(`/makeup-templates/${templateId}/makeup.xml`);
@@ -347,10 +337,8 @@ export async function loadTemplate(templateId) {
   }
 }
 
-/**
- * Discover all available templates
- */
+ 
 export async function discoverTemplates() {
-  // This would load the templates.json manifest file
+  
   return [];
 }

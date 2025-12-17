@@ -6,12 +6,12 @@ import { getAvatarUrl } from '../../utils/avatarHelper';
 const ChatMessage = ({ message, isOwnMessage, sender }) => {
     const formattedTime = format(new Date(message.created), 'HH:mm');
 
-    // Get avatar URL from PocketBase
+    
     const avatarUrl = getAvatarUrl(sender);
 
     return (
         <div className={`flex mb-3 gap-2 ${isOwnMessage ? 'flex-row-reverse' : 'flex-row'}`}>
-            {/* Avatar */}
+            { }
             <div className="flex-shrink-0">
                 {avatarUrl ? (
                     <img
@@ -29,7 +29,7 @@ const ChatMessage = ({ message, isOwnMessage, sender }) => {
                 )}
             </div>
 
-            {/* Message bubble */}
+            { }
             <div className="flex flex-col max-w-[70%]">
                 <div
                     className={`rounded-2xl px-4 py-2 shadow-sm ${isOwnMessage

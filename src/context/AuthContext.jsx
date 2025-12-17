@@ -9,14 +9,14 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Check if user is already authenticated
+        
         const currentUser = authService.getCurrentUser();
         if (currentUser && authService.isAuthenticated()) {
             setUser(currentUser);
         }
         setLoading(false);
 
-        // Subscribe to auth changes
+        
         const unsubscribe = authService.onAuthChange((model) => {
             setUser(model);
         });
@@ -65,7 +65,7 @@ export const AuthProvider = ({ children }) => {
         return user && user.user_type === USER_TYPES.ADMIN;
     };
 
-    // Memoize context value to prevent unnecessary re-renders
+    
     const value = useMemo(() => ({
         user,
         loading,

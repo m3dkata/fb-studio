@@ -19,16 +19,16 @@ const DatePicker = ({
     const monthEnd = endOfMonth(currentMonth);
     const daysInMonth = eachDayOfInterval({ start: monthStart, end: monthEnd });
 
-    // Get days to show (including padding for week alignment)
+    
     const startDayOfWeek = monthStart.getDay();
     const daysToShow = [];
 
-    // Add padding days from previous month
+    
     for (let i = 0; i < startDayOfWeek; i++) {
         daysToShow.push(null);
     }
 
-    // Add actual days
+    
     daysInMonth.forEach(day => daysToShow.push(day));
 
     const handleDateSelect = (date) => {
@@ -63,9 +63,9 @@ const DatePicker = ({
                 </label>
             )}
 
-            {/* Compact Inline Calendar */}
+            { }
             <div className="p-3 sm:p-4 bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 max-w-sm mx-auto">
-                {/* Month Navigation */}
+                { }
                 <div className="flex items-center justify-between mb-3">
                     <button
                         type="button"
@@ -88,7 +88,7 @@ const DatePicker = ({
                     </button>
                 </div>
 
-                {/* Weekday Headers */}
+                { }
                 <div className="grid grid-cols-7 gap-1 mb-2">
                     {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((day, idx) => (
                         <div key={`${day}-${idx}`} className="text-center text-xs font-semibold text-gray-500 dark:text-gray-400 py-1">
@@ -97,7 +97,7 @@ const DatePicker = ({
                     ))}
                 </div>
 
-                {/* Calendar Grid */}
+                { }
                 <div className="grid grid-cols-7 gap-1">
                     {daysToShow.map((date, index) => {
                         if (!date) {
@@ -135,7 +135,7 @@ const DatePicker = ({
                     })}
                 </div>
 
-                {/* Selected Date Display - Compact */}
+                { }
                 {selectedDate && (
                     <div className="mt-3 p-2 bg-gradient-to-r from-teal-50 to-green-50 dark:from-teal-900/20 dark:to-green-900/20 rounded-lg">
                         <p className="text-xs font-semibold text-center text-gray-900 dark:text-white">

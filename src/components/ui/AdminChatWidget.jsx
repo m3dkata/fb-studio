@@ -12,14 +12,14 @@ const AdminChatWidget = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
 
-    // Start heartbeat for admin presence
+    
     usePresence();
 
     if (!user) return null;
 
     return (
         <>
-            {/* Floating Chat Button */}
+            { }
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="btn-primary fixed bottom-4 right-4 w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center z-[9999] group"
@@ -27,20 +27,20 @@ const AdminChatWidget = () => {
             >
                 <MessageSquare className="w-6 h-6" />
 
-                {/* Unread Badge */}
+                { }
                 {totalUnread > 0 && (
                     <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center shadow-lg animate-pulse">
                         {totalUnread > 9 ? '9+' : totalUnread}
                     </div>
                 )}
 
-                {/* Tooltip */}
+                { }
                 <div className="absolute bottom-full right-0 mb-2 px-3 py-1 bg-gray-900 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
                     User Messages {totalUnread > 0 && `(${totalUnread})`}
                 </div>
             </button>
 
-            {/* User List or Chat Window */}
+            { }
             {isOpen && (
                 selectedUser ? (
                     <ChatWindow
@@ -53,8 +53,8 @@ const AdminChatWidget = () => {
                     />
                 ) : (
                     <div className="fixed bottom-20 sm:bottom-24 right-4 w-full sm:w-96 max-w-[calc(100vw-2rem)] h-[500px] max-h-[calc(100vh-10rem)] sm:max-h-[calc(100vh-8rem)] bg-white dark:bg-gray-800 rounded-2xl shadow-2xl flex flex-col z-[9998] border border-gray-200 dark:border-gray-700">
-                        {/* Header */}
-                        <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 rounded-t-2xl bg-gradient-to-r from-primary-600 to-primary-700 text-white">
+                        { }
+                        <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 rounded-t-2xl bg-primary text-white">
                             <h3 className="font-semibold">User Messages</h3>
                             <button
                                 onClick={() => setIsOpen(false)}
@@ -65,7 +65,7 @@ const AdminChatWidget = () => {
                             </button>
                         </div>
 
-                        {/* User List */}
+                        { }
                         <div className="flex-1 overflow-y-auto p-4">
                             {loading ? (
                                 <div className="flex items-center justify-center h-full">

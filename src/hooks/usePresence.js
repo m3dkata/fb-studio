@@ -7,7 +7,7 @@ export const usePresence = () => {
     const [onlineAdmins, setOnlineAdmins] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    // Load online admins
+    
     const loadOnlineAdmins = useCallback(async () => {
         try {
             setLoading(true);
@@ -37,7 +37,7 @@ export const usePresence = () => {
 
         const handleVisibilityChange = () => {
             if (document.hidden) {
-                presenceService.updatePresence('away');
+                presenceService.updatePresence('offline');
             } else {
                 presenceService.updatePresence('online');
             }
@@ -45,9 +45,16 @@ export const usePresence = () => {
 
         document.addEventListener('visibilitychange', handleVisibilityChange);
 
+        const handleBeforeUnload = () => {
+            presenceService.stopHeartbeat();
+        };
+
+        window.addEventListener('beforeunload', handleBeforeUnload);
+
         return () => {
             presenceService.stopHeartbeat();
             document.removeEventListener('visibilitychange', handleVisibilityChange);
+            window.removeEventListener('beforeunload', handleBeforeUnload);
             if (unsubscribe) {
                 presenceService.unsubscribe();
             }

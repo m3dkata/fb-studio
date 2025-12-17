@@ -72,7 +72,7 @@ const AdminDashboard = () => {
                 </div>
             </div>
 
-            {/* Stats Grid */}
+            { }
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 {statCards.map((stat, index) => (
                     <Card key={index} className="hover:shadow-lg transition-shadow duration-200">
@@ -90,7 +90,7 @@ const AdminDashboard = () => {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {/* Recent Bookings */}
+                { }
                 <Card className="h-full">
                     <CardHeader className="flex flex-row justify-between items-center pb-4">
                         <CardTitle>Recent Bookings</CardTitle>
@@ -102,7 +102,7 @@ const AdminDashboard = () => {
                         </Link>
                     </CardHeader>
                     <CardContent>
-                        {/* Mobile View (Cards) */}
+                        { }
                         <div className="md:hidden space-y-4">
                             {recentBookings.map((booking) => (
                                 <div key={booking.id} className="p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700">
@@ -132,7 +132,7 @@ const AdminDashboard = () => {
                             )}
                         </div>
 
-                        {/* Desktop View (Table) */}
+                        { }
                         <div className="hidden md:block overflow-x-auto">
                             <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                                 <thead className="bg-gray-50 dark:bg-gray-800/50">
@@ -177,7 +177,7 @@ const AdminDashboard = () => {
                     </CardContent>
                 </Card>
 
-                {/* Quick Links */}
+                { }
                 <Card className="h-full">
                     <CardHeader>
                         <CardTitle>Quick Actions</CardTitle>

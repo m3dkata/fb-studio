@@ -27,7 +27,7 @@ const MyBookingsPage = () => {
         status: filterStatus !== 'all' ? filterStatus : undefined
     });
 
-    // Scroll to and highlight booking when bookingId is in URL
+    
     React.useEffect(() => {
         if (highlightBookingId && bookings && bookings.length > 0) {
             const element = document.getElementById(`booking-${highlightBookingId}`);
@@ -55,7 +55,7 @@ const MyBookingsPage = () => {
                 booking={selectedBooking}
                 service={selectedBooking?.expand?.service}
             />
-            {/* Background Blobs */}
+            { }
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
                 <div className="absolute top-[20%] right-[10%] w-[400px] h-[400px] bg-blue-200/20 rounded-full blur-[100px] animate-float" />
             </div>
@@ -120,13 +120,13 @@ const MyBookingsPage = () => {
                                 <CardContent className="p-6">
                                     <div className="flex flex-col md:flex-row justify-between gap-6">
                                         <div className="flex items-start space-x-6">
-                                            {/* Date Box */}
+                                            { }
                                             <div className="flex-shrink-0 w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-2xl flex flex-col items-center justify-center text-white shadow-lg shadow-primary/30">
                                                 <span className="text-xs font-bold uppercase tracking-wider opacity-90">{format(new Date(booking.booking_date), 'MMM')}</span>
                                                 <span className="text-3xl font-bold">{format(new Date(booking.booking_date), 'dd')}</span>
                                             </div>
 
-                                            {/* Details */}
+                                            { }
                                             <div className="flex-grow">
                                                 <div className="flex flex-wrap items-center gap-3 mb-2">
                                                     <h3 className="text-xl font-bold text-gray-900 dark:text-white font-heading">
@@ -158,7 +158,7 @@ const MyBookingsPage = () => {
                                             </div>
                                         </div>
 
-                                        {/* Actions */}
+                                        { }
                                         <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-end items-start md:items-center border-t md:border-t-0 md:border-l border-gray-100 dark:border-gray-700 pt-4 md:pt-0 md:pl-6">
                                             {booking.status === 'confirmed' && (
                                                 <Button

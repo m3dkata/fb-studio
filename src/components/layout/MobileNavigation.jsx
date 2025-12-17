@@ -24,7 +24,7 @@ const MobileNavigation = ({
     return (
         <div className="absolute left-0 w-full border-t border-gray-200 md:hidden top-full glass dark:border-gray-800 animate-slide-down">
             <div className="px-4 py-6 space-y-3">
-                {/* Theme Toggle */}
+                { }
                 <div className="flex items-center justify-between pb-3 border-b border-gray-200 dark:border-gray-700">
                     <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Theme</span>
                     <button
@@ -45,7 +45,7 @@ const MobileNavigation = ({
                     </button>
                 </div>
 
-                {/* Navigation Links */}
+                { }
                 <div className="space-y-1">
                     {navLinks.map((link) => (
                         <Link
@@ -62,7 +62,7 @@ const MobileNavigation = ({
                     ))}
                 </div>
 
-                {/* User Actions */}
+                { }
                 <div className="pt-3 space-y-2 border-t border-gray-200 dark:border-gray-700">
                     {isAuthenticated ? (
                         <>

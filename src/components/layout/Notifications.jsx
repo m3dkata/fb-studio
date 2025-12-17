@@ -16,19 +16,19 @@ const Notifications = ({
     const notificationRef = useRef(null);
     const dropdownRef = useRef(null);
 
-    // Use shared notification actions hook
+    
     const {
         handleNotificationClick,
         handleMarkAsReadWrapper,
         handleMarkAllAsReadClick
     } = useNotificationActions(user, onMarkAsRead, onMarkAllAsRead, onToggle);
 
-    // Subscribe to real-time notifications
+    
     useEffect(() => {
         if (isAuthenticated && user) {
             import('../../services/notifications').then(({ default: notificationsService }) => {
                 const unsubscribe = notificationsService.subscribe(user.id, () => {
-                    // React Query will auto-refresh via invalidateQueries in the mutation
+                    
                 });
 
                 return () => {
@@ -56,7 +56,7 @@ const Notifications = ({
                 )}
             </button>
 
-            {/* Notifications Dropdown */}
+            { }
             {isOpen && (
                 <div ref={dropdownRef} className="fixed inset-x-0 z-50 w-full px-4 top-16 md:absolute md:right-4 md:left-auto md:top-full md:mt-2 md:w-80 md:px-0">
                     <div className="overflow-hidden bg-white border border-gray-200 shadow-xl dark:bg-gray-900 rounded-xl dark:border-gray-700 animate-slide-down">

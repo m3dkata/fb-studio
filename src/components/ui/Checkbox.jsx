@@ -37,7 +37,7 @@ const Checkbox = forwardRef(({
                         "
                         {...props}
                     />
-                    {/* Checkmark icon */}
+                    { }
                     <svg
                         className="
                             absolute w-3.5 h-3.5 pointer-events-none

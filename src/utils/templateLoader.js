@@ -1,17 +1,17 @@
 import { loadTemplate } from './xmlConverter';
 export async function loadAllTemplates() {
     try {
-        // Load lightweight metadata first
+        
         const response = await fetch('/makeup-templates/templates-metadata.json');
         if (!response.ok) {
             console.warn('No templates-metadata.json found, falling back to legacy load');
-            // Fallback to old method if metadata missing
+            
             return await loadLegacyTemplates();
         }
 
         const metadata = await response.json();
 
-        // Map metadata to template structure expected by UI
+        
         return metadata.map(item => ({
             templateId: item.templateId,
             presets: [{

@@ -32,7 +32,7 @@ const ServicesPage = () => {
 
     return (
         <div className="container mx-auto px-4 py-8 relative">
-            {/* Background Blobs */}
+            { }
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
                 <div className="absolute top-[10%] left-[10%] w-[500px] h-[500px] bg-teal-200/20 dark:bg-teal-500/10 rounded-full blur-[100px] animate-float" />
                 <div className="absolute bottom-[20%] right-[5%] w-[400px] h-[400px] bg-green-200/20 dark:bg-green-500/10 rounded-full blur-[100px] animate-float" style={{ animationDelay: '3s' }} />
@@ -45,7 +45,7 @@ const ServicesPage = () => {
                 </p>
             </div>
 
-            {/* Search Section */}
+            { }
             <div className="mb-8">
                 <div className="relative max-w-2xl mx-auto">
                     <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
@@ -61,7 +61,7 @@ const ServicesPage = () => {
                 </div>
             </div>
 
-            {/* Category Filter */}
+            { }
             <div className="mb-12">
                 <div className="flex flex-wrap gap-3 justify-center items-center">
                     <button

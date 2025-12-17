@@ -10,11 +10,11 @@ const HomePage = () => {
     const { data: services, isLoading } = useServices();
     const featuredServices = services?.filter(s => s.active).slice(0, 3) || [];
     return (
-        <div className="flex flex-col -mt-20"> {/* Negative margin to pull hero under header */}
+        <div className="flex flex-col -mt-20"> { }
 
-            {/* Hero Section */}
+            { }
             <section className="relative flex items-center justify-center min-h-screen pt-20 overflow-hidden">
-                {/* Background Elements */}
+                { }
                 <div className="absolute inset-0 z-0">
                     <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-teal-50 to-white dark:from-gray-900 dark:to-gray-800" />
                     <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-green-400/20 rounded-full blur-[100px] animate-float" />
@@ -70,7 +70,7 @@ const HomePage = () => {
                         <div className="relative z-10 rounded-[2rem] overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-500">
                             <img src="/fb-studio.jpeg" alt="FB Studio" className="object-cover w-full h-auto" />
                         </div>
-                        {/* Floating Cards */}
+                        { }
                         <div className="absolute z-20 p-4 shadow-lg -bottom-6 -left-4 lg:-bottom-10 lg:-left-10 glass rounded-xl animate-float" style={{ animationDelay: '1s' }}>
                             <div className="flex items-center gap-3">
                                 <div className="flex items-center justify-center w-10 h-10 text-green-600 bg-green-100 rounded-full dark:bg-green-900/50 dark:text-green-400">
@@ -86,7 +86,7 @@ const HomePage = () => {
                 </div>
             </section>
 
-            {/* Features Section */}
+            { }
             <section className="relative py-24 bg-white dark:bg-gray-900">
                 <div className="container px-4 mx-auto">
                     <div className="max-w-2xl mx-auto mb-16 text-center">
@@ -112,7 +112,7 @@ const HomePage = () => {
                 </div>
             </section>
 
-            {/* Services Preview */}
+            { }
             <section className="py-24 bg-gray-50 dark:bg-gray-800">
                 <div className="container px-4 mx-auto">
                     <div className="flex items-end justify-between mb-12">
@@ -174,7 +174,7 @@ const HomePage = () => {
                 </div>
             </section>
 
-            {/* CTA Section */}
+            { }
             <section className="relative py-24 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-teal-600 to-green-600" />
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10" />

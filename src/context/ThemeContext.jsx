@@ -4,13 +4,13 @@ export const ThemeContext = createContext(null);
 
 export const ThemeProvider = ({ children }) => {
     const [theme, setTheme] = useState(() => {
-        // Get theme from localStorage or default to light
+        
         const savedTheme = localStorage.getItem('theme');
         return savedTheme || 'light';
     });
 
     useEffect(() => {
-        // Apply theme class to document for Tailwind dark mode
+        
         const root = document.documentElement;
 
         if (theme === 'dark') {
@@ -28,7 +28,7 @@ export const ThemeProvider = ({ children }) => {
         setTheme(prev => prev === 'light' ? 'dark' : 'light');
     };
 
-    // Memoize context value to prevent unnecessary re-renders
+    
     const value = useMemo(() => ({
         theme,
         toggleTheme,

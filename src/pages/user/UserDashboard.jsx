@@ -37,13 +37,13 @@ const UserDashboard = () => {
 
     return (
         <div className="container mx-auto px-4 py-8 relative">
-            {/* Background Blobs */}
+            { }
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
                 <div className="absolute top-[-10%] right-[-5%] w-[400px] h-[400px] bg-green-300/20 rounded-full blur-[80px] animate-float" />
                 <div className="absolute bottom-[10%] left-[-5%] w-[300px] h-[300px] bg-teal-300/20 rounded-full blur-[80px] animate-float" style={{ animationDelay: '2s' }} />
             </div>
 
-            {/* Header Section */}
+            { }
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
                 <div>
                     <h1 className="text-3xl md:text-4xl font-bold mb-2">
@@ -61,7 +61,7 @@ const UserDashboard = () => {
                 </Link>
             </div>
 
-            {/* Stats Grid */}
+            { }
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
                 {statCards.map((stat, index) => (
                     <Card key={index} className="hover:scale-105 transition-transform duration-300">
@@ -79,7 +79,7 @@ const UserDashboard = () => {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                {/* Upcoming Bookings */}
+                { }
                 <div className="lg:col-span-2">
                     <Card className="h-full">
                         <CardHeader className="flex justify-between items-center border-b border-gray-100 dark:border-gray-700">
@@ -140,7 +140,7 @@ const UserDashboard = () => {
                     </Card>
                 </div>
 
-                {/* Quick Actions */}
+                { }
                 <div>
                     <Card className="h-full">
                         <CardHeader className="border-b border-gray-100 dark:border-gray-700">

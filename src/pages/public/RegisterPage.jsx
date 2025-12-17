@@ -38,7 +38,7 @@ const RegisterPage = () => {
 
     return (
         <div className="flex justify-center items-center min-h-[calc(100vh-4rem)] py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-            {/* Background Blobs */}
+            { }
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
                 <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-primary/20 rounded-full blur-[100px] animate-float" />
                 <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-secondary/20 rounded-full blur-[100px] animate-float" style={{ animationDelay: '2s' }} />
@@ -63,7 +63,7 @@ const RegisterPage = () => {
                         )}
 
                         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                            {/* Avatar Upload */}
+                            { }
                             <div className="flex flex-col items-center mb-4">
                                 <div className="relative w-24 h-24 mb-2">
                                     <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white dark:border-gray-700 shadow-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center">

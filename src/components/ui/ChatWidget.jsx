@@ -12,21 +12,21 @@ const ChatWidget = () => {
     const { unreadCount } = useChat(firstOnlineAdmin?.id);
     const [isOpen, setIsOpen] = useState(false);
 
-    // Get admin avatar URL
+    
     const adminAvatarUrl = getAvatarUrl(firstOnlineAdmin);
 
-    // Don't show for non-authenticated users
+    
     if (!user) return null;
 
-    // Don't show for admin users
+    
     if (isAdmin()) return null;
 
-    // Don't show if no admin is online
+    
     if (!hasOnlineAdmin) return null;
 
     return (
         <>
-            {/* Floating Chat Button */}
+            { }
             <div className="fixed bottom-4 right-4 z-[9999]">
                 <button
                     onClick={() => setIsOpen(!isOpen)}
@@ -34,7 +34,7 @@ const ChatWidget = () => {
                     aria-label="Open chat with admin"
                 >
                     <div className="relative w-full h-full flex items-center justify-center">
-                        {/* Admin Avatar or Initial */}
+                        { }
                         {adminAvatarUrl ? (
                             <img
                                 src={adminAvatarUrl}
@@ -47,7 +47,7 @@ const ChatWidget = () => {
                             </div>
                         )}
 
-                        {/* Unread Badge */}
+                        { }
                         {unreadCount > 0 && (
                             <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center shadow-lg animate-pulse">
                                 {unreadCount > 9 ? '9+' : unreadCount}
@@ -55,19 +55,19 @@ const ChatWidget = () => {
                         )}
                     </div>
 
-                    {/* Tooltip */}
+                    { }
                     <div className="absolute bottom-full right-0 mb-2 px-3 py-1 bg-gray-900 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
                         Chat with {firstOnlineAdmin?.name || 'Admin'}
                     </div>
                 </button>
 
-                {/* Online Indicator - Outside button */}
+                { }
                 <div className="absolute bottom-0 right-0 rounded-full p-0.5">
                     <OnlineIndicator isOnline={true} size="sm" />
                 </div>
             </div>
 
-            {/* Chat Window */}
+            { }
             <ChatWindow
                 admin={firstOnlineAdmin}
                 isOpen={isOpen}

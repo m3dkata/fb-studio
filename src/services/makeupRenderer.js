@@ -27,20 +27,20 @@ export class MakeupRenderer {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d', { willReadFrequently: true });
 
-        // Create WebGL canvas for advanced effects
+        
         this.glCanvas = document.createElement('canvas');
         this.gl = this.glCanvas.getContext('webgl', { premultipliedAlpha: false });
 
-        // Texture cache
+        
         this.textureCache = new Map();
 
-        // Shader programs
+        
         this.programs = {};
 
-        // Landmark smoother
+        
         this.landmarkSmoother = new LandmarkSmoother(0.7);
 
-        // Animation time
+        
         this.startTime = Date.now();
 
         this.initializeShaders();
@@ -48,7 +48,7 @@ export class MakeupRenderer {
     initializeShaders() {
         const gl = this.gl;
 
-        // Create programs for different blend modes
+        
         this.programs.multiply = createProgram(gl, VERTEX_SHADER, getBlendShader(BlendMode.MULTIPLY));
         this.programs.screen = createProgram(gl, VERTEX_SHADER, getBlendShader(BlendMode.SCREEN));
         this.programs.overlay = createProgram(gl, VERTEX_SHADER, getBlendShader(BlendMode.OVERLAY));
@@ -57,7 +57,7 @@ export class MakeupRenderer {
         this.programs.shimmer = createProgram(gl, VERTEX_SHADER, SHIMMER_SHADER);
         this.programs.composite = createProgram(gl, VERTEX_SHADER, ALPHA_COMPOSITE_SHADER);
 
-        // Setup quad buffers
+        
         this.quad = setupQuad(gl);
     }
     resize(width, height) {
@@ -78,23 +78,23 @@ export class MakeupRenderer {
             return;
         }
 
-        // Smooth landmarks
+        
         const smoothedLandmarks = this.landmarkSmoother.smooth(faceLandmarks);
 
-        // Convert to canvas coordinates
+        
         const landmarks = landmarksToCanvasCoords(
             smoothedLandmarks,
             this.canvas.width,
             this.canvas.height
         );
 
-        // Clear canvas
+        
         this.clear();
 
-        // Draw video frame as base
+        
         this.ctx.drawImage(videoFrame, 0, 0, this.canvas.width, this.canvas.height);
 
-        // Apply makeup effects in order
+        
         if (preset && preset.effects) {
             for (const effect of preset.effects) {
                 await this.renderEffect(effect, landmarks, template);
@@ -125,7 +125,7 @@ export class MakeupRenderer {
                 await this.renderFaceContour(effect, landmarks, template);
                 break;
             case 'hair_dye':
-                // Hair dye requires segmentation mask - skip for now
+                
                 break;
         }
     }
@@ -135,12 +135,12 @@ export class MakeupRenderer {
 
         const intensity = (effect.globalIntensity || 50) / 100;
 
-        // Render for both eyes
+        
         for (const isLeft of [true, false]) {
             const eyeLandmarks = getEyeRegion(landmarks, isLeft);
             if (eyeLandmarks.length === 0) continue;
 
-            // Apply each mask layer
+            
             for (let i = 0; i < pattern.masks.length; i++) {
                 const mask = pattern.masks[i];
                 const color = effect.colors?.[i];
@@ -157,7 +157,7 @@ export class MakeupRenderer {
                     (colorIntensity / 100) * intensity,
                     isShimmer,
                     shimmerIntensity / 100,
-                    !isLeft // Flip for right eye
+                    !isLeft 
                 );
             }
         }
@@ -171,12 +171,12 @@ export class MakeupRenderer {
 
         if (!color) return;
 
-        // Render for both eyes
+        
         for (const isLeft of [true, false]) {
             const eyeLandmarks = getEyeRegion(landmarks, isLeft);
             if (eyeLandmarks.length === 0) continue;
 
-            // Find upper and lower eyeliner masks
+            
             const upperMask = pattern.masks.find(m => m.position === 'upper');
             const lowerMask = pattern.masks.find(m => m.position === 'lower');
 
@@ -195,7 +195,7 @@ export class MakeupRenderer {
         const intensity = (effect.colorIntensities?.[0] || 60) / 100;
         const color = effect.colors?.[0] || { r: 0, g: 0, b: 0, a: 1 };
 
-        // Render for both eyes
+        
         for (const isLeft of [true, false]) {
             const eyeLandmarks = getEyeRegion(landmarks, isLeft);
             if (eyeLandmarks.length === 0) continue;
@@ -207,7 +207,7 @@ export class MakeupRenderer {
         }
     }
     async renderLipstick(effect, landmarks, template) {
-        const lipLandmarks = getLipRegion(landmarks, true); // Outer contour
+        const lipLandmarks = getLipRegion(landmarks, true); 
         if (lipLandmarks.length === 0) return;
 
         const intensity = (effect.colorIntensities?.[0] || 55) / 100;
@@ -215,59 +215,59 @@ export class MakeupRenderer {
 
         if (!color) return;
 
-        // Use shared temp canvas
+        
         const tempCanvas = this.getTempCanvas();
         const tempCtx = tempCanvas.getContext('2d');
 
-        // Clear temp canvas
+        
         tempCtx.clearRect(0, 0, tempCanvas.width, tempCanvas.height);
 
         const { r, g, b, a } = color;
         tempCtx.fillStyle = `rgb(${r}, ${g}, ${b})`;
 
-        // Draw full outer lip region
+        
         createPolygonPath(tempCtx, lipLandmarks);
         tempCtx.fill();
 
-        // Check mouth openness
-        // Landmark 13: Upper lip inner center
-        // Landmark 14: Lower lip inner center
+        
+        
+        
         const upperInner = landmarks[13];
         const lowerInner = landmarks[14];
 
-        // Calculate face bounding box for relative threshold
+        
         const faceBbox = getBoundingBox(landmarks);
         const faceHeight = faceBbox.height;
 
         if (upperInner && lowerInner && faceHeight > 0) {
-            // Calculate vertical distance
+            
             const dy = Math.abs(upperInner.y - lowerInner.y);
             const openRatio = dy / faceHeight;
 
-            // Only cut out if mouth is open enough (> 3% of face height)
-            // This prevents gaps when closed but ensures cutout when open
+            
+            
             if (openRatio > 0.03) {
-                const innerLipLandmarks = getLipRegion(landmarks, false); // Inner contour
+                const innerLipLandmarks = getLipRegion(landmarks, false); 
                 if (innerLipLandmarks.length > 0) {
                     tempCtx.globalCompositeOperation = 'destination-out';
-                    // Use exact inner landmarks, do not scale
+                    
                     createPolygonPath(tempCtx, innerLipLandmarks);
                     tempCtx.fill();
 
-                    // Reset composite operation
+                    
                     tempCtx.globalCompositeOperation = 'source-over';
                 }
             }
         }
 
-        // Composite the lipstick layer onto main canvas
+        
         this.ctx.save();
         this.ctx.globalCompositeOperation = 'soft-light';
         this.ctx.globalAlpha = intensity * a;
         this.ctx.drawImage(tempCanvas, 0, 0);
         this.ctx.restore();
 
-        // Add gloss effect if specified
+        
         const pattern = this.findPattern(template.lipstick?.patterns, effect.patternGuid);
         if (pattern?.lipstickProfile === 'GLOSS') {
             this.addGlossEffect(lipLandmarks);
@@ -282,7 +282,7 @@ export class MakeupRenderer {
 
         if (!color) return;
 
-        // Render for both eyebrows
+        
         for (const isLeft of [true, false]) {
             const browLandmarks = getEyebrowRegion(landmarks, isLeft);
             if (browLandmarks.length === 0) continue;
@@ -302,7 +302,7 @@ export class MakeupRenderer {
 
         if (!color) return;
 
-        // Render for both cheeks
+        
         for (const isLeft of [true, false]) {
             const cheekLandmarks = getCheekRegion(landmarks, isLeft);
             if (cheekLandmarks.length === 0) continue;
@@ -317,8 +317,8 @@ export class MakeupRenderer {
         }
     }
     async renderFaceContour(effect, landmarks, template) {
-        // TODO: Face contour needs proper region mapping
-        // Temporarily disabled to avoid rendering artifacts
+        
+        
         return;
 
         if (!effect.patterns) return;
@@ -339,8 +339,8 @@ export class MakeupRenderer {
 
             if (!color) continue;
 
-            // Use face contour landmarks
-            const faceLandmarks = landmarks; // Use all landmarks for face contour
+            
+            const faceLandmarks = landmarks; 
 
             await this.renderMaskWithColor(
                 mask,
@@ -350,14 +350,14 @@ export class MakeupRenderer {
             );
         }
     }
-    // Helper to reuse temp canvas
+    
     getTempCanvas() {
         if (!this.sharedTempCanvas) {
             this.sharedTempCanvas = document.createElement('canvas');
             this.sharedTempCanvas.width = this.canvas.width;
             this.sharedTempCanvas.height = this.canvas.height;
         }
-        // Ensure size matches
+        
         if (this.sharedTempCanvas.width !== this.canvas.width ||
             this.sharedTempCanvas.height !== this.canvas.height) {
             this.sharedTempCanvas.width = this.canvas.width;
@@ -370,36 +370,36 @@ export class MakeupRenderer {
         if (!mask.src) return;
 
         try {
-            // Load mask texture
+            
             const image = await this.loadImage(mask.src);
 
-            // Validate image loaded correctly
+            
             if (!image || !image.complete || image.width === 0 || image.height === 0) {
-                // console.warn('Invalid mask image:', mask.src);
+                
                 return;
             }
 
-            // Get region bounding box
+            
             const bbox = getBoundingBox(regionLandmarks);
             if (bbox.width === 0 || bbox.height === 0) return;
 
-            // Calculate mask dimensions to fit the region
-            // Add padding to make makeup extend beyond just the eye landmarks
-            const padding = bbox.width * 0.7; // 75% padding
+            
+            
+            const padding = bbox.width * 0.7; 
             const maskX = bbox.x - padding;
             const maskY = bbox.y - padding + bbox.height * 0.2;
             const maskWidth = bbox.width + padding * 2;
             const maskHeight = bbox.height + padding * 2;
 
-            // Use shared temp canvas
+            
             const tempCanvas = this.getTempCanvas();
             const tempCtx = tempCanvas.getContext('2d');
 
-            // Clear only the area we need
-            // Adding some buffer to clear rect to be safe
+            
+            
             tempCtx.clearRect(0, 0, tempCanvas.width, tempCanvas.height);
 
-            // Draw mask centered on the region
+            
             if (shouldFlip) {
                 tempCtx.save();
                 tempCtx.translate(maskX + maskWidth / 2, maskY + maskHeight / 2);
@@ -419,10 +419,10 @@ export class MakeupRenderer {
                 tempCtx.restore();
             }
 
-            // Reset composite operation
+            
             tempCtx.globalCompositeOperation = 'source-over';
 
-            // Apply color tint using source-atop
+            
             tempCtx.globalCompositeOperation = 'source-atop';
             tempCtx.fillStyle = `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
             tempCtx.fillRect(
@@ -432,16 +432,16 @@ export class MakeupRenderer {
                 maskHeight
             );
 
-            // Composite onto main canvas with proper alpha
+            
             this.ctx.save();
             this.ctx.globalAlpha = intensity;
             this.ctx.drawImage(tempCanvas, 0, 0);
             this.ctx.restore();
 
-            // Reset composite operation for next use
+            
             tempCtx.globalCompositeOperation = 'source-over';
 
-            // Add shimmer if needed
+            
             if (isShimmer && shimmerIntensity > 0) {
                 this.addShimmerEffect(bbox, shimmerIntensity);
             }
@@ -452,7 +452,7 @@ export class MakeupRenderer {
     addGlossEffect(lipLandmarks) {
         const bbox = getBoundingBox(lipLandmarks);
 
-        // Create gradient for gloss
+        
         const gradient = this.ctx.createLinearGradient(
             bbox.x,
             bbox.y,
@@ -471,8 +471,8 @@ export class MakeupRenderer {
     addShimmerEffect(bbox, intensity) {
         const time = (Date.now() - this.startTime) / 1000;
 
-        // Create sparkle particles
-        // Reduced particle count multiplier from 20 to 10
+        
+        
         const particleCount = Math.floor(intensity * 5);
 
         this.ctx.save();
@@ -523,7 +523,7 @@ export class MakeupRenderer {
         this.landmarkSmoother.reset();
 
         if (this.gl) {
-            // Clean up WebGL resources
+            
             Object.values(this.programs).forEach(program => {
                 if (program) this.gl.deleteProgram(program);
             });

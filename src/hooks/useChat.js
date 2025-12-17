@@ -9,7 +9,7 @@ export const useChat = (recipientId) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // Load conversation
+    
     const loadMessages = useCallback(async () => {
         if (!user || !recipientId) {
             setLoading(false);
@@ -29,7 +29,7 @@ export const useChat = (recipientId) => {
         }
     }, [user, recipientId]);
 
-    // Load unread count
+    
     const loadUnreadCount = useCallback(async () => {
         if (!user) return;
 
@@ -41,13 +41,13 @@ export const useChat = (recipientId) => {
         }
     }, [user]);
 
-    // Send message
+    
     const sendMessage = useCallback(async (content) => {
         if (!content?.trim() || !recipientId) return;
 
         try {
             await chatService.sendMessage(recipientId, content);
-            // Don't add message here - real-time subscription will handle it
+            
         } catch (err) {
             console.error('Failed to send message:', err);
             setError(err.message);
@@ -55,11 +55,11 @@ export const useChat = (recipientId) => {
         }
     }, [recipientId]);
 
-    // Mark message as read
+    
     const markAsRead = useCallback(async (messageId) => {
         try {
             await chatService.markAsRead(messageId);
-            // Update local state optimistically
+            
             setMessages(prev =>
                 prev.map(msg =>
                     msg.id === messageId ? { ...msg, read: true } : msg
@@ -71,7 +71,7 @@ export const useChat = (recipientId) => {
         }
     }, []);
 
-    // Subscribe to real-time updates
+    
     useEffect(() => {
         if (!user) return;
 
@@ -80,19 +80,19 @@ export const useChat = (recipientId) => {
 
         const unsubscribe = chatService.subscribeToMessages(user.id, (e) => {
             if (e.action === 'create') {
-                // Check if message is part of current conversation
+                
                 const isFromRecipient = e.record.sender === recipientId && e.record.receiver === user.id;
                 const isToRecipient = e.record.sender === user.id && e.record.receiver === recipientId;
 
                 if (isFromRecipient || isToRecipient) {
                     setMessages(prev => {
-                        // Prevent duplicates
+                        
                         if (prev.some(msg => msg.id === e.record.id)) return prev;
                         return [...prev, e.record];
                     });
                 }
 
-                // Update unread count
+                
                 if (e.record.receiver === user.id && !e.record.read) {
                     setUnreadCount(prev => prev + 1);
                 }

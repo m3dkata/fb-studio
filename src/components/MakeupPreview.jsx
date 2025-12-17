@@ -1,9 +1,7 @@
 import { useMakeupPreview } from '../hooks/useMakeupPreview';
 import { PresetSelector } from './PresetSelector';
 
-/**
- * Main makeup preview component with live camera feed
- */
+ 
 export function MakeupPreview({ templateId, onTemplateChange }) {
     const {
         videoRef,
@@ -22,7 +20,7 @@ export function MakeupPreview({ templateId, onTemplateChange }) {
     const handleScreenshot = () => {
         const dataUrl = takeScreenshot();
         if (dataUrl) {
-            // Create download link
+            
             const link = document.createElement('a');
             link.download = `makeup-${Date.now()}.png`;
             link.href = dataUrl;
@@ -43,7 +41,7 @@ export function MakeupPreview({ templateId, onTemplateChange }) {
 
     return (
         <div className="makeup-preview-container">
-            {/* Loading overlay */}
+            { }
             {isLoading && (
                 <div className="loading-overlay">
                     <div className="loading-spinner"></div>
@@ -51,7 +49,7 @@ export function MakeupPreview({ templateId, onTemplateChange }) {
                 </div>
             )}
 
-            {/* Video and canvas */}
+            { }
             <div className="preview-display">
                 <video
                     ref={videoRef}
@@ -65,14 +63,14 @@ export function MakeupPreview({ templateId, onTemplateChange }) {
                     className="preview-canvas"
                 />
 
-                {/* FPS counter */}
+                { }
                 {isInitialized && (
                     <div className="fps-counter">
                         {fps} FPS
                     </div>
                 )}
 
-                {/* No face detected indicator */}
+                { }
                 {isInitialized && isCameraReady && !isLoading && (
                     <div className="face-indicator">
                         <div className="face-indicator-dot"></div>
@@ -81,10 +79,10 @@ export function MakeupPreview({ templateId, onTemplateChange }) {
                 )}
             </div>
 
-            {/* Controls */}
+            { }
             {isInitialized && template && (
                 <div className="preview-controls">
-                    {/* Preset selector */}
+                    { }
                     <PresetSelector
                         presets={template.presets}
                         selectedPreset={selectedPreset}
@@ -92,7 +90,7 @@ export function MakeupPreview({ templateId, onTemplateChange }) {
                         disabled={!isCameraReady}
                     />
 
-                    {/* Action buttons */}
+                    { }
                     <div className="action-buttons">
                         <button
                             className="screenshot-button"

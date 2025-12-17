@@ -1,10 +1,7 @@
 import { Component } from 'react';
 import Button from './ui/Button';
 
-/**
- * Error Boundary Component
- * Catches rendering errors in child components and displays a fallback UI
- */
+ 
 class ErrorBoundary extends Component {
     constructor(props) {
         super(props);
@@ -16,12 +13,12 @@ class ErrorBoundary extends Component {
     }
 
     static getDerivedStateFromError(error) {
-        // Update state so the next render will show the fallback UI
+        
         return { hasError: true };
     }
 
     componentDidCatch(error, errorInfo) {
-        // Log error details for debugging
+        
         console.error('Error caught by boundary:', error, errorInfo);
 
         this.setState({
@@ -29,8 +26,8 @@ class ErrorBoundary extends Component {
             errorInfo
         });
 
-        // Can also log to an error reporting service here
-        // e.g., Sentry, LogRocket, etc.
+        
+        
     }
 
     handleReset = () => {

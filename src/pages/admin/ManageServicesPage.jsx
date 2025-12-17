@@ -20,7 +20,7 @@ const ManageServicesPage = () => {
 
     const { register, handleSubmit, reset, setValue, formState: { errors } } = useForm();
 
-    // Use CRUD modal hook
+    
     const { isOpen: isModalOpen, editingItem: editingService, openCreate, openEdit, close: closeModal } = useCrudModal(reset, setValue);
 
     const openCreateModal = () => {
@@ -54,7 +54,7 @@ const ManageServicesPage = () => {
                 active: data.active === true || data.active === 'true',
             };
 
-            // Handle image upload ONLY if a new image is selected
+            
             if (data.image && data.image.length > 0 && data.image[0] instanceof File) {
                 serviceData.image = data.image[0];
             } else {
@@ -139,7 +139,7 @@ const ManageServicesPage = () => {
                 ))}
             </div>
 
-            {/* Create/Edit Modal */}
+            { }
             <Modal
                 isOpen={isModalOpen}
                 onClose={closeModal}
@@ -288,7 +288,7 @@ const ManageServicesPage = () => {
                 </form>
             </Modal>
 
-            {/* Delete Confirmation Modal */}
+            { }
             <Modal
                 isOpen={!!deleteConfirmId}
                 onClose={() => setDeleteConfirmId(null)}

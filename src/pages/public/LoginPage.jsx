@@ -23,7 +23,7 @@ const LoginPage = () => {
         try {
             const user = await login(data.email, data.password);
 
-            // Determine redirect path based on user role
+            
             let redirectPath = from || '/dashboard';
 
             if (user.user_type === USER_TYPES.ADMIN) {
@@ -40,7 +40,7 @@ const LoginPage = () => {
 
     return (
         <div className="flex justify-center items-center min-h-[calc(100vh-4rem)] py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-            {/* Background Blobs */}
+            { }
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
                 <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary/20 rounded-full blur-[100px] animate-float" />
                 <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-secondary/20 rounded-full blur-[100px] animate-float" style={{ animationDelay: '2s' }} />

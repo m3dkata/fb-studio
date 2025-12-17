@@ -1,7 +1,7 @@
 import pb from './pocketbase';
 
 export const unavailableSlotsService = {
-    // Get all unavailable slots
+    
     async getAll(filter = {}) {
         try {
             const filterQuery = [];
@@ -26,7 +26,7 @@ export const unavailableSlotsService = {
         }
     },
 
-    // Create unavailable slot (admin only)
+    
     async create(data) {
         try {
             const record = await pb.collection('unavailable_slots').create(data);
@@ -36,7 +36,7 @@ export const unavailableSlotsService = {
         }
     },
 
-    // Update unavailable slot (admin only)
+    
     async update(id, data) {
         try {
             const record = await pb.collection('unavailable_slots').update(id, data);
@@ -46,7 +46,7 @@ export const unavailableSlotsService = {
         }
     },
 
-    // Delete unavailable slot (admin only)
+    
     async delete(id) {
         try {
             await pb.collection('unavailable_slots').delete(id);

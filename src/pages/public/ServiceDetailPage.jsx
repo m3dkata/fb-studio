@@ -51,7 +51,7 @@ const ServiceDetailPage = () => {
             </Link>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-                {/* Image Section */}
+                { }
                 <div className="relative rounded-xl overflow-hidden shadow-lg h-[300px] md:h-[400px] lg:h-[500px]">
                     {service.image ? (
                         <img
@@ -71,7 +71,7 @@ const ServiceDetailPage = () => {
                     </div>
                 </div>
 
-                {/* Details Section */}
+                { }
                 <div>
                     <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
                         {service.title}

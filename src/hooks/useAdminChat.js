@@ -8,7 +8,7 @@ export const useAdminChat = () => {
     const [totalUnread, setTotalUnread] = useState(0);
     const [loading, setLoading] = useState(true);
 
-    // Load all conversations
+    
     const loadConversations = useCallback(async () => {
         if (!user) {
             setLoading(false);
@@ -19,7 +19,7 @@ export const useAdminChat = () => {
             setLoading(true);
             const allMessages = await chatService.getAllUserConversations(user.id);
 
-            // Group by unique users
+            
             const userMap = new Map();
             let unreadCount = 0;
 
@@ -31,19 +31,19 @@ export const useAdminChat = () => {
                     userMap.set(otherUserId, {
                         userId: otherUserId,
                         userName: otherUser?.name || 'User',
-                        userObject: otherUser, // Store full user object for avatar URL
+                        userObject: otherUser, 
                         lastMessage: msg,
                         unreadCount: 0,
                     });
                 }
 
-                // Update to latest message
+                
                 const existing = userMap.get(otherUserId);
                 if (new Date(msg.created) > new Date(existing.lastMessage.created)) {
                     existing.lastMessage = msg;
                 }
 
-                // Count unread
+                
                 if (msg.receiver === user.id && !msg.read) {
                     existing.unreadCount++;
                     unreadCount++;
@@ -66,7 +66,7 @@ export const useAdminChat = () => {
 
         loadConversations();
 
-        // Subscribe to new messages
+        
         const unsubscribe = chatService.subscribeToMessages(user.id, () => {
             loadConversations();
         });

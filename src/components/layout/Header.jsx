@@ -19,7 +19,7 @@ const Header = () => {
     const [scrolled, setScrolled] = useState(false);
     const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
 
-    // Notifications hooks
+    
     const { data: notifications = [] } = useNotifications(user?.id);
     const { data: unreadCount = 0 } = useUnreadCount(user?.id);
     const markAsRead = useMarkAsRead();
@@ -82,10 +82,10 @@ const Header = () => {
                        <TestLoginButton />
                    </div>
 
-                    {/* Desktop Nav */}
+                    { }
                     <DesktopNavigation navLinks={navLinks} />
 
-                    {/* Mobile Notifications Dropdown (hidden on desktop) */}
+                    { }
                     <div className="md:hidden">
                         <NotificationsMobile
                             isAuthenticated={isAuthenticated}
@@ -129,7 +129,7 @@ const Header = () => {
                         )}
                     </div>
 
-                    {/* Mobile Menu */}
+                    { }
                     <MobileMenu
                         isMenuOpen={isMenuOpen}
                         onMenuToggle={toggleMenu}
@@ -140,7 +140,7 @@ const Header = () => {
                 </div>
             </div>
 
-            {/* Mobile Navigation */}
+            { }
             <MobileNavigation
                 isOpen={isMenuOpen}
                 navLinks={navLinks}

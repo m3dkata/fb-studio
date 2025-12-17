@@ -20,7 +20,7 @@ const CalendarExportModal = ({ isOpen, onClose, booking, service }) => {
             downloadICS(booking, service);
             onClose();
         } catch (error) {
-            // Error is logged in downloadICS
+            
         }
     };
 

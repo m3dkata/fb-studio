@@ -7,7 +7,7 @@ const Layout = () => {
     return (
         <div className="flex flex-col min-h-screen">
             <Header />
-            {/* Added pt-20 to account for fixed header */}
+            { }
             <main className="flex-grow pt-20">
                 <Outlet />
             </main>

@@ -19,19 +19,19 @@ const BookServicePage = () => {
     const { data: service, isLoading: serviceLoading } = useService(id);
     const createBooking = useCreateBooking();
 
-    const [selectedDate, setSelectedDate] = useState(''); // Start with no date selected
+    const [selectedDate, setSelectedDate] = useState(''); 
     const [selectedTime, setSelectedTime] = useState('');
 
-    // Only fetch slots when a date is selected
+    
     const { data: availableSlots, isLoading: slotsLoading } = useAvailableSlots(
         id,
         selectedDate,
-        { enabled: !!selectedDate } // Only fetch if date is selected
+        { enabled: !!selectedDate } 
     );
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    // Reset time when date changes
+    
     useEffect(() => {
         setSelectedTime('');
     }, [selectedDate]);
@@ -75,7 +75,7 @@ const BookServicePage = () => {
             <h1 className="mb-8 text-3xl font-bold text-gray-900 dark:text-white">Book Appointment</h1>
 
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-                {/* Service Summary */}
+                { }
                 <div className="lg:col-span-1">
                     <Card>
                         <div className="relative h-48 overflow-hidden bg-gray-200 dark:bg-gray-700 rounded-t-xl">
@@ -106,7 +106,7 @@ const BookServicePage = () => {
                     </Card>
                 </div>
 
-                {/* Booking Form */}
+                { }
                 <div className="lg:col-span-2">
                     <Card>
                         <CardHeader>
@@ -114,9 +114,9 @@ const BookServicePage = () => {
                         </CardHeader>
                         <CardContent>
                             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                                {/* Date and Time Selection - Side by Side on Desktop */}
+                                { }
                                 <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-                                    {/* Left: Date Selection */}
+                                    { }
                                     <div>
                                         <DatePicker
                                             label="Select Date"
@@ -126,7 +126,7 @@ const BookServicePage = () => {
                                         />
                                     </div>
 
-                                    {/* Right: Time Slots */}
+                                    { }
                                     <div>
                                         {selectedDate ? (
                                             <div>
@@ -175,7 +175,7 @@ const BookServicePage = () => {
                                     </div>
                                 </div>
 
-                                {/* Notes */}
+                                { }
                                 <div>
                                     <label htmlFor="notes" className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
                                         Additional Notes (Optional)
@@ -189,7 +189,7 @@ const BookServicePage = () => {
                                     />
                                 </div>
 
-                                {/* Summary & Submit */}
+                                { }
                                 {selectedDate && selectedTime && (
                                     <div className="p-5 border-2 border-teal-200 bg-gradient-to-r from-teal-50 to-green-50 dark:from-teal-900/20 dark:to-green-900/20 rounded-xl dark:border-teal-800">
                                         <h4 className="mb-3 font-bold text-gray-900 dark:text-white">Booking Summary</h4>

@@ -12,7 +12,7 @@ export function useMakeupPreview(templateId = null) {
     const [selectedPreset, setSelectedPreset] = useState(null);
     const [fps, setFps] = useState(0);
 
-    // Use camera hook
+    
     const { videoRef, isCameraReady, error: cameraError, initCamera, stopCamera } = useCamera();
 
     const canvasRef = useRef(null);
@@ -21,9 +21,9 @@ export function useMakeupPreview(templateId = null) {
     const optimizerRef = useRef(null);
     const animationFrameRef = useRef(null);
     const currentLandmarksRef = useRef(null);
-    const lastDetectionTimeRef = useRef(0); // Fix: Use ref instead of window global
+    const lastDetectionTimeRef = useRef(0); 
 
-    // Propagate camera error
+    
     useEffect(() => {
         if (cameraError) {
             setError(cameraError);
@@ -34,12 +34,12 @@ export function useMakeupPreview(templateId = null) {
         try {
             setIsLoading(true);
 
-            // Initialize MediaPipe
+            
             const mediaPipe = getMediaPipeService();
             await mediaPipe.initialize();
             mediaPipeRef.current = mediaPipe;
 
-            // Setup face detection callback
+            
             mediaPipe.onFaceResults((results) => {
                 if (results.multiFaceLandmarks && results.multiFaceLandmarks.length > 0) {
                     currentLandmarksRef.current = results.multiFaceLandmarks[0];
@@ -48,12 +48,12 @@ export function useMakeupPreview(templateId = null) {
                 }
             });
 
-            // Initialize renderer
+            
             if (canvasRef.current) {
                 rendererRef.current = new MakeupRenderer(canvasRef.current);
             }
 
-            // Initialize optimizer
+            
             optimizerRef.current = new MediaPipeOptimizer(PERFORMANCE_CONFIG.MEDIAPIPE_TARGET_FPS);
 
             setIsInitialized(true);
@@ -72,7 +72,7 @@ export function useMakeupPreview(templateId = null) {
             const loadedTemplate = await loadTemplate(templateId);
             setTemplate(loadedTemplate);
 
-            // Auto-select first preset
+            
             if (loadedTemplate.presets && loadedTemplate.presets.length > 0) {
                 setSelectedPreset(loadedTemplate.presets[0]);
             }
@@ -91,24 +91,24 @@ export function useMakeupPreview(templateId = null) {
             return;
         }
 
-        // Check if we should process this frame (Rendering target: 60 FPS)
+        
         if (optimizerRef.current && !optimizerRef.current.shouldProcessFrame(timestamp)) {
             animationFrameRef.current = requestAnimationFrame(renderLoop);
             return;
         }
 
-        // Safety check for video dimensions
+        
         if (videoRef.current.videoWidth === 0 || videoRef.current.videoHeight === 0) {
             animationFrameRef.current = requestAnimationFrame(renderLoop);
             return;
         }
 
-        // Update FPS
+        
         if (optimizerRef.current) {
             setFps(optimizerRef.current.getFPS());
         }
 
-        // Process frame with MediaPipe (Throttled to ~15 FPS for performance)
+        
         const shouldDetect = timestamp - lastDetectionTimeRef.current >= PERFORMANCE_CONFIG.DETECTION_THROTTLE_MS;
 
         if (shouldDetect) {
@@ -118,7 +118,7 @@ export function useMakeupPreview(templateId = null) {
             });
         }
 
-        // Render makeup
+        
         if (currentLandmarksRef.current && template && selectedPreset) {
             rendererRef.current.render(
                 videoRef.current,
@@ -129,7 +129,7 @@ export function useMakeupPreview(templateId = null) {
                 console.warn('Render error:', err);
             });
         } else {
-            // Just draw video frame if no face detected
+            
             const ctx = canvasRef.current.getContext('2d');
             ctx.drawImage(videoRef.current, 0, 0, canvasRef.current.width, canvasRef.current.height);
         }
@@ -153,15 +153,15 @@ export function useMakeupPreview(templateId = null) {
     const changeTemplate = useCallback(async (newTemplateId) => {
         stopRendering();
 
-        // Clear previous template resources
+        
         if (rendererRef.current) {
             rendererRef.current.clearCache();
-            rendererRef.current.clear(); // Clear canvas
+            rendererRef.current.clear(); 
         }
         setTemplate(null);
         setSelectedPreset(null);
 
-        // Force garbage collection hint (optional, but good for heavy apps)
+        
         if (window.gc) window.gc();
 
         await loadMakeupTemplate(newTemplateId);
@@ -215,7 +215,7 @@ export function useMakeupPreview(templateId = null) {
 
         init();
 
-        // Handle window resize/orientation change
+        
         window.addEventListener('resize', resizeCanvas);
 
         return () => {
@@ -243,16 +243,16 @@ export function useMakeupPreview(templateId = null) {
 
     useEffect(() => {
         return () => {
-            // Stop rendering loop
+            
             if (animationFrameRef.current) {
                 cancelAnimationFrame(animationFrameRef.current);
                 animationFrameRef.current = null;
             }
 
-            // Stop camera stream
+            
             stopCamera();
 
-            // Cleanup renderer
+            
             if (rendererRef.current) {
                 try {
                     rendererRef.current.dispose();
@@ -262,7 +262,7 @@ export function useMakeupPreview(templateId = null) {
                 rendererRef.current = null;
             }
 
-            // Cleanup MediaPipe
+            
             if (mediaPipeRef.current) {
                 try {
                     mediaPipeRef.current.dispose();

@@ -1,7 +1,7 @@
 import pb from './pocketbase';
 
 export const servicesService = {
-    // Get all services
+    
     async getAll(filter = {}) {
         try {
             const filterQuery = [];
@@ -13,7 +13,7 @@ export const servicesService = {
             if (filter.active !== undefined) {
                 filterQuery.push(`active = ${filter.active}`);
             } else {
-                filterQuery.push('active = true'); // Default: only active services
+                filterQuery.push('active = true'); 
             }
 
             const records = await pb.collection('services').getFullList({
@@ -27,7 +27,7 @@ export const servicesService = {
         }
     },
 
-    // Get single service by ID
+    
     async getById(id) {
         try {
             const record = await pb.collection('services').getOne(id);
@@ -37,7 +37,7 @@ export const servicesService = {
         }
     },
 
-    // Create new service (admin only)
+    
     async create(data) {
         try {
             const formData = new FormData();
@@ -62,7 +62,7 @@ export const servicesService = {
         }
     },
 
-    // Update service (admin only)
+    
     async update(id, data) {
         try {
             const formData = new FormData();
@@ -80,7 +80,7 @@ export const servicesService = {
         }
     },
 
-    // Delete service (admin only)
+    
     async delete(id) {
         try {
             await pb.collection('services').delete(id);
@@ -92,20 +92,20 @@ export const servicesService = {
         }
     },
 
-    // Get service image URL
+    
     getImageUrl(service, filename) {
         if (!filename) return null;
         return pb.files.getURL(service, filename);
     },
 
-    // Subscribe to services changes
+    
     subscribe(callback) {
         return pb.collection('services').subscribe('*', (e) => {
             callback(e);
         });
     },
 
-    // Unsubscribe from services changes
+    
     async unsubscribe() {
         await pb.collection('services').unsubscribe();
     }

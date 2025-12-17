@@ -17,9 +17,9 @@ class MediaPipeService {
 
         this.faceMesh.setOptions({
             maxNumFaces: 1,
-            refineLandmarks: false, // Disabled for better performance
-            minDetectionConfidence: 0.5, // Increased stability
-            minTrackingConfidence: 0.5, // Increased stability
+            refineLandmarks: false, 
+            minDetectionConfidence: 0.5, 
+            minTrackingConfidence: 0.5, 
         });
 
         this.faceMesh.onResults((results) => {
@@ -38,7 +38,7 @@ class MediaPipeService {
         });
 
         this.selfieSegmentation.setOptions({
-            modelSelection: 1, // 0 for general, 1 for landscape (better quality)
+            modelSelection: 1, 
             selfieMode: true,
         });
 
@@ -54,13 +54,13 @@ class MediaPipeService {
         if (this.isInitialized) return;
 
         try {
-            // Only initialize FaceMesh for now (segmentation has issues)
+            
             await this.initFaceMesh();
 
             this.isInitialized = true;
-            // console.log('MediaPipe initialized successfully');
+            
         } catch (error) {
-            // console.error('Failed to initialize MediaPipe:', error);
+            
             throw error;
         }
     }
@@ -101,7 +101,7 @@ class MediaPipeService {
     }
 }
 
-// Singleton instance
+
 let mediaPipeInstance = null;
 export function getMediaPipeService() {
     if (!mediaPipeInstance) {
@@ -110,31 +110,31 @@ export function getMediaPipeService() {
     return mediaPipeInstance;
 }
 export function extractHairMask(segmentationMask, canvasWidth, canvasHeight) {
-    // Create canvas for hair mask
+    
     const canvas = document.createElement('canvas');
     canvas.width = canvasWidth;
     canvas.height = canvasHeight;
     const ctx = canvas.getContext('2d');
 
-    // Draw segmentation mask
+    
     ctx.drawImage(segmentationMask, 0, 0, canvasWidth, canvasHeight);
 
-    // Get image data
+    
     const imageData = ctx.getImageData(0, 0, canvasWidth, canvasHeight);
     const data = imageData.data;
 
-    // Create hair mask (assuming hair is in upper portion of segmentation)
-    // This is a simplified approach - you might need more sophisticated hair detection
+    
+    
     for (let i = 0; i < data.length; i += 4) {
         const y = Math.floor(i / 4 / canvasWidth);
-        const segmentValue = data[i]; // R channel contains segmentation
+        const segmentValue = data[i]; 
 
-        // Keep only upper portion (rough hair region)
+        
         if (segmentValue > 128 && y < canvasHeight * 0.4) {
-            // Keep as is (person mask)
-            data[i + 3] = 255; // Full opacity
+            
+            data[i + 3] = 255; 
         } else {
-            // Make transparent
+            
             data[i + 3] = 0;
         }
     }
@@ -159,7 +159,7 @@ export class MediaPipeOptimizer {
             this.lastFrameTime = timestamp;
             this.frameCount++;
 
-            // Update FPS counter
+            
             const fpsDelta = timestamp - this.lastFpsUpdate;
             if (fpsDelta >= this.fpsUpdateInterval) {
                 this.fps = Math.round((this.frameCount * 1000) / fpsDelta);

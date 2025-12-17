@@ -29,7 +29,7 @@ const ProfilePage = () => {
                 name: data.name,
                 phone: data.phone,
                 avatar: data.avatar && data.avatar[0] ? data.avatar[0] : undefined,
-                // Email update usually requires verification, keeping it simple for now
+                
             });
             setSuccessMessage('Profile updated successfully!');
         } catch (error) {
@@ -61,11 +61,11 @@ const ProfilePage = () => {
                         )}
 
                         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                            {/* Avatar Upload */}
+                            { }
                             <div className="flex flex-col items-center mb-6">
                                 <div className="relative w-32 h-32 mb-3">
                                     <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white dark:border-gray-700 shadow-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
-                                        {/* Priority: New Preview > Existing Avatar > Placeholder */}
+                                        { }
                                         {watch('avatar') && watch('avatar')[0] ? (
                                             <img
                                                 src={URL.createObjectURL(watch('avatar')[0])}
@@ -121,7 +121,7 @@ const ProfilePage = () => {
                                 label="Email Address"
                                 id="email"
                                 type="email"
-                                disabled // Email change often requires re-verification
+                                disabled 
                                 className="py-3 px-4 rounded-xl border-2 bg-gray-100 dark:bg-gray-800/50 text-base cursor-not-allowed opacity-75"
                                 {...register('email')}
                                 error={errors.email?.message}

@@ -14,8 +14,8 @@ import AdminChatWidget from './components/ui/AdminChatWidget';
 import LoadingSpinner from './components/ui/LoadingSpinner';
 import { useAuth } from './hooks/useAuth';
 
-// Code splitting: Lazy load page components
-// Public Pages
+
+
 const HomePage = lazy(() => import('./pages/public/HomePage'));
 const LoginPage = lazy(() => import('./pages/public/LoginPage'));
 const RegisterPage = lazy(() => import('./pages/public/RegisterPage'));
@@ -23,13 +23,13 @@ const ServicesPage = lazy(() => import('./pages/public/ServicesPage'));
 const ServiceDetailPage = lazy(() => import('./pages/public/ServiceDetailPage'));
 const MakeupStudio = lazy(() => import('./pages/public/MakeupStudio'));
 
-// User Pages
+
 const UserDashboard = lazy(() => import('./pages/user/UserDashboard'));
 const BookServicePage = lazy(() => import('./pages/user/BookServicePage'));
 const MyBookingsPage = lazy(() => import('./pages/user/MyBookingsPage'));
 const ProfilePage = lazy(() => import('./pages/user/ProfilePage'));
 
-// Admin Pages
+
 const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard'));
 const ManageServicesPage = lazy(() => import('./pages/admin/ManageServicesPage'));
 const ManageBookingsPage = lazy(() => import('./pages/admin/ManageBookingsPage'));
@@ -78,7 +78,7 @@ function AppContent() {
       <Suspense fallback={<LoadingSpinner fullScreen />}>
         <Routes>
           <Route path="/" element={<Layout />}>
-            {/* Public Routes */}
+            { }
             <Route index element={<HomePage />} />
             <Route path="login" element={
               <PublicRoute>
@@ -94,7 +94,7 @@ function AppContent() {
             <Route path="services/:id" element={<ServiceDetailPage />} />
             <Route path="tryon" element={<MakeupStudio />} />
 
-            {/* Protected User Routes */}
+            { }
             <Route path="dashboard" element={
               <ProtectedRoute>
                 <UserDashboard />
@@ -116,7 +116,7 @@ function AppContent() {
               </ProtectedRoute>
             } />
 
-            {/* Protected Admin Routes */}
+            { }
             <Route path="admin" element={
               <ProtectedRoute adminOnly>
                 <AdminDashboard />
@@ -138,7 +138,7 @@ function AppContent() {
               </ProtectedRoute>
             } />
 
-            {/* Catch all */}
+            { }
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>

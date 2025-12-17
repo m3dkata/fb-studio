@@ -11,7 +11,7 @@ export const useNotifications = (userId) => {
         enabled: !!userId,
     });
 
-    // Subscribe to real-time updates
+    
     useEffect(() => {
         if (!userId) return;
 

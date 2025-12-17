@@ -22,14 +22,14 @@ const ManageBookingsPage = () => {
         status: filterStatus !== 'all' ? filterStatus : undefined
     });
 
-    // Scroll to and highlight booking when bookingId is in URL
+    
     useEffect(() => {
         if (highlightBookingId && bookings && bookings.length > 0) {
             const element = document.getElementById(`booking-${highlightBookingId}`);
             if (element) {
                 setTimeout(() => {
                     element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    // Remove the bookingId from URL after scrolling
+                    
                     setSearchParams({});
                 }, 300);
             }
@@ -99,7 +99,7 @@ const ManageBookingsPage = () => {
 
             <Card>
                 <CardContent className="p-0">
-                    {/* Mobile View (Cards) */}
+                    { }
                     <div className="md:hidden space-y-4 p-4">
                         {bookings?.map((booking) => {
                             const isHighlighted = booking.id === highlightBookingId;
@@ -199,7 +199,7 @@ const ManageBookingsPage = () => {
                         )}
                     </div>
 
-                    {/* Desktop View (Table) */}
+                    { }
                     <div className="hidden md:block overflow-x-auto">
                         <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                             <thead className="bg-gray-50 dark:bg-gray-800/50">

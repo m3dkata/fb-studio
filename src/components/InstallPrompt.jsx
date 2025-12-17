@@ -9,25 +9,25 @@ const InstallPrompt = () => {
     const [isStandalone, setIsStandalone] = useState(false);
 
     useEffect(() => {
-        // Check if already installed
+        
         const isInStandaloneMode = window.matchMedia('(display-mode: standalone)').matches
             || window.navigator.standalone
             || document.referrer.includes('android-app://');
 
         setIsStandalone(isInStandaloneMode);
 
-        // Check if iOS
+        
         const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
         setIsIOS(iOS);
 
-        // Check if already dismissed
+        
         const dismissed = localStorage.getItem('pwa-install-dismissed');
         const dismissedTime = dismissed ? parseInt(dismissed) : 0;
         const daysSinceDismissed = (Date.now() - dismissedTime) / (1000 * 60 * 60 * 24);
 
-        // Show prompt if not installed, not dismissed recently (7 days), and not iOS (iOS has different flow)
+        
         if (!isInStandaloneMode && (!dismissed || daysSinceDismissed > 7) && !iOS) {
-            // Listen for the beforeinstallprompt event
+            
             const handleBeforeInstallPrompt = (e) => {
                 e.preventDefault();
                 setDeferredPrompt(e);
@@ -41,11 +41,11 @@ const InstallPrompt = () => {
             };
         }
 
-        // For iOS, show instructions after a delay if not installed
+        
         if (iOS && !isInStandaloneMode && (!dismissed || daysSinceDismissed > 7)) {
             const timer = setTimeout(() => {
                 setShowPrompt(true);
-            }, 3000); // Show after 3 seconds
+            }, 3000); 
 
             return () => clearTimeout(timer);
         }
@@ -72,7 +72,7 @@ const InstallPrompt = () => {
         setShowPrompt(false);
     };
 
-    // Don't show if already installed
+    
     if (isStandalone || !showPrompt) {
         return null;
     }

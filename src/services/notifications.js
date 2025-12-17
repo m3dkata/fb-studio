@@ -1,7 +1,7 @@
 import pb from './pocketbase';
 
 export const notificationsService = {
-    // Get all notifications for a user
+    
     async getAll(userId) {
         try {
             const records = await pb.collection('notifications').getFullList({
@@ -16,7 +16,7 @@ export const notificationsService = {
         }
     },
 
-    // Get unread count
+    
     async getUnreadCount(userId) {
         try {
             const result = await pb.collection('notifications').getList(1, 1, {
@@ -29,7 +29,7 @@ export const notificationsService = {
         }
     },
 
-    // Mark notification as read
+    
     async markAsRead(id) {
         try {
             await pb.collection('notifications').update(id, {
@@ -41,14 +41,14 @@ export const notificationsService = {
         }
     },
 
-    // Mark all notifications as read for a user
+    
     async markAllAsRead(userId) {
         try {
             const unreadNotifications = await pb.collection('notifications').getFullList({
                 filter: `user = "${userId}" && read = false`,
             });
 
-            // Process in parallel
+            
             await Promise.all(
                 unreadNotifications.map(notification =>
                     pb.collection('notifications').update(notification.id, { read: true })
@@ -60,7 +60,7 @@ export const notificationsService = {
         }
     },
 
-    // Subscribe to notifications
+    
     subscribe(userId, callback) {
         return pb.collection('notifications').subscribe('*', (e) => {
             if (e.record.user === userId) {
@@ -69,7 +69,7 @@ export const notificationsService = {
         });
     },
 
-    // Unsubscribe
+    
     async unsubscribe() {
         await pb.collection('notifications').unsubscribe();
     }

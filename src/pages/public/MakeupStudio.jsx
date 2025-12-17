@@ -6,10 +6,10 @@ export function MakeupStudio() {
     const [selectedTemplateId, setSelectedTemplateId] = useState(null);
     const [showTemplateSelector, setShowTemplateSelector] = useState(false);
 
-    // Use custom hook for template management
+    
     const { templates, isLoading: isLoadingTemplates } = useTemplates();
 
-    // Auto-select first template when templates load
+    
     useEffect(() => {
         if (templates.length > 0 && !selectedTemplateId) {
             setSelectedTemplateId(templates[0].templateId);
@@ -18,7 +18,7 @@ export function MakeupStudio() {
 
     const handleTemplateSelect = (templateId) => {
         setSelectedTemplateId(templateId);
-        // On mobile, hide selector after selection
+        
         if (window.innerWidth <= 768) {
             setShowTemplateSelector(false);
         }
@@ -26,7 +26,7 @@ export function MakeupStudio() {
 
     return (
         <div className="makeup-studio">
-            {/* Template Selector Sidebar */}
+            { }
             <aside className={`template-sidebar ${showTemplateSelector ? 'show' : ''}`}>
                 <TemplateSelector
                     templates={templates}
@@ -35,7 +35,7 @@ export function MakeupStudio() {
                 />
             </aside>
 
-            {/* Main Preview Container */}
+            { }
             <div className="preview-container">
                 {selectedTemplateId ? (
                     <MakeupPreview
@@ -51,7 +51,7 @@ export function MakeupStudio() {
 
             </div>
 
-            {/* Toggle Button */}
+            { }
             <button
                 className="show-templates-btn"
                 onClick={() => setShowTemplateSelector(!showTemplateSelector)}

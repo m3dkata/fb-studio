@@ -1,9 +1,7 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { CAMERA_CONFIG } from '../constants/performance';
 
-/**
- * Custom hook for camera management
- */
+ 
 export function useCamera() {
     const [isCameraReady, setIsCameraReady] = useState(false);
     const [error, setError] = useState(null);
@@ -11,12 +9,10 @@ export function useCamera() {
     const videoRef = useRef(null);
     const streamRef = useRef(null);
 
-    /**
-     * Initialize camera stream
-     */
+     
     const initCamera = useCallback(async () => {
         try {
-            // Stop any existing stream first
+            
             if (streamRef.current) {
                 streamRef.current.getTracks().forEach(track => track.stop());
             }
@@ -49,9 +45,7 @@ export function useCamera() {
         }
     }, []);
 
-    /**
-     * Cleanup camera on unmount
-     */
+     
     useEffect(() => {
         return () => {
             if (streamRef.current) {
@@ -60,9 +54,7 @@ export function useCamera() {
         };
     }, []);
 
-    /**
-     * Stop camera stream manually
-     */
+     
     const stopCamera = useCallback(() => {
         if (streamRef.current) {
             streamRef.current.getTracks().forEach(track => track.stop());

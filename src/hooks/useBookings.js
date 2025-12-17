@@ -10,7 +10,7 @@ export const useBookings = (filter = {}) => {
         queryFn: () => bookingsService.getAll(filter),
     });
 
-    // Subscribe to real-time updates
+    
     useEffect(() => {
         const unsubscribe = bookingsService.subscribe(() => {
             queryClient.invalidateQueries({ queryKey: ['bookings'] });

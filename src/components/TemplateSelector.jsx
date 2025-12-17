@@ -3,22 +3,22 @@ export function TemplateSelector({ templates = [], selectedTemplateId, onSelect 
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('All');
 
-    // Extract unique categories
+    
     const categories = ['All', ...new Set(
         templates.flatMap(t =>
             t.presets?.flatMap(p => p.lookCategories || []) || []
         )
     )];
 
-    // Filter templates
+    
     const filteredTemplates = templates.filter(template => {
-        // Search filter
+        
         const matchesSearch = !searchQuery ||
             template.presets?.some(p =>
                 p.name?.toLowerCase().includes(searchQuery.toLowerCase())
             );
 
-        // Category filter
+        
         const matchesCategory = selectedCategory === 'All' ||
             template.presets?.some(p =>
                 p.lookCategories?.includes(selectedCategory)
@@ -32,7 +32,7 @@ export function TemplateSelector({ templates = [], selectedTemplateId, onSelect 
             <div className="selector-header">
                 <h2>Makeup Templates</h2>
 
-                {/* Search */}
+                { }
                 <div className="search-box">
                     <input
                         type="text"
@@ -43,7 +43,7 @@ export function TemplateSelector({ templates = [], selectedTemplateId, onSelect 
                     <span className="search-icon">🔍</span>
                 </div>
 
-                {/* Category filter */}
+                { }
                 <div className="category-filter">
                     {categories.map(category => (
                         <button
@@ -57,7 +57,7 @@ export function TemplateSelector({ templates = [], selectedTemplateId, onSelect 
                 </div>
             </div>
 
-            {/* Template grid */}
+            { }
             <div className="template-grid">
                 {filteredTemplates.length === 0 ? (
                     <div className="no-templates">
@@ -79,11 +79,9 @@ export function TemplateSelector({ templates = [], selectedTemplateId, onSelect 
     );
 }
 
-/**
- * Individual template card
- */
+ 
 function TemplateCard({ template, isSelected, onSelect }) {
-    const preset = template.presets?.[0]; // Show first preset
+    const preset = template.presets?.[0]; 
 
     return (
         <div
